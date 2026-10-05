@@ -4,6 +4,8 @@
 
 Архивный снимок от 05.10.2026: [исходные промпты, история, точка остановки и восстановление](archive/README.md). Актуальное состояние описано в [archive/STATUS.md](archive/STATUS.md); старые записи этапов ниже сохранены как история.
 
+GitHub: [полный архив в релизе](https://github.com/tenzerka2/corporate-site/releases/tag/onega-archive-2026-10-05), [неизменяемый снимок кода](https://github.com/tenzerka2/corporate-site/tree/archive/onega-2026-10-05). В релизе нужен файл `onega-archive-2026-10-05.tar.gz`: автоматический Source code ZIP не включает игнорируемые скриншоты и Blender-исходники. Архив относится к коммиту `cf6f8dd`; последующие коммиты в main документируют его публикацию.
+
 Этап 1 из `/root/onega-codex-prompts_1.md`: фундамент, дизайн-система, навигация и подвал. Компания вымышлена. Проект для портфолио Shvetsov Studio.
 
 ## Запуск
