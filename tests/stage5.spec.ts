@@ -20,6 +20,9 @@ const pages = [
   "/privacy",
   "/terms",
   "/offer",
+  "/careers",
+  "/news",
+  "/account",
 ];
 const clean = ".site-header, .skip-link { visibility: hidden !important; }";
 
@@ -142,6 +145,41 @@ test("контакты: форма проверяет поля и показыв
   await page.getByText("Даю согласие на обработку персональных данных").click();
   await page.getByRole("button", { name: "Отправить" }).click();
   await expect(page.getByRole("status")).toContainText("Сообщение отправлено");
+});
+
+test("вакансии: строки раскрываются, отклик выбирает вакансию и проверяет поля", async ({ page }) => {
+  await page.goto("/careers");
+  await expect(page.locator(".vacancy")).toHaveCount(5);
+  await page.getByText("Логист по сборным грузам").click();
+  await page.locator(".vacancy[open]").getByRole("link", { name: "Откликнуться" }).click();
+  await expect(page.getByRole("combobox", { name: "Вакансия" })).toHaveText(
+    "Логист по сборным грузам, Екатеринбург",
+  );
+  await expect(page.getByLabel("Имя")).toBeFocused();
+  await page.getByRole("button", { name: "Отправить отклик" }).click();
+  await expect(page.locator("#apply").getByRole("alert").first()).toBeVisible();
+});
+
+test("новости: даты и полный текст без пустых страниц", async ({ page }) => {
+  await page.goto("/news");
+  await expect(page.locator(".news-list article")).toHaveCount(5);
+  await expect(page.locator(".news-list time").first()).toHaveText("22 сентября 2026 г.");
+  await expect(page.locator(".news-list a")).toHaveCount(0);
+});
+
+test("личный кабинет: вход отключён, демо-кабинет ведёт в отслеживание", async ({ page }) => {
+  await page.goto("/account");
+  await page.getByRole("button", { name: "Войти", exact: true }).click();
+  await expect(page.locator(".login-form").getByRole("alert")).toContainText("демо-кабинет");
+  await page.getByRole("button", { name: "Открыть демо-кабинет" }).click();
+  await expect(page.getByRole("heading", { name: "ООО «Пример»" })).toBeFocused();
+  await expect(page.locator(".account-table tbody tr")).toHaveCount(4);
+  const { default: AxeBuilder } = await import("@axe-core/playwright");
+  const axe = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa"]).analyze();
+  expect(axe.violations.map((v) => v.id)).toEqual([]);
+  await page.getByRole("link", { name: "ON-2026-104733", exact: true }).click();
+  await expect(page).toHaveURL(/\/tracking\?number=ON-2026-104733$/);
+  await expect(page.locator("[aria-current=step]")).toContainText("На складе в Екатеринбурге");
 });
 
 test("404 в стиле сайта с переходом к расчёту", async ({ page }) => {

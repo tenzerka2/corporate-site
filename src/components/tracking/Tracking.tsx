@@ -1,5 +1,5 @@
 "use client";
-import { useId, useRef, useState, type FormEvent } from "react";
+import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { CircleCheck, Circle, Download, Search } from "lucide-react";
 import { Button, Container } from "@/components/ui";
 import { MapExplorer } from "@/components/logistics/StandaloneCalculator";
@@ -27,6 +27,17 @@ export function Tracking() {
       requestAnimationFrame(() => resultRef.current?.focus());
     else inputRef.current?.focus();
   }
+
+  // Links from the account page pass the number: /tracking?number=ON-2026-104733.
+  useEffect(() => {
+    const number = new URLSearchParams(window.location.search).get("number");
+    if (!number) return;
+    const frame = requestAnimationFrame(() => {
+      setValue(number);
+      setLookup(findShipment(number));
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   function submit(event: FormEvent) {
     event.preventDefault();

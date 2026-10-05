@@ -58,10 +58,6 @@ export const legalLinks = [
   { title: "Пользовательское соглашение", href: "/terms" },
   { title: "Публичная оферта", href: "/offer" },
 ];
-export const socialLinks = ["Telegram", "VK", "MAX"].map((title) => ({
-  title,
-  href: `/social/${title.toLowerCase()}`,
-}));
 export const utilityLinks = [
   { title: "Рассчитать доставку", href: "/calculator" },
   { title: "Отследить груз", href: "/tracking" },
@@ -73,7 +69,6 @@ export const routes = [
   ...companyLinks,
   ...clientLinks,
   ...legalLinks,
-  ...socialLinks,
   ...utilityLinks,
 ];
 export const copy = {
@@ -87,8 +82,6 @@ export const copy = {
     imageAlt: "Трёхмерная модель магистрального тягача «Онега» с полуприцепом",
     uiLink: "Дизайн-система",
   },
-  placeholder:
-    "Мы готовим этот раздел. Это демонстрационный сайт вымышленной компании: отслеживание и личный кабинет пока недоступны. Расчёт стоимости уже работает.",
   aboutQuote:
     "«За каждой поставкой стоит чья-то работа. Наша задача: чтобы груз оказался на месте вовремя».",
   quoteCaption: "Руководитель «Онега Логистик», вымышленная цитата",

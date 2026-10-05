@@ -8,8 +8,8 @@ import {
   companyLinks,
   copy,
   legalLinks,
+  services,
   site,
-  socialLinks,
 } from "@/content/site";
 export function Footer() {
   return (
@@ -21,8 +21,10 @@ export function Footer() {
               <Logo dark />
             </Link>
             <p>{site.description}</p>
-            <span className="footer-phone">{site.phone}</span>
-            <span>{site.email}</span>
+            <a className="footer-phone" href={`tel:${site.phone.replace(/\D/g, "")}`}>
+              {site.phone}
+            </a>
+            <a href={`mailto:${site.email}`}>{site.email}</a>
             <ButtonLink href="/calculator" icon={<Calculator size={19} />}>
               {labels.rasschitatDostavku}
             </ButtonLink>
@@ -30,14 +32,13 @@ export function Footer() {
           {[
             { title: labels.kompaniya, links: companyLinks },
             { title: labels.klientam, links: clientLinks },
-            { title: labels.myVSeti, links: socialLinks },
+            { title: labels.uslugi, links: services },
           ].map((group) => (
             <nav key={group.title} aria-label={group.title}>
               <h2>{group.title}</h2>
               {group.links.map((link) => (
                 <Link href={link.href} key={link.href}>
                   {link.title}
-                  {group.title === labels.myVSeti && <ArrowUpRight size={15} />}
                 </Link>
               ))}
             </nav>

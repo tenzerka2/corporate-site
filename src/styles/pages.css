@@ -726,3 +726,249 @@
 .not-found-code {
   color: var(--color-divider);
 }
+
+/* Careers: vacancies as expandable rows */
+.vacancy-list ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.vacancy-head,
+.vacancy summary {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: baseline;
+}
+.vacancy-head {
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--color-ink);
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--color-muted);
+}
+.vacancy-head span:last-child,
+.vacancy-salary {
+  text-align: right;
+}
+.vacancy {
+  border-bottom: 1px solid var(--color-divider);
+}
+.vacancy summary {
+  padding-block: var(--space-6);
+  cursor: pointer;
+  list-style: none;
+}
+.vacancy summary::-webkit-details-marker {
+  display: none;
+}
+.vacancy summary:hover .vacancy-role {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.vacancy-role {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+.vacancy-salary {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.vacancy-body {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 2fr) auto;
+  gap: var(--space-8);
+  align-items: start;
+  padding-bottom: var(--space-8);
+}
+.vacancy-body h3 {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-muted);
+}
+.vacancy-body ul {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  padding-left: 18px;
+  list-style: square;
+}
+
+/* News: dated rows */
+.news-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--color-ink);
+}
+.news-list article {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  gap: var(--space-8);
+  padding-block: var(--space-8);
+  border-bottom: 1px solid var(--color-divider);
+}
+.news-meta {
+  display: grid;
+  gap: var(--space-1);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-muted);
+}
+.news-meta time {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.news-list h3 {
+  font-size: 24px;
+  line-height: 32px;
+}
+.news-list p {
+  margin-top: var(--space-3);
+  max-width: 64ch;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--color-muted);
+}
+
+/* Account */
+.account-note {
+  margin-top: var(--space-4);
+  max-width: 40ch;
+}
+.login-form {
+  display: grid;
+  gap: 20px;
+}
+.login-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+.account-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--space-8);
+}
+.account-head h2:focus {
+  outline: none;
+}
+.account-head p {
+  margin-top: var(--space-2);
+}
+.account-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+.account-summary {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: var(--space-12);
+}
+.account-title {
+  margin: var(--space-16) 0 var(--space-6);
+}
+.account-table td:last-child {
+  font-weight: 600;
+}
+.document-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--color-ink);
+}
+.document-rows a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: var(--space-6);
+  align-items: center;
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-divider);
+}
+.document-rows a:hover span:first-child {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.account-tracking {
+  margin-top: var(--space-10);
+}
+
+@media (max-width: 1023px) {
+  .vacancy-body {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .vacancy-body .button {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+  .account-head {
+    flex-direction: column;
+    align-items: start;
+  }
+  .account-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .account-summary > div:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+@media (max-width: 767px) {
+  .vacancy-head {
+    display: none;
+  }
+  .vacancy summary {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-1);
+  }
+  .vacancy summary [data-label]::before {
+    content: attr(data-label) ": ";
+    color: var(--color-muted);
+  }
+  .vacancy-salary {
+    text-align: left;
+  }
+  .vacancy-body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+  .vacancy-body .button {
+    width: 100%;
+  }
+  .news-list article {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
+  }
+  .news-meta {
+    display: flex;
+    gap: var(--space-4);
+  }
+  .document-rows a {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .document-rows .muted {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .account-actions,
+  .account-actions .button,
+  .login-actions .button {
+    width: 100%;
+  }
+}
+.account-head .inline-link {
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  .account-summary > div:last-child {
+    grid-column: auto;
+    padding-left: var(--space-4);
+    border-left: 1px solid var(--color-divider);
+  }
+  .account-summary dd {
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
