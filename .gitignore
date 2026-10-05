@@ -20,4 +20,5 @@ scripts/**/__pycache__/
 artifacts/stage-3/*.png
 artifacts/stage-3/*.patch
 artifacts/visual-reset/*.png
+artifacts/stage-4/*.png
 artifacts/visual-reset/*.patch

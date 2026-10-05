@@ -1,54 +1,223 @@
 "use client";
-import { useId, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import {
+  autoUpdate,
+  flip,
+  FloatingPortal,
+  offset,
+  shift,
+  useFloating,
+} from "@floating-ui/react";
+import { Warehouse, MapPin } from "lucide-react";
 import { cities, type City } from "@/content/cities";
 import { russiaOutline } from "@/content/russia-outline";
-import { visualCopy as copy } from "@/content/visuals";
-import { Select } from "@/components/ui/interactive";
+import { mapCopy as copy } from "@/content/logistics";
+import { routeQuote, cityById, type CityId } from "@/lib/routes";
+import { formatDays } from "@/lib/tariff";
+
 const origin = cities[0];
-const options = cities.map((city) => ({ value: city.id, label: city.name }));
-function route(city: City) {
-  return `M${origin.x},${origin.y} Q${(origin.x + city.x) / 2},${Math.min(origin.y, city.y) - 60} ${city.x},${city.y}`;
+const networkRoutes = cities.filter(
+  (city) => city.warehouse && city.id !== origin.id,
+);
+
+function routePath(from: City, to: City) {
+  const lift = Math.min(90, 30 + Math.hypot(to.x - from.x, to.y - from.y) / 6);
+  return `M${from.x},${from.y} Q${(from.x + to.x) / 2},${Math.min(from.y, to.y) - lift} ${to.x},${to.y}`;
 }
-export function RussiaMap() {
-  const id = useId();
-  const [selected, setSelected] = useState<string>("ekaterinburg");
-  const [hovered, setHovered] = useState<string | null>(null);
-  const active = cities.find((city) => city.id === (hovered ?? selected)) ?? origin;
+
+function CityCard({ city }: { city: City }) {
+  const quote = city.id === origin.id ? null : routeQuote(origin.id, city.id);
   return (
-    <div className="geography-layout">
-      <div className="geography-map">
-        <svg viewBox="0 0 1200 650" role="group" aria-label={copy.mapLabel}>
-          <path d={russiaOutline} className="map-land" />
-          {cities.filter((city) => city.warehouse && city.id !== origin.id).map((city) => (
-            <path key={city.id} d={route(city)} className="map-route" />
+    <>
+      <strong>{city.name}</strong>
+      <span className="map-card-term">
+        {quote ? `${formatDays(quote.days)} ${copy.fromMoscow}` : copy.origin}
+      </span>
+      <span className="map-card-type">
+        {city.warehouse ? (
+          <Warehouse size={16} aria-hidden="true" />
+        ) : (
+          <MapPin size={16} aria-hidden="true" />
+        )}
+        {city.warehouse ? copy.warehouse : copy.partner}
+      </span>
+    </>
+  );
+}
+
+export function RussiaMap({
+  route,
+  onCitySelect,
+}: {
+  route: { from: CityId; to: CityId } | null;
+  onCitySelect?: (id: CityId) => void;
+}) {
+  const svgRef = useRef<SVGSVGElement>(null);
+  const [drawState, setDrawState] = useState<"static" | "pending" | "drawn">(
+    "static",
+  );
+  const [hovered, setHovered] = useState<City | null>(null);
+  const [anchor, setAnchor] = useState<Element | null>(null);
+  const { refs, floatingStyles } = useFloating({
+    open: hovered !== null,
+    elements: { reference: anchor },
+    placement: "top",
+    strategy: "fixed",
+    whileElementsMounted: autoUpdate,
+    middleware: [offset(14), flip({ padding: 80 }), shift({ padding: 16 })],
+  });
+
+  const setFloating = refs.setFloating;
+  // Routes are visible without JavaScript; the draw-in only runs once on screen.
+  useEffect(() => {
+    const element = svgRef.current;
+    if (!element) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let frame = requestAnimationFrame(() => setDrawState("pending"));
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        frame = requestAnimationFrame(() => setDrawState("drawn"));
+      },
+      { threshold: 0.3 },
+    );
+    observer.observe(element);
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!hovered) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setHovered(null);
+    };
+    document.addEventListener("keydown", close);
+    return () => document.removeEventListener("keydown", close);
+  }, [hovered]);
+
+  const show = (city: City, element: Element) => {
+    setAnchor(element);
+    setHovered(city);
+  };
+  const hide = () => setHovered(null);
+  const from = route ? cityById(route.from) : null;
+  const to = route ? cityById(route.to) : null;
+  const ends = new Set([route?.from, route?.to]);
+
+  return (
+    <div className="geography-map">
+      <svg
+        ref={svgRef}
+        viewBox="0 0 1200 650"
+        role="group"
+        aria-label={copy.label}
+        data-draw={drawState}
+      >
+        <path d={russiaOutline} className="map-land" />
+        {networkRoutes.map((city, index) => (
+          <path
+            key={city.id}
+            d={routePath(origin, city)}
+            className="map-route"
+            pathLength={1}
+            style={{ animationDelay: `${index * 180}ms` }}
+          />
+        ))}
+        {from && to && from.id !== to.id && (
+          <path
+            key={`${from.id}-${to.id}`}
+            d={routePath(from, to)}
+            className="map-route map-route-active"
+            pathLength={1}
+          />
+        )}
+        {cities.map((city) => (
+          <g
+            key={city.id}
+            role="button"
+            tabIndex={0}
+            aria-label={city.name}
+            aria-pressed={ends.has(city.id)}
+            className={`map-city ${ends.has(city.id) ? "is-active" : ""}`}
+            onMouseEnter={(event) => show(city, event.currentTarget)}
+            onMouseLeave={hide}
+            onFocus={(event) => show(city, event.currentTarget)}
+            onBlur={hide}
+            onClick={() => onCitySelect?.(city.id)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                onCitySelect?.(city.id);
+              }
+            }}
+          >
+            <circle cx={city.x} cy={city.y} r={14} className="map-hit" />
+            {city.warehouse ? (
+              <rect
+                x={city.x - 5}
+                y={city.y - 5}
+                width={10}
+                height={10}
+                className="map-dot"
+              />
+            ) : (
+              <circle cx={city.x} cy={city.y} r={4} className="map-dot" />
+            )}
+          </g>
+        ))}
+        {[from ?? origin, to]
+          .filter((city): city is City => city !== null)
+          .filter((city, index, list) => list.indexOf(city) === index)
+          .map((city, index) => (
+            <text
+              key={city.id}
+              x={index === 0 ? city.x - 12 : city.x + 12}
+              y={city.y - 16}
+              textAnchor={index === 0 ? "end" : "start"}
+              className={`map-label ${index === 1 ? "map-active-label" : ""}`}
+              aria-hidden="true"
+            >
+              {city.name}
+            </text>
           ))}
-          {active.id !== origin.id && <path d={route(active)} className="map-route map-route-active" />}
-          {cities.map((city) => (
-            <g key={city.id} role="button" tabIndex={0} aria-label={city.name} aria-pressed={selected === city.id}
-              className={`map-city ${active.id === city.id ? "is-active" : ""}`}
-              onMouseEnter={() => setHovered(city.id)} onMouseLeave={() => setHovered(null)}
-              onFocus={() => setHovered(city.id)} onBlur={() => setHovered(null)}
-              onClick={() => { setSelected(city.id); setHovered(null); }}
-              onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setSelected(city.id); setHovered(null); } }}>
-              <circle cx={city.x} cy={city.y} r={13} className="map-hit" />
-              {city.warehouse ? <rect x={city.x - 5} y={city.y - 5} width={10} height={10} className="map-dot" /> : <circle cx={city.x} cy={city.y} r={4} className="map-dot" />}
-            </g>
-          ))}
-          <text x={origin.x - 12} y={origin.y - 18} textAnchor="end" className="map-label">{origin.name}</text>
-          {active.id !== origin.id && <text x={active.x + 12} y={active.y - 16} className="map-label map-active-label">{active.name}</text>}
-        </svg>
-        <div className="map-legend"><span><i className="legend-square" />{copy.legendWarehouse}</span><span><i className="legend-circle" />{copy.legendCity}</span></div>
-        <a className="map-source" href="https://www.naturalearthdata.com/" target="_blank" rel="noreferrer">{copy.source}</a>
+      </svg>
+      {hovered && (
+        <FloatingPortal>
+          <div
+            ref={(node) => setFloating(node)}
+            style={floatingStyles}
+            className="map-card"
+            role="tooltip"
+          >
+            <CityCard city={hovered} />
+          </div>
+        </FloatingPortal>
+      )}
+      <div className="map-legend">
+        <span>
+          <i className="legend-square" />
+          {copy.legendWarehouse}
+        </span>
+        <span>
+          <i className="legend-circle" />
+          {copy.legendCity}
+        </span>
+        <span>
+          <i className="legend-line" />
+          {copy.legendRoute}
+        </span>
       </div>
-      <div className="geography-details">
-        <Select id={`${id}-city`} label={copy.city} value={selected} options={options} onChange={(value) => { setSelected(value); setHovered(null); }} />
-        <div className="route-detail" aria-live="polite" aria-atomic="true">
-          <h3>{active.name}</h3><p className="route-time">{active.days}</p>
-          {active.id !== origin.id && <p className="muted">{copy.from}</p>}
-          <p>{active.warehouse ? copy.warehouse : copy.partner}</p>
-        </div>
-        <p className="caption muted">{copy.mapDemo}</p>
-      </div>
+      <a
+        className="map-source"
+        href="https://www.naturalearthdata.com/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        {copy.source}
+      </a>
     </div>
   );
 }

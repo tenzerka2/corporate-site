@@ -14,5 +14,6 @@ describe("Навигация первого этапа", () => {
     const paths = getPageSlugs().map(({ slug }) => slug.join("/"));
     expect(new Set(paths).size).toBe(paths.length);
     expect(paths).toContain("services/groupage");
+    expect(paths).not.toContain("calculator");
   });
 });

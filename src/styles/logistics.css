@@ -1,0 +1,803 @@
+/* Stage 4: services, directions, calculator, order dialog, FAQ, final call to action. */
+
+/* Services */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.services-grid > li {
+  display: flex;
+  min-width: 0;
+}
+.service-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+.service-figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-height: 176px;
+  justify-content: flex-end;
+  padding: var(--space-8);
+  background: var(--color-subtle);
+  border-bottom: 1px solid var(--color-divider);
+}
+.service-figure-value {
+  font-size: 56px;
+  line-height: 60px;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  color: var(--color-navy);
+}
+.service-figure-label {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-muted);
+}
+.service-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--space-4);
+  padding: var(--space-8);
+}
+.service-body p {
+  max-width: 60ch;
+}
+.service-body h3 + p {
+  margin-top: var(--space-2);
+}
+.service-body p + p {
+  color: var(--color-muted);
+}
+.service-details {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-divider);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-muted);
+}
+.service-body p.service-details {
+  color: var(--color-muted);
+}
+.service-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4) var(--space-8);
+  margin-top: var(--space-2);
+}
+
+/* Directions */
+#geography {
+  scroll-margin-top: calc(var(--header-height) + var(--space-6));
+}
+.directions-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: var(--space-12);
+  align-items: start;
+}
+.directions-map {
+  min-width: 0;
+}
+.directions-map > .caption {
+  margin-top: var(--space-2);
+}
+.legend-line {
+  display: inline-block;
+  width: 20px;
+  height: 3px;
+  background: var(--color-orange);
+}
+.geography-map .map-route-active {
+  stroke: var(--color-orange);
+  stroke-width: 3;
+  animation: route-draw 600ms ease-out backwards;
+}
+.map-city.is-active .map-dot {
+  fill: var(--color-orange);
+}
+.geography-map > svg[data-draw="pending"] .map-route:not(.map-route-active) {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.geography-map > svg[data-draw="drawn"] .map-route:not(.map-route-active) {
+  stroke-dasharray: 1;
+  animation: route-draw 900ms ease-out backwards;
+}
+@keyframes route-draw {
+  from {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+}
+.map-card {
+  z-index: 60;
+  display: grid;
+  gap: var(--space-1);
+  min-width: 200px;
+  padding: var(--space-4);
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  box-shadow: var(--shadow-popover);
+  pointer-events: none;
+}
+.map-card strong {
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--color-navy);
+}
+.map-card-term {
+  font-weight: 500;
+}
+.map-card-type {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-muted);
+}
+.directions-list h3 {
+  margin-bottom: var(--space-2);
+}
+.directions-hint {
+  color: var(--color-muted);
+  margin-bottom: var(--space-6);
+}
+.directions-list ul {
+  list-style: none;
+  margin: 0 0 var(--space-4);
+  padding: 0;
+  border-top: 1px solid var(--color-divider);
+}
+.directions-list li {
+  border-bottom: 1px solid var(--color-divider);
+}
+.directions-list li button {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "name price"
+    "term price";
+  align-items: center;
+  column-gap: var(--space-4);
+  width: 100%;
+  padding: var(--space-3) var(--space-3) var(--space-3) var(--space-4);
+  text-align: left;
+  border-left: 3px solid transparent;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.directions-list li button:hover {
+  background: var(--color-surface);
+}
+.directions-list li button.is-active {
+  background: var(--color-subtle);
+  border-left-color: var(--color-orange);
+}
+.direction-name {
+  grid-area: name;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+  color: var(--color-navy);
+}
+.direction-term {
+  grid-area: term;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-muted);
+}
+.direction-price {
+  grid-area: price;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.directions-to-calculator {
+  margin-top: var(--space-6);
+}
+
+/* Calculator */
+.calculator-section {
+  background: var(--color-navy);
+  color: white;
+  padding-block: var(--section-space);
+  scroll-margin-top: var(--header-height);
+}
+.calculator-section :focus-visible {
+  outline-color: white;
+}
+.calculator-card :focus-visible {
+  outline-color: var(--color-navy);
+}
+.calculator-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: var(--space-12);
+  align-items: start;
+}
+.calculator-intro h1,
+.calculator-intro h2 {
+  color: white;
+}
+.calculator-intro h1 {
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.035em;
+}
+.calculator-intro .lead {
+  margin-top: var(--space-6);
+  color: var(--color-brand-mid);
+}
+.calculator-points {
+  display: grid;
+  gap: var(--space-4);
+  list-style: none;
+  margin: var(--space-10) 0 0;
+  padding: var(--space-8) 0 0;
+  border-top: 1px solid #c3d4e640;
+}
+.calculator-points li {
+  display: flex;
+  gap: var(--space-3);
+  align-items: start;
+}
+.calculator-points svg {
+  color: var(--color-orange);
+  margin-top: 2px;
+}
+.calculator-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  background: white;
+  color: var(--color-ink);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+.calculator-form {
+  display: grid;
+  align-content: start;
+  gap: var(--space-6);
+  padding: var(--space-10);
+  min-width: 0;
+}
+.calculator-cities {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: end;
+  gap: var(--space-2);
+}
+.calculator-swap {
+  width: 44px;
+  height: var(--control-height);
+  color: var(--color-navy);
+}
+.calculator-cargo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+.calculator-form fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.calculator-form legend {
+  margin-bottom: var(--space-2);
+  padding: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+.calculator-mode {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.segment {
+  position: relative;
+  display: flex;
+}
+.segment input,
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.segment span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: var(--control-height);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.segment:first-of-type span {
+  border-radius: var(--radius-control) 0 0 var(--radius-control);
+}
+.segment:last-of-type span {
+  border-left: 0;
+  border-radius: 0 var(--radius-control) var(--radius-control) 0;
+}
+.segment input:checked + span {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+  color: white;
+}
+.segment input:focus-visible + span,
+.checkbox input:focus-visible + .checkbox-box {
+  outline: 3px solid var(--color-navy);
+  outline-offset: 3px;
+}
+.calculator-options {
+  display: grid;
+  gap: var(--space-3);
+}
+.checkbox {
+  position: relative;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--space-3);
+  cursor: pointer;
+}
+.checkbox-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  border: 1px solid var(--color-muted);
+  border-radius: var(--radius-control);
+  background: white;
+  color: transparent;
+}
+.checkbox input:checked + .checkbox-box {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+  color: white;
+}
+.checkbox input[aria-invalid="true"] + .checkbox-box {
+  border-color: var(--color-error);
+}
+.checkbox-hint {
+  font-size: 14px;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+.inline-link {
+  color: var(--color-navy);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.calculator-result {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--space-10);
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-divider);
+}
+.calculator-result-label {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+.calculator-total {
+  margin-top: var(--space-2);
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--color-navy);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.calculator-from {
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+.calculator-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-6) 0 0;
+}
+.calculator-facts dt,
+.calculator-breakdown-title {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-muted);
+}
+.calculator-facts dd {
+  margin: var(--space-1) 0 0;
+  font-weight: 600;
+}
+.calculator-facts > div:first-child dd {
+  font-size: 22px;
+  line-height: 30px;
+  color: var(--color-navy);
+}
+.calculator-vehicle {
+  grid-column: 1 / -1;
+}
+.calculator-breakdown-title {
+  margin-top: var(--space-8);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-divider);
+}
+.calculator-breakdown {
+  margin: 0;
+}
+.calculator-breakdown > div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-2);
+  border-bottom: 1px solid var(--color-divider);
+}
+.calculator-breakdown dd {
+  margin: 0;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.calculator-breakdown .is-off dd {
+  color: var(--color-muted);
+  font-weight: 400;
+}
+.calculator-error {
+  margin-top: var(--space-6);
+  color: var(--color-error);
+}
+.calculator-order {
+  margin-top: var(--space-8);
+  width: 100%;
+}
+.calculator-note {
+  margin-top: var(--space-4);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-muted);
+}
+
+/* Order dialog */
+.dialog-overlay {
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: var(--space-6);
+  background: rgba(11, 31, 51, 0.6);
+}
+.dialog {
+  width: min(720px, 100%);
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  background: white;
+  border-radius: var(--radius-card);
+  padding: var(--space-8);
+}
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: var(--space-4);
+}
+.dialog-header h2 {
+  font-size: 30px;
+  line-height: 36px;
+}
+.dialog-header .icon-button {
+  margin: -6px -8px 0 0;
+}
+.order-summary {
+  display: grid;
+  gap: var(--space-1);
+  margin-top: var(--space-6);
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-subtle);
+  border-left: 3px solid var(--color-orange);
+}
+.order-route {
+  font-weight: 600;
+  color: var(--color-navy);
+}
+.order-price {
+  font-weight: 600;
+}
+.order-edit {
+  margin-top: var(--space-2);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-muted);
+}
+.order-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5, 20px) var(--space-4);
+  margin-top: var(--space-6);
+}
+.order-wide {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: var(--space-2);
+}
+.order-actions {
+  gap: var(--space-4);
+  justify-items: start;
+}
+.dialog-demo {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-muted);
+}
+.order-success {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+.order-success > svg {
+  color: var(--color-success);
+}
+.order-number {
+  font-size: 18px;
+  line-height: 28px;
+}
+.order-number strong {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-navy);
+}
+
+/* Regular clients */
+.regular-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.regular-grid > li {
+  display: flex;
+  min-width: 0;
+}
+.regular-item {
+  width: 100%;
+  padding: var(--space-8);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-card);
+}
+.regular-item svg {
+  color: var(--color-navy);
+}
+.regular-item h3 {
+  margin-top: var(--space-6);
+  font-size: 20px;
+  line-height: 28px;
+}
+.regular-item p {
+  margin-top: var(--space-3);
+  color: var(--color-muted);
+}
+.regular-action {
+  margin-top: var(--space-10);
+}
+
+/* FAQ */
+.faq-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: var(--space-12);
+  align-items: start;
+}
+.faq-layout .lead {
+  margin-top: var(--space-4);
+  max-width: 36ch;
+}
+.faq-block .accordion {
+  border-top: 1px solid var(--color-divider);
+}
+
+/* Final call to action */
+.final-block {
+  margin-bottom: var(--section-space);
+}
+.final-panel {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-10);
+  padding: var(--space-16);
+  background: var(--color-brand-light);
+}
+.final-panel h2 {
+  max-width: 20ch;
+}
+.final-panel .lead {
+  margin-top: var(--space-4);
+}
+.final-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+.final-actions .button-secondary {
+  border-color: var(--color-navy);
+  background: transparent;
+}
+.final-actions .button-secondary:hover {
+  background: white;
+}
+
+@media (max-width: 1199px) {
+  .calculator-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-10);
+  }
+  .calculator-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: var(--space-12);
+  }
+  .calculator-intro .calculator-points {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+    margin: 0;
+    padding: 0 0 0 var(--space-8);
+    border-top: 0;
+    border-left: 1px solid #c3d4e640;
+    align-content: center;
+  }
+  .directions-layout {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: var(--space-8);
+  }
+  .regular-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 1023px) {
+  .directions-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .directions-list ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+  .calculator-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .calculator-result {
+    border-left: 0;
+    border-top: 1px solid var(--color-divider);
+  }
+  .faq-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+  .final-panel {
+    flex-direction: column;
+    align-items: start;
+    padding: var(--space-12);
+  }
+}
+@media (max-width: 767px) {
+  .services-grid,
+  .regular-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+  .service-figure {
+    min-height: 0;
+    padding: var(--space-6);
+  }
+  .service-figure-value {
+    font-size: 44px;
+    line-height: 48px;
+  }
+  .service-body,
+  .regular-item {
+    padding: var(--space-6);
+  }
+  .service-actions .button {
+    width: 100%;
+  }
+  .directions-list ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .calculator-intro {
+    display: block;
+  }
+  .calculator-intro h1 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+  .calculator-intro .calculator-points {
+    margin-top: var(--space-8);
+    padding: var(--space-6) 0 0;
+    border-left: 0;
+    border-top: 1px solid #c3d4e640;
+  }
+  .calculator-form,
+  .calculator-result {
+    padding: var(--space-6) var(--space-4);
+  }
+  .calculator-cities {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .calculator-swap {
+    justify-self: end;
+    height: 40px;
+    margin-block: -8px;
+    transform: rotate(90deg);
+  }
+  .calculator-total {
+    font-size: 40px;
+    line-height: 48px;
+  }
+  .dialog-overlay {
+    padding: 0;
+    align-items: end;
+  }
+  .dialog {
+    max-height: 100dvh;
+    border-radius: var(--radius-card) var(--radius-card) 0 0;
+    padding: var(--space-6) var(--space-4);
+  }
+  .dialog-header h2 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .order-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .order-actions .button,
+  .order-success .button {
+    width: 100%;
+  }
+  .final-panel {
+    padding: var(--space-8) var(--space-6);
+  }
+  .final-actions,
+  .final-actions .button {
+    width: 100%;
+  }
+}
+.calculator-empty {
+  font-size: 30px;
+  line-height: 56px;
+  color: var(--color-muted);
+}

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { RussiaMap } from "@/components/RussiaMap";
 import { visualCopy } from "@/content/visuals";
 import {
   ArrowUpRight,
@@ -10,10 +9,17 @@ import {
   LocateFixed,
 } from "lucide-react";
 import { ButtonLink, CheckItem, Container } from "@/components/ui";
-import { copy, services } from "@/content/site";
+import { copy } from "@/content/site";
 import { home } from "@/content/home";
 import { HomeSections } from "@/components/home/HomeSections";
 import { CompanyStats } from "@/components/home/HomeMotion";
+import { Planner } from "@/components/logistics/Planner";
+import {
+  FaqBlock,
+  FinalBlock,
+  RegularBlock,
+  ServicesBlock,
+} from "@/components/logistics/HomeBlocks";
 const assuranceIcons = [ShieldCheck, FileCheck2, LocateFixed];
 
 export default function Home() {
@@ -26,7 +32,7 @@ export default function Home() {
               <h1>{copy.home.title}</h1>
               <p className="hero-subtitle">{home.subtitle}</p>
               <div className="hero-actions">
-                <ButtonLink href="/calculator" icon={<Calculator size={19} />}>
+                <ButtonLink href="#calculator" icon={<Calculator size={19} />}>
                   {home.calculate}
                 </ButtonLink>
                 <ButtonLink
@@ -72,40 +78,11 @@ export default function Home() {
         <CompanyStats />
       </Container>
       <HomeSections />
-      <section
-        className="service-index home-service-index"
-        aria-labelledby="services-title"
-      >
-        <Container wide>
-          <div className="section-heading">
-            <h2 id="services-title">{home.servicesTitle}</h2>
-          </div>
-          <div className="service-index-grid">
-            {services.map((service) => (
-              <Link href={service.href} key={service.href}>
-                <span className="service-index-label">
-                  {service.title}
-                  <ArrowUpRight size={22} />
-                </span>
-                <p className="service-index-description">
-                  {service.description}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </Container>
-      </section>
-      <section className="section" id="geography">
-        <Container wide>
-          <div className="section-heading">
-            <div>
-              <h2>{visualCopy.geography}</h2>
-              <p className="muted measure">{visualCopy.geographyDescription}</p>
-            </div>
-          </div>
-          <RussiaMap />
-        </Container>
-      </section>
+      <ServicesBlock />
+      <Planner />
+      <RegularBlock />
+      <FaqBlock />
+      <FinalBlock />
     </>
   );
 }

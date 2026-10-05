@@ -64,10 +64,10 @@ test("главная: последовательность, адаптив, чи
       fullPage: true,
     });
   }
-  for (const [name, href] of [
-    ["Рассчитать стоимость", "/calculator"],
-    ["Связаться с менеджером", "/help"],
-  ]) {
+  await page.getByRole("link", { name: "Рассчитать стоимость", exact: true }).first().click();
+  await expect(page).toHaveURL(/#calculator$/);
+  await expect(page.locator("#calculator")).toBeInViewport();
+  for (const [name, href] of [["Связаться с менеджером", "/help"]]) {
     await page.getByRole("link", { name, exact: true }).first().click();
     await expect(page).toHaveURL(new RegExp(`${href}$`));
     await expect(

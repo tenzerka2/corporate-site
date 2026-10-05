@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui";
-import { RussiaMap } from "@/components/RussiaMap";
+import { MapExplorer } from "@/components/logistics/StandaloneCalculator";
 import { Logo } from "@/components/Logo";
 import { visualCopy as copy } from "@/content/visuals";
 import { site } from "@/content/site";
@@ -16,7 +16,7 @@ export default function Visuals() {
         </section>
         <section className="section">
           <h2>{copy.geography}</h2>
-          <RussiaMap />
+          <MapExplorer />
         </section>
       </div>
     </Container>

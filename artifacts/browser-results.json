@@ -1,12 +1,12 @@
 {
   "config": {
     "argv": [
-      "/usr/bin/node",
-      "/root/sites/onega/node_modules/.bin/playwright",
+      "/opt/node22/bin/node",
+      "/home/user/corporate-site/node_modules/.bin/playwright",
       "test"
     ],
-    "configFile": "/root/sites/onega/playwright.config.ts",
-    "rootDir": "/root/sites/onega/tests",
+    "configFile": "/home/user/corporate-site/playwright.config.ts",
+    "rootDir": "/home/user/corporate-site/tests",
     "failOnFlakyTests": false,
     "forbidOnly": false,
     "fullyParallel": false,
@@ -22,7 +22,7 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/root/sites/onega/test-results",
+        "outputDir": "/home/user/corporate-site/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -30,7 +30,7 @@
         },
         "id": "",
         "name": "",
-        "testDir": "/root/sites/onega/tests",
+        "testDir": "/home/user/corporate-site/tests",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -86,12 +86,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6575,
+                  "duration": 11588,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-05T09:09:32.278Z",
+                  "startTime": "2026-10-05T17:25:23.777Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -120,12 +120,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2421,
+                  "duration": 3392,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-05T09:09:39.020Z",
+                  "startTime": "2026-10-05T17:25:35.555Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -154,12 +154,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6631,
+                  "duration": 6836,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-05T09:09:41.459Z",
+                  "startTime": "2026-10-05T17:25:38.960Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -188,12 +188,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1202,
+                  "duration": 1480,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-05T09:09:48.104Z",
+                  "startTime": "2026-10-05T17:25:45.809Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -222,12 +222,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 847,
+                  "duration": 1075,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-05T09:09:49.322Z",
+                  "startTime": "2026-10-05T17:25:47.301Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -256,12 +256,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3939,
+                  "duration": 7095,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-05T09:09:50.182Z",
+                  "startTime": "2026-10-05T17:25:48.391Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -298,12 +298,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3384,
+                  "duration": 6757,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-05T09:09:54.149Z",
+                  "startTime": "2026-10-05T17:25:55.510Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -332,12 +332,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2339,
+                  "duration": 2509,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-05T09:09:57.548Z",
+                  "startTime": "2026-10-05T17:26:02.281Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -353,13 +353,13 @@
       ]
     },
     {
-      "title": "visuals.spec.ts",
-      "file": "visuals.spec.ts",
+      "title": "home-stage4.spec.ts",
+      "file": "home-stage4.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "карта: город, маршрут, поиск и клавиатура",
+          "title": "калькулятор пересчитывает цену, выбирает машину и сообщает об ошибках",
           "ok": true,
           "tags": [],
           "tests": [
@@ -374,12 +374,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1576,
+                  "duration": 1266,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-05T09:09:59.911Z",
+                  "startTime": "2026-10-05T17:26:04.821Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -387,7 +387,185 @@
               "status": "expected"
             }
           ],
-          "id": "821bf1ebb4ae78f6d65d-a57a5daff4c7376f6278",
+          "id": "ac8b68c6668b71120ede-aad55110cc0ce16306d8",
+          "file": "home-stage4.spec.ts",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "направления подставляют города в калькулятор, карта показывает карточку города",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1975,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T17:26:06.103Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ac8b68c6668b71120ede-b0a60a203a011f54e60d",
+          "file": "home-stage4.spec.ts",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "заявка: предзаполнение, проверка полей, фокус, Escape и экран успеха",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2726,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T17:26:08.094Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ac8b68c6668b71120ede-89047efafa300402e320",
+          "file": "home-stage4.spec.ts",
+          "line": 105,
+          "column": 1
+        },
+        {
+          "title": "вторая половина главной: состав, адаптив и ссылки",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3766,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T17:26:10.832Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ac8b68c6668b71120ede-13f7e2c06c96f6e7f803",
+          "file": "home-stage4.spec.ts",
+          "line": 160,
+          "column": 1
+        },
+        {
+          "title": "отдельная страница калькулятора учитывает услугу из меню",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1227,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T17:26:14.611Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ac8b68c6668b71120ede-ad6669f8a748ff5cd68c",
+          "file": "home-stage4.spec.ts",
+          "line": 192,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "visuals.spec.ts",
+      "file": "visuals.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "карта: город, маршрут и клавиатура",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1510,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-05T17:26:15.856Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "821bf1ebb4ae78f6d65d-cbb7df9b7b80ac13f92e",
           "file": "visuals.spec.ts",
           "line": 3,
           "column": 1
@@ -408,12 +586,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4853,
+                  "duration": 5404,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-05T09:10:01.510Z",
+                  "startTime": "2026-10-05T17:26:17.378Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -423,7 +601,7 @@
           ],
           "id": "821bf1ebb4ae78f6d65d-f379fb35834ebd328bc6",
           "file": "visuals.spec.ts",
-          "line": 24,
+          "line": 20,
           "column": 1
         }
       ]
@@ -431,9 +609,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-05T09:09:31.417Z",
-    "duration": 35063.598,
-    "expected": 10,
+    "startTime": "2026-10-05T17:25:23.000Z",
+    "duration": 59900.701,
+    "expected": 15,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

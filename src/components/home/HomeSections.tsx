@@ -55,7 +55,7 @@ export function HomeSections() {
                     </div>
                     <p>{step.description}</p>
                     {index === 0 && (
-                      <Link href="/calculator" className="text-link">
+                      <Link href="#calculator" className="text-link">
                         {home.openCalculator}
                         <ArrowUpRight size={18} aria-hidden="true" />
                       </Link>
@@ -67,7 +67,7 @@ export function HomeSections() {
           </ol>
           <div className="process-action">
             <ButtonLink
-              href="/calculator"
+              href="#calculator"
               icon={<Calculator size={19} aria-hidden="true" />}
             >
               {home.calculate}
