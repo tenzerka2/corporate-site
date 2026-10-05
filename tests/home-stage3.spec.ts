@@ -39,11 +39,11 @@ test("главная: последовательность, адаптив, чи
     expect(
       Math.max(...alignment.slice(1)) - Math.min(...alignment.slice(1)),
     ).toBeLessThan(1);
-    if (width < 768) {
-      const artwork = await page.locator(".hero-visual").boundingBox();
-      const title = await page.locator("h1").boundingBox();
-      expect(artwork!.y + artwork!.height).toBeLessThanOrEqual(title!.y);
-    }
+    await expect(
+      page.locator(
+        'img[src*="/images/photos/"], img[src*="/images/renders/"], img[src*="/images/illustrations/"]',
+      ),
+    ).toHaveCount(0);
     await page.screenshot({ path: `artifacts/stage-3/hero-${width}.png` });
     await page.evaluate(() => {
       for (const image of document.images) image.loading = "eager";
@@ -97,7 +97,7 @@ test("движение: однократные счётчики и режим у
   await expect(page.locator("[data-counter]").first()).toHaveText("1 200+");
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.reload();
-  await expect(page.locator(".hero-entry")).toHaveCSS("animation-name", "none");
+  await expect(page.locator(".hero-visual")).toHaveCount(0);
   await page.locator(".company-stats").scrollIntoViewIfNeeded();
   await expect(page.locator("[data-counter]").first()).toHaveText("1 200+");
   const context = await browser.newContext({ javaScriptEnabled: false });

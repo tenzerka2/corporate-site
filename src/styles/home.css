@@ -377,3 +377,123 @@
     width: 100%;
   }
 }
+
+/* Asset withdrawal: the rejected visuals are not replaced by new mock images. */
+.home-hero .hero-layout {
+  min-height: 0;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: var(--space-18);
+  padding-block: var(--space-18);
+}
+.home-hero .hero-copy {
+  max-width: none;
+}
+.home-hero .hero-conditions {
+  padding-block: var(--space-8);
+}
+.home-hero .hero-promises {
+  margin: 0;
+  gap: var(--space-8);
+}
+.home-hero .hero-promises .check-item {
+  font-size: 22px;
+  line-height: 30px;
+}
+.home-hero .hero-promises .check-item svg {
+  margin-top: var(--space-2);
+}
+.home-industry-grid li {
+  font-size: 22px;
+  line-height: 30px;
+}
+.process-grid .process-step {
+  display: block;
+}
+.process-heading {
+  display: block;
+}
+.step-number {
+  display: block;
+  margin-bottom: var(--space-6);
+  font-size: 30px;
+  line-height: 36px;
+  color: var(--color-navy);
+}
+.process-grid h3 {
+  max-width: 26ch;
+}
+.manager-panel {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+.manager-copy {
+  padding: var(--space-10);
+}
+.manager-copy h3 {
+  color: var(--color-white);
+}
+.home-service-index .service-index-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-12) var(--space-18);
+}
+.service-index-description {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: var(--color-muted);
+  margin-top: var(--space-4);
+  max-width: 60ch;
+}
+.brand-specimen {
+  display: grid;
+  gap: var(--space-10);
+}
+@media (max-width: 1023px) {
+  .home-hero .hero-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-10);
+    padding-block: var(--space-12);
+  }
+  .home-hero .hero-conditions {
+    padding: 0;
+  }
+  .home-hero .hero-promises {
+    gap: var(--space-4);
+  }
+  .home-hero .hero-promises .check-item {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .home-industry-grid li {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .process-grid .process-step {
+    display: block;
+  }
+}
+@media (max-width: 767px) {
+  .home-hero .hero-layout {
+    display: grid;
+    padding-block: var(--space-10);
+    gap: var(--space-8);
+  }
+  .home-hero .hero-promises .check-item {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .home-hero .hero-promises .check-item svg {
+    margin-top: var(--space-1);
+  }
+  .home-industry-grid li {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .manager-copy {
+    padding: var(--space-6);
+  }
+  .home-service-index .service-index-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+}

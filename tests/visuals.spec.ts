@@ -21,7 +21,7 @@ test("карта: город, маршрут, поиск и клавиатура
   const axe = await new AxeBuilder({ page }).include("#geography").analyze();
   expect(axe.violations).toEqual([]);
 });
-test("визуалы: изображения, адаптив и локальные источники", async ({ page }) => {
+test("визуальная система: адаптив и отсутствие отклонённых материалов", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", e => errors.push(e.message));
   for (const width of [360,390,768,1024,1440,2560]) {
@@ -31,6 +31,7 @@ test("визуалы: изображения, адаптив и локальны
     await page.waitForLoadState("networkidle");
     await page.evaluate(async () => { for (const image of document.images) { image.loading = "eager"; } await document.fonts.ready; });
     await expect.poll(() => page.evaluate(() => Array.from(document.images).filter(i => !i.complete || i.naturalWidth === 0).map(i => i.currentSrc)), { timeout: 15000 }).toEqual([]);
+    await expect(page.locator("img")).toHaveCount(0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.screenshot({ path: `artifacts/stage-2/visuals-${width}.png`, fullPage: true });
   }

@@ -1,8 +1,6 @@
 "use client";
 import { labels } from "@/content/labels";
 import Link from "next/link";
-import Image from "next/image";
-import { photoAssets } from "@/content/visuals";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import {
@@ -353,7 +351,6 @@ export function Header() {
                       </nav>
                       <div className="full-about">
                         <h2>{labels.oKompanii}</h2>
-                        <Image className="menu-fleet-photo" src="/images/photos/fleet.webp" alt={photoAssets[8].title} width={1920} height={1080} sizes="400px" />
                         <blockquote>{copy.aboutQuote}</blockquote>
                         <p className="caption muted">{copy.quoteCaption}</p>
                         <Link

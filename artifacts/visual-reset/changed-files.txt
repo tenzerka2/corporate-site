@@ -1,0 +1,102 @@
+M	.gitignore
+M	AGENTS.md
+M	ASSETS.md
+M	README.md
+M	artifacts/browser-results.json
+A	artifacts/visual-reset/verification.md
+A	assets/rejected/2026-10-05/ORIGINAL-ASSETS.md
+R100	public/images/contact-sheet.png	assets/rejected/2026-10-05/contact-sheet.png
+R100	public/images/illustrations/calculation.svg	assets/rejected/2026-10-05/illustrations/calculation.svg
+R100	public/images/illustrations/delivery.svg	assets/rejected/2026-10-05/illustrations/delivery.svg
+R100	public/images/illustrations/pickup.svg	assets/rejected/2026-10-05/illustrations/pickup.svg
+R100	public/images/industries/agriculture.svg	assets/rejected/2026-10-05/industries/agriculture.svg
+R100	public/images/industries/autoparts.svg	assets/rejected/2026-10-05/industries/autoparts.svg
+R100	public/images/industries/construction.svg	assets/rejected/2026-10-05/industries/construction.svg
+R100	public/images/industries/furniture.svg	assets/rejected/2026-10-05/industries/furniture.svg
+R100	public/images/industries/marketplaces.svg	assets/rejected/2026-10-05/industries/marketplaces.svg
+R100	public/images/industries/pharma.svg	assets/rejected/2026-10-05/industries/pharma.svg
+R100	public/images/industries/production.svg	assets/rejected/2026-10-05/industries/production.svg
+R100	public/images/industries/retail.svg	assets/rejected/2026-10-05/industries/retail.svg
+R100	public/images/og.png	assets/rejected/2026-10-05/og.png
+R100	public/images/photos/client-manager-portrait.webp	assets/rejected/2026-10-05/photos/client-manager-portrait.webp
+R100	public/images/photos/client-manager.webp	assets/rejected/2026-10-05/photos/client-manager.webp
+R100	public/images/photos/contact-sheet-portrait.png	assets/rejected/2026-10-05/photos/contact-sheet-portrait.png
+R100	public/images/photos/contact-sheet.png	assets/rejected/2026-10-05/photos/contact-sheet.png
+R100	public/images/photos/customer-handover-portrait.webp	assets/rejected/2026-10-05/photos/customer-handover-portrait.webp
+R100	public/images/photos/customer-handover.webp	assets/rejected/2026-10-05/photos/customer-handover.webp
+R100	public/images/photos/director-portrait.webp	assets/rejected/2026-10-05/photos/director-portrait.webp
+R100	public/images/photos/director.webp	assets/rejected/2026-10-05/photos/director.webp
+R100	public/images/photos/driver-portrait.webp	assets/rejected/2026-10-05/photos/driver-portrait.webp
+R100	public/images/photos/driver.webp	assets/rejected/2026-10-05/photos/driver.webp
+R100	public/images/photos/fleet-portrait.webp	assets/rejected/2026-10-05/photos/fleet-portrait.webp
+R100	public/images/photos/fleet.webp	assets/rejected/2026-10-05/photos/fleet.webp
+R100	public/images/photos/highway-dawn-portrait.webp	assets/rejected/2026-10-05/photos/highway-dawn-portrait.webp
+R100	public/images/photos/highway-dawn.webp	assets/rejected/2026-10-05/photos/highway-dawn.webp
+R100	public/images/photos/loading-portrait.webp	assets/rejected/2026-10-05/photos/loading-portrait.webp
+R100	public/images/photos/loading.webp	assets/rejected/2026-10-05/photos/loading.webp
+R100	public/images/photos/logistics-office-portrait.webp	assets/rejected/2026-10-05/photos/logistics-office-portrait.webp
+R100	public/images/photos/logistics-office.webp	assets/rejected/2026-10-05/photos/logistics-office.webp
+R100	public/images/photos/marketplace-portrait.webp	assets/rejected/2026-10-05/photos/marketplace-portrait.webp
+R100	public/images/photos/marketplace.webp	assets/rejected/2026-10-05/photos/marketplace.webp
+R100	public/images/photos/source/client-manager-3840.jpg	assets/rejected/2026-10-05/photos/source/client-manager-3840.jpg
+R100	public/images/photos/source/client-manager-original.png	assets/rejected/2026-10-05/photos/source/client-manager-original.png
+R100	public/images/photos/source/customer-handover-3840.jpg	assets/rejected/2026-10-05/photos/source/customer-handover-3840.jpg
+R100	public/images/photos/source/customer-handover-original.png	assets/rejected/2026-10-05/photos/source/customer-handover-original.png
+R100	public/images/photos/source/director-3840.jpg	assets/rejected/2026-10-05/photos/source/director-3840.jpg
+R100	public/images/photos/source/director-original.png	assets/rejected/2026-10-05/photos/source/director-original.png
+R100	public/images/photos/source/driver-3840.jpg	assets/rejected/2026-10-05/photos/source/driver-3840.jpg
+R100	public/images/photos/source/driver-original.png	assets/rejected/2026-10-05/photos/source/driver-original.png
+R100	public/images/photos/source/fleet-3840.jpg	assets/rejected/2026-10-05/photos/source/fleet-3840.jpg
+R100	public/images/photos/source/fleet-original.png	assets/rejected/2026-10-05/photos/source/fleet-original.png
+R100	public/images/photos/source/fleet-portrait-3840.jpg	assets/rejected/2026-10-05/photos/source/fleet-portrait-3840.jpg
+R100	public/images/photos/source/fleet-portrait-original.png	assets/rejected/2026-10-05/photos/source/fleet-portrait-original.png
+R100	public/images/photos/source/highway-dawn-3840.jpg	assets/rejected/2026-10-05/photos/source/highway-dawn-3840.jpg
+R100	public/images/photos/source/highway-dawn-original.png	assets/rejected/2026-10-05/photos/source/highway-dawn-original.png
+R100	public/images/photos/source/loading-3840.jpg	assets/rejected/2026-10-05/photos/source/loading-3840.jpg
+R100	public/images/photos/source/loading-original.png	assets/rejected/2026-10-05/photos/source/loading-original.png
+R100	public/images/photos/source/logistics-office-3840.jpg	assets/rejected/2026-10-05/photos/source/logistics-office-3840.jpg
+R100	public/images/photos/source/logistics-office-original.png	assets/rejected/2026-10-05/photos/source/logistics-office-original.png
+R100	public/images/photos/source/marketplace-3840.jpg	assets/rejected/2026-10-05/photos/source/marketplace-3840.jpg
+R100	public/images/photos/source/marketplace-original.png	assets/rejected/2026-10-05/photos/source/marketplace-original.png
+R100	public/images/photos/source/team-3840.jpg	assets/rejected/2026-10-05/photos/source/team-3840.jpg
+R100	public/images/photos/source/team-original.png	assets/rejected/2026-10-05/photos/source/team-original.png
+R100	public/images/photos/source/team-portrait-3840.jpg	assets/rejected/2026-10-05/photos/source/team-portrait-3840.jpg
+R100	public/images/photos/source/team-portrait-original.png	assets/rejected/2026-10-05/photos/source/team-portrait-original.png
+R100	public/images/photos/source/warehouse-3840.jpg	assets/rejected/2026-10-05/photos/source/warehouse-3840.jpg
+R100	public/images/photos/source/warehouse-original.png	assets/rejected/2026-10-05/photos/source/warehouse-original.png
+R100	public/images/photos/source/winter-route-3840.jpg	assets/rejected/2026-10-05/photos/source/winter-route-3840.jpg
+R100	public/images/photos/source/winter-route-original.png	assets/rejected/2026-10-05/photos/source/winter-route-original.png
+R100	public/images/photos/team-portrait.webp	assets/rejected/2026-10-05/photos/team-portrait.webp
+R100	public/images/photos/team.webp	assets/rejected/2026-10-05/photos/team.webp
+R100	public/images/photos/warehouse-portrait.webp	assets/rejected/2026-10-05/photos/warehouse-portrait.webp
+R100	public/images/photos/warehouse.webp	assets/rejected/2026-10-05/photos/warehouse.webp
+R100	public/images/photos/winter-route-portrait.webp	assets/rejected/2026-10-05/photos/winter-route-portrait.webp
+R100	public/images/photos/winter-route.webp	assets/rejected/2026-10-05/photos/winter-route.webp
+R100	public/images/renders/ftl.png	assets/rejected/2026-10-05/renders/ftl.png
+R100	public/images/renders/ftl.webp	assets/rejected/2026-10-05/renders/ftl.webp
+R100	public/images/renders/groupage.png	assets/rejected/2026-10-05/renders/groupage.png
+R100	public/images/renders/groupage.webp	assets/rejected/2026-10-05/renders/groupage.webp
+R100	public/images/renders/hero-lines-raw.png	assets/rejected/2026-10-05/renders/hero-lines-raw.png
+R100	public/images/renders/hero-solid.png	assets/rejected/2026-10-05/renders/hero-solid.png
+R100	public/images/renders/hero.png	assets/rejected/2026-10-05/renders/hero.png
+R100	public/images/renders/hero.webp	assets/rejected/2026-10-05/renders/hero.webp
+R100	public/images/renders/marketplaces.png	assets/rejected/2026-10-05/renders/marketplaces.png
+R100	public/images/renders/marketplaces.webp	assets/rejected/2026-10-05/renders/marketplaces.webp
+R100	public/images/renders/tractor-blueprint-raw.png	assets/rejected/2026-10-05/renders/tractor-blueprint-raw.png
+R100	public/images/renders/tractor-blueprint.png	assets/rejected/2026-10-05/renders/tractor-blueprint.png
+R100	public/images/renders/tractor-preview.png	assets/rejected/2026-10-05/renders/tractor-preview.png
+R100	public/images/renders/tractor-preview.webp	assets/rejected/2026-10-05/renders/tractor-preview.webp
+R100	public/images/renders/tractor-technical.png	assets/rejected/2026-10-05/renders/tractor-technical.png
+R100	public/images/renders/tractor-technical.webp	assets/rejected/2026-10-05/renders/tractor-technical.webp
+R100	public/images/renders/warehouse.png	assets/rejected/2026-10-05/renders/warehouse.png
+R100	public/images/renders/warehouse.webp	assets/rejected/2026-10-05/renders/warehouse.webp
+M	src/app/page.tsx
+M	src/app/visuals/page.tsx
+M	src/components/Header.tsx
+M	src/components/home/HomeMotion.tsx
+M	src/components/home/HomeSections.tsx
+M	src/content/home.ts
+M	src/content/visuals.ts
+M	src/styles/home.css
+M	tests/home-stage3.spec.ts
+M	tests/visuals.spec.ts

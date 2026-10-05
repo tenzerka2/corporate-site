@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Calculator } from "lucide-react";
 import { ButtonLink, CheckItem, Container } from "@/components/ui";
@@ -24,12 +23,6 @@ export function HomeSections() {
             <ul className="home-industry-grid">
               {industryAssets.map((industry) => (
                 <li key={industry.slug}>
-                  <Image
-                    src={`/images/industries/${industry.slug}.svg`}
-                    width={48}
-                    height={48}
-                    alt=""
-                  />
                   <span>{industry.title}</span>
                 </li>
               ))}
@@ -53,14 +46,6 @@ export function HomeSections() {
             {home.steps.map((step, index) => (
               <li key={step.slug}>
                 <div className="process-step">
-                  <Image
-                    className="process-photo"
-                    src={`/images/photos/${step.photo}.webp`}
-                    width={1920}
-                    height={1080}
-                    alt={step.photoAlt}
-                    unoptimized
-                  />
                   <div className="process-copy">
                     <div className="process-heading">
                       <span className="step-number" aria-hidden="true">
@@ -108,14 +93,6 @@ export function HomeSections() {
               </ul>
             </Reveal>
             <Reveal className="manager-panel" delay={60}>
-              <Image
-                src="/images/photos/client-manager.webp"
-                alt={home.managerAlt}
-                width={1920}
-                height={1080}
-                unoptimized
-                sizes="(max-width: 767px) 100vw, 40vw"
-              />
               <div className="manager-copy">
                 <h3>{home.managerTitle}</h3>
                 <p>{home.managerDescription}</p>

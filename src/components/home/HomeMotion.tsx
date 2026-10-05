@@ -1,12 +1,6 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "motion/react";
 import { home } from "@/content/home";
 
 // Server-rendered content remains readable before hydration and without JavaScript.
@@ -54,23 +48,6 @@ export function Reveal({
   return (
     <div ref={ref} className={className}>
       {children}
-    </div>
-  );
-}
-
-export function HeroArtwork({ children }: { children: ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 24]);
-  return (
-    <div ref={ref} className="hero-visual">
-      <motion.div className="hero-artwork" style={{ y: reduce ? 0 : y }}>
-        <div className="hero-entry">{children}</div>
-      </motion.div>
     </div>
   );
 }
