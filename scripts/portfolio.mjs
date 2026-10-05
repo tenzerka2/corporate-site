@@ -166,9 +166,9 @@ await page.evaluate(
     .cover{position:relative;width:1920px;height:1080px;overflow:hidden;background:#f2f4f7;font-family:var(--font-inter),sans-serif;color:#0b1f33}
     .cover-copy{position:absolute;left:120px;top:120px;width:560px}
     .cover-logo svg{height:48px;width:auto}
-    .cover-kicker{margin-top:72px;font-size:20px;font-weight:600;color:#667085}
-    .cover h1{margin-top:20px;font-size:56px;line-height:62px;letter-spacing:-.04em;color:#0b2a4a}
-    .cover-text{margin-top:28px;font-size:22px;line-height:32px;color:#667085}
+    .cover-kicker{margin-top:72px;font-size:20px;font-weight:600;color:#4f5866}
+    .cover h1{margin-top:20px;font-size:56px;line-height:62px;letter-spacing:-.04em;color:#0a1f3a}
+    .cover-text{margin-top:28px;font-size:22px;line-height:32px;color:#4f5866}
     .laptop{position:absolute;left:760px;top:170px;width:1240px}
     .laptop-screen{background:#0b1f33;border-radius:20px 20px 0 0;padding:22px 22px 26px}
     .laptop-screen img{display:block;width:100%;border-radius:4px}

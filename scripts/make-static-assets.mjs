@@ -40,15 +40,15 @@ const og = await sitePage(
     <div class="og-facts"><span>6 складов</span><span>180 городов</span><span>140 машин</span></div>
     <small>Демо-проект Shvetsov Studio</small>
   </div>`,
-  `body{margin:0;background:#0b2a4a}
-  .og{box-sizing:border-box;width:1200px;height:630px;padding:64px 72px;background:#0b2a4a;color:#fff;font-family:var(--font-inter),sans-serif;position:relative;overflow:hidden}
+  `body{margin:0;background:#0a1f3a}
+  .og{box-sizing:border-box;width:1200px;height:630px;padding:64px 72px;background:#0a1f3a;color:#fff;font-family:var(--font-inter),sans-serif;position:relative;overflow:hidden}
   .og-brand{display:flex;align-items:center;gap:16px;font-size:34px;font-weight:700;letter-spacing:-.03em}
   .og-brand svg{height:44px;width:auto}
   .og h1{color:#fff;font-size:76px;line-height:80px;letter-spacing:-.045em;margin:56px 0 0}
-  .og p{margin-top:24px;max-width:38ch;font-size:28px;line-height:38px;color:#c3d4e6}
+  .og p{margin-top:24px;max-width:38ch;font-size:28px;line-height:38px;color:#aeb6c2}
   .og-facts{display:flex;gap:32px;margin-top:40px;font-size:22px;font-weight:600}
   .og-facts span{padding-top:12px;border-top:2px solid #f26b1d}
-  .og small{position:absolute;right:72px;bottom:56px;font-size:16px;color:#c3d4e6}`,
+  .og small{position:absolute;right:72px;bottom:56px;font-size:16px;color:#aeb6c2}`,
 );
 await og.screenshot({ path: "public/og.png" });
 
@@ -86,18 +86,18 @@ const docs = await sitePage(
   </section>`,
   `body{margin:0;background:#fff}
   .doc{box-sizing:border-box;width:794px;height:1123px;padding:64px;font-family:var(--font-inter),sans-serif;color:#0b1f33;page-break-after:always;position:relative}
-  header{display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:2px solid #0b2a4a}
-  .doc-brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:20px;color:#0b2a4a}
+  header{display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:2px solid #0a1f3a}
+  .doc-brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:20px;color:#0a1f3a}
   .doc-brand svg{width:32px;height:auto}
   .demo{font-size:12px;font-weight:600;color:#d92d20;border:1px solid #d92d20;padding:4px 8px;border-radius:4px}
   h1{font-size:26px;line-height:32px;margin:48px 0 8px;letter-spacing:-.02em}
-  .muted{color:#667085;margin:0}
+  .muted{color:#4f5866;margin:0}
   table{width:100%;border-collapse:collapse;margin:32px 0;font-size:15px}
-  td,th{padding:12px 0;border-bottom:1px solid #eaecf0;text-align:left;vertical-align:top}
-  td:first-child{color:#667085;width:40%}
+  td,th{padding:12px 0;border-bottom:1px solid #e2e5ea;text-align:left;vertical-align:top}
+  td:first-child{color:#4f5866;width:40%}
   .lines td:first-child{color:#0b1f33;width:auto}
   .lines td:last-child,.lines th:last-child{text-align:right}
-  th{font-size:13px;color:#667085;font-weight:500}
+  th{font-size:13px;color:#4f5866;font-weight:500}
   p{font-size:15px;line-height:24px}
   .signs{position:absolute;left:64px;right:64px;bottom:96px;display:flex;justify-content:space-between;font-size:15px}`,
 );

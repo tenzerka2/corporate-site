@@ -56,14 +56,14 @@
 .hero-facts {
   display: grid;
   margin: 0;
-  border-top: 1px solid #c3d4e640;
+  border-top: 1px solid #aeb6c233;
 }
 .hero-facts > div {
   display: flex;
   flex-direction: column-reverse;
   gap: var(--space-1);
   padding-block: var(--space-4);
-  border-bottom: 1px solid #c3d4e640;
+  border-bottom: 1px solid #aeb6c233;
 }
 .hero-facts dt {
   font-size: 14px;
@@ -112,7 +112,7 @@
 }
 .includes-grid svg {
   margin-top: 5px;
-  color: var(--color-orange);
+  color: var(--color-navy);
 }
 .includes-grid h3,
 .warehouse-grid h3 {
@@ -406,7 +406,7 @@
 .about-quote {
   margin: var(--space-16) 0 0;
   padding-left: var(--space-8);
-  border-left: 3px solid var(--color-orange);
+  border-left: 3px solid var(--color-ink);
 }
 .about-quote blockquote {
   margin: 0;

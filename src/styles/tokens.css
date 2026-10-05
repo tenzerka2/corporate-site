@@ -1,16 +1,16 @@
 @theme inline {
   --font-sans: var(--font-inter);
-  --color-ink: #0b1f33;
-  --color-navy: #0b2a4a;
-  --color-muted: #667085;
-  --color-tertiary: #98a2b3;
-  --color-border: #d0d5dd;
-  --color-divider: #eaecf0;
-  --color-surface: #f9fafb;
-  --color-subtle: #f2f4f7;
+  --color-ink: #0d1520;
+  --color-navy: #0a1f3a;
+  --color-muted: #4f5866;
+  --color-tertiary: #8a929e;
+  --color-border: #c9ced6;
+  --color-divider: #e2e5ea;
+  --color-surface: #f5f6f8;
+  --color-subtle: #eceef1;
   --color-white: #ffffff;
-  --color-brand-light: #dce6f0;
-  --color-brand-mid: #c3d4e6;
+  --color-brand-light: #e8ebef;
+  --color-brand-mid: #aeb6c2;
   --color-orange: #f26b1d;
   --color-orange-hover: #d95a10;
   --color-success: #039855;
@@ -18,10 +18,10 @@
   --radius-control: 4px;
   --radius-card: 8px;
   --radius-hero: 0px;
-  --shadow-card: 0 1px 3px rgba(16, 24, 40, 0.05);
+  --shadow-card: 0 1px 3px rgba(13, 21, 32, 0.05);
   --shadow-hover:
-    0 6px 15px -2px rgba(16, 24, 40, 0.1), 0 2px 6px 1px rgba(16, 24, 40, 0.04);
-  --shadow-popover: 0 20px 25px -5px rgba(16, 24, 40, 0.1);
+    0 6px 15px -2px rgba(13, 21, 32, 0.1), 0 2px 6px 1px rgba(13, 21, 32, 0.04);
+  --shadow-popover: 0 20px 25px -5px rgba(13, 21, 32, 0.1);
 }
 :root {
   --container: 1172px;

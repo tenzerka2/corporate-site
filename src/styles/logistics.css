@@ -191,7 +191,7 @@
 }
 .directions-list li button.is-active {
   background: var(--color-subtle);
-  border-left-color: var(--color-orange);
+  border-left-color: var(--color-ink);
 }
 .direction-name {
   grid-area: name;
@@ -256,7 +256,7 @@
   list-style: none;
   margin: var(--space-10) 0 0;
   padding: var(--space-8) 0 0;
-  border-top: 1px solid #c3d4e640;
+  border-top: 1px solid #aeb6c233;
 }
 .calculator-points li {
   display: flex;
@@ -264,7 +264,7 @@
   align-items: start;
 }
 .calculator-points svg {
-  color: var(--color-orange);
+  color: white;
   margin-top: 2px;
 }
 .calculator-card {
@@ -527,7 +527,7 @@
   margin-top: var(--space-6);
   padding: var(--space-4) var(--space-6);
   background: var(--color-subtle);
-  border-left: 3px solid var(--color-orange);
+  border-left: 3px solid var(--color-ink);
 }
 .order-route {
   font-weight: 600;
@@ -639,8 +639,9 @@
   align-items: end;
   justify-content: space-between;
   gap: var(--space-10);
-  padding: var(--space-16);
-  background: var(--color-brand-light);
+  padding: var(--space-16) 0;
+  border-top: 2px solid var(--color-ink);
+  border-bottom: 1px solid var(--color-divider);
 }
 .final-panel h2 {
   max-width: 20ch;
@@ -653,12 +654,8 @@
   flex-wrap: wrap;
   gap: var(--space-4);
 }
-.final-actions .button-secondary {
-  border-color: var(--color-navy);
-  background: transparent;
-}
 .final-actions .button-secondary:hover {
-  background: white;
+  background: var(--color-surface);
 }
 
 @media (max-width: 1199px) {
@@ -677,7 +674,7 @@
     margin: 0;
     padding: 0 0 0 var(--space-8);
     border-top: 0;
-    border-left: 1px solid #c3d4e640;
+    border-left: 1px solid #aeb6c233;
     align-content: center;
   }
   .directions-layout {
@@ -711,7 +708,7 @@
   .final-panel {
     flex-direction: column;
     align-items: start;
-    padding: var(--space-12);
+    padding: var(--space-12) 0;
   }
 }
 @media (max-width: 767px) {
@@ -749,7 +746,7 @@
     margin-top: var(--space-8);
     padding: var(--space-6) 0 0;
     border-left: 0;
-    border-top: 1px solid #c3d4e640;
+    border-top: 1px solid #aeb6c233;
   }
   .calculator-form,
   .calculator-result {
@@ -789,7 +786,7 @@
     width: 100%;
   }
   .final-panel {
-    padding: var(--space-8) var(--space-6);
+    padding: var(--space-10) 0;
   }
   .final-actions,
   .final-actions .button {
