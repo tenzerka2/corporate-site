@@ -1202,3 +1202,60 @@ h3,
     gap: var(--space-6);
   }
 }
+/* Stage 2: service objects, geographic data and visual library. */
+.service-index-grid > a { display: block; }
+.service-index-grid > a > img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; background: var(--color-surface); margin-bottom: var(--space-6); }
+.service-index-label { display: flex; justify-content: space-between; align-items: start; gap: var(--space-4); }
+.service-index-label svg { flex-shrink: 0; margin-top: var(--space-1); }
+.menu-fleet-photo { width: 100%; height: auto; display: block; margin-block: var(--space-6); }
+#geography { scroll-margin-top: calc(var(--header-height) + var(--space-6)); }
+.geography-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: var(--space-12); align-items: center; }
+.geography-map { min-width: 0; }
+.geography-map > svg { width: 100%; height: auto; overflow: visible; }
+.map-land { fill: var(--color-subtle); stroke: var(--color-border); stroke-width: 1; }
+.map-route { fill: none; stroke: var(--color-brand-mid); stroke-width: 1.5; }
+.map-route-active { stroke: var(--color-navy); stroke-width: 2.5; }
+.map-hit { fill: transparent; stroke: transparent; stroke-width: 2; }
+.map-dot { fill: var(--color-navy); stroke: white; stroke-width: 1.5; }
+.map-city { cursor: pointer; outline: none; }
+.map-city:focus-visible .map-hit { stroke: var(--color-navy); }
+.map-city.is-active .map-dot { fill: var(--color-orange); }
+.map-label { font-family: var(--font-inter), sans-serif; font-size: 18px; fill: var(--color-navy); font-weight: 600; paint-order: stroke; stroke: white; stroke-width: 5; }
+.map-legend { display: flex; flex-wrap: wrap; gap: var(--space-6); font-size: 14px; }
+.map-legend span { display: inline-flex; align-items: center; gap: var(--space-2); }
+.legend-square, .legend-circle { display: inline-block; width: 8px; height: 8px; background: var(--color-navy); }
+.legend-circle { border-radius: 50%; }
+.map-source { display: inline-block; font-size: 12px; color: var(--color-muted); margin-top: var(--space-4); text-decoration: underline; }
+.geography-details { min-width: 0; }
+.route-detail { margin-block: var(--space-8); }
+.route-detail h3 { margin-bottom: var(--space-4); }
+.route-time { font-size: 30px; line-height: 36px; font-weight: 600; color: var(--color-navy); }
+.route-detail p:last-child { margin-top: var(--space-4); }
+.visuals-page { padding-top: var(--space-18); }
+.visuals-page > .lead { margin-top: var(--space-6); }
+.visuals-page h1 { max-width: 22ch; }
+.asset-grid { display: grid; gap: var(--space-10); grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: var(--space-10); }
+.asset-grid figure { margin: 0; min-width: 0; }
+.asset-grid img { width: 100%; height: auto; display: block; }
+.asset-grid figcaption { margin-top: var(--space-4); font-size: 18px; font-weight: 500; }
+.asset-renders img { background: var(--color-surface); }
+.asset-illustrations { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.industry-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: var(--space-10); margin-top: var(--space-10); }
+.industry-grid > div { display: flex; align-items: center; gap: var(--space-4); }
+.industry-grid img { flex: none; }
+@media (max-width: 1023px) {
+  .geography-layout { grid-template-columns: minmax(0,1fr); gap: var(--space-8); }
+  .geography-details { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: start; }
+  .route-detail { margin: 0; }
+  .geography-details > .caption { grid-column: 1 / -1; }
+  .industry-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 767px) {
+  .asset-grid, .asset-illustrations { grid-template-columns: minmax(0,1fr); }
+  .asset-grid picture img { aspect-ratio: 4 / 5; object-fit: cover; }
+  .geography-details { grid-template-columns: minmax(0,1fr); }
+  .map-label { font-size: 24px; }
+  .industry-grid { gap: var(--space-6); }
+  .industry-grid > div { align-items: start; flex-direction: column; gap: var(--space-2); }
+  .visuals-page { padding-top: var(--space-10); }
+}

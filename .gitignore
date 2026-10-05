@@ -10,3 +10,9 @@ artifacts/*.patch
 artifacts/*.blend
 artifacts/*.blend1
 artifacts/*.log
+artifacts/stage-2/*.log
+artifacts/stage-2/*.ttf
+artifacts/stage-2/*.jpg
+artifacts/stage-2/*.png
+artifacts/stage-2/*.patch
+scripts/**/__pycache__/

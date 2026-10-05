@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { RussiaMap } from "@/components/RussiaMap";
+import { visualCopy, renderAssets } from "@/content/visuals";
 import { ArrowUpRight, Calculator, PackageSearch } from "lucide-react";
 import { ButtonLink, Container } from "@/components/ui";
 import { copy, services } from "@/content/site";
@@ -27,10 +29,11 @@ export default function Home() {
             </div>
             <div className="hero-visual">
               <Image
-                src="/images/renders/tractor-technical.webp"
+                src="/images/renders/hero.webp"
                 width={1920}
                 height={1200}
                 alt={copy.home.imageAlt}
+                unoptimized
                 priority
                 sizes="(max-width: 767px) 100vw, 65vw"
               />
@@ -38,8 +41,8 @@ export default function Home() {
           </div>
           <div className="hero-bottom">
             <span>{copy.home.note}</span>
-            <Link href="/ui">
-              {copy.home.uiLink}
+            <Link href="/visuals">
+              {visualCopy.overview}
               <ArrowUpRight size={16} />
             </Link>
           </div>
@@ -48,13 +51,19 @@ export default function Home() {
       <section className="service-index" aria-label="Услуги">
         <Container wide>
           <div className="service-index-grid">
-            {services.map((service) => (
+            {services.map((service, index) => (
               <Link href={service.href} key={service.href}>
-                <span>{service.title}</span>
-                <ArrowUpRight size={22} />
+                <Image unoptimized src={`/images/renders/${renderAssets[index].slug}.webp`} alt={renderAssets[index].alt} width={1600} height={1200} sizes="(max-width: 767px) 100vw, 25vw" />
+                <span className="service-index-label">{service.title}<ArrowUpRight size={22} /></span>
               </Link>
             ))}
           </div>
+        </Container>
+      </section>
+      <section className="section" id="geography">
+        <Container wide>
+          <div className="section-heading"><div><h2>{visualCopy.geography}</h2><p className="muted measure">{visualCopy.geographyDescription}</p></div></div>
+          <RussiaMap />
         </Container>
       </section>
     </>

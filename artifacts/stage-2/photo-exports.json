@@ -1,0 +1,142 @@
+[
+  {
+    "slug": "client-manager",
+    "native": [
+      1672,
+      941
+    ],
+    "masterLongSide": 3840,
+    "upscale": "Lanczos",
+    "branding": "perspective composite"
+  },
+  {
+    "slug": "customer-handover",
+    "native": [
+      1672,
+      941
+    ],
+    "masterLongSide": 3840,
+    "upscale": "Lanczos",
+    "branding": "perspective composite"
+  },
+  {
+    "slug": "director",
+    "native": [
+      1672,
+      941
+    ],
+    "masterLongSide": 3840,
+    "upscale": "Lanczos",
+    "branding": "perspective composite"
+  },
+  {
+    "slug": "driver",
+    "native": [
+      1672,
+      941
+    ],
+    "masterLongSide": 3840,
+    "upscale": "Lanczos",
+    "branding": "perspective composite"
+  },
+  {
+    "slug": "fleet",
+    "native": [
+      1672,
+      941
+    ],
+    "masterLongSide": 3840,
+    "upscale": "Lanczos",
+    "branding": "perspective composite"
+  },
+  {
+    "slug": "fleet-portrait",
+    "native": [
+      1122,
+      1402
+    ],
+    "masterLongSide": 3840,
+    "upscale": "Lanczos",
+    "branding": "perspective composite"
+  },
+  {
+    "slug": "highway-dawn",
+    "native": [
+      1672,
+      941
+    ],
+    "masterLongSide": 3840,
+    "upscale": "Lanczos",
+    "branding": "perspective composite"
+  },
+  {
+    "slug": "loading",
+    "native": [
+      1672,
+      941
+    ],
+    "masterLongSide": 3840,
+    "upscale": "Lanczos",
+    "branding": "perspective composite"
+  },
+  {
+    "slug": "logistics-office",
+    "native": [
+      1672,
+      941
+    ],
+    "masterLongSide": 3840,
+    "upscale": "Lanczos",
+    "branding": "perspective composite"
+  },
+  {
+    "slug": "marketplace",
+    "native": [
+      1672,
+      941
+    ],
+    "masterLongSide": 3840,
+    "upscale": "Lanczos",
+    "branding": "perspective composite"
+  },
+  {
+    "slug": "team",
+    "native": [
+      1672,
+      941
+    ],
+    "masterLongSide": 3840,
+    "upscale": "Lanczos",
+    "branding": "perspective composite"
+  },
+  {
+    "slug": "team-portrait",
+    "native": [
+      1122,
+      1402
+    ],
+    "masterLongSide": 3840,
+    "upscale": "Lanczos",
+    "branding": "perspective composite"
+  },
+  {
+    "slug": "warehouse",
+    "native": [
+      1672,
+      941
+    ],
+    "masterLongSide": 3840,
+    "upscale": "Lanczos",
+    "branding": "perspective composite"
+  },
+  {
+    "slug": "winter-route",
+    "native": [
+      1672,
+      941
+    ],
+    "masterLongSide": 3840,
+    "upscale": "Lanczos",
+    "branding": "perspective composite"
+  }
+]

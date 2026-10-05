@@ -1,0 +1,176 @@
+[
+  {
+    "file": "public/images/renders/ftl.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 41448
+  },
+  {
+    "file": "public/images/renders/groupage.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 36306
+  },
+  {
+    "file": "public/images/renders/hero.webp",
+    "width": 1600,
+    "height": 1000,
+    "bytes": 107506
+  },
+  {
+    "file": "public/images/renders/marketplaces.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 29794
+  },
+  {
+    "file": "public/images/renders/warehouse.webp",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 70080
+  },
+  {
+    "file": "public/images/photos/client-manager-portrait.webp",
+    "width": 1536,
+    "height": 1920,
+    "bytes": 174298
+  },
+  {
+    "file": "public/images/photos/client-manager.webp",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 163182
+  },
+  {
+    "file": "public/images/photos/customer-handover-portrait.webp",
+    "width": 1536,
+    "height": 1920,
+    "bytes": 168576
+  },
+  {
+    "file": "public/images/photos/customer-handover.webp",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 227802
+  },
+  {
+    "file": "public/images/photos/director-portrait.webp",
+    "width": 1536,
+    "height": 1920,
+    "bytes": 200584
+  },
+  {
+    "file": "public/images/photos/director.webp",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 162648
+  },
+  {
+    "file": "public/images/photos/driver-portrait.webp",
+    "width": 1536,
+    "height": 1920,
+    "bytes": 189710
+  },
+  {
+    "file": "public/images/photos/driver.webp",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 182864
+  },
+  {
+    "file": "public/images/photos/fleet-portrait.webp",
+    "width": 1536,
+    "height": 1920,
+    "bytes": 347526
+  },
+  {
+    "file": "public/images/photos/fleet.webp",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 296762
+  },
+  {
+    "file": "public/images/photos/highway-dawn-portrait.webp",
+    "width": 1536,
+    "height": 1920,
+    "bytes": 139510
+  },
+  {
+    "file": "public/images/photos/highway-dawn.webp",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 167066
+  },
+  {
+    "file": "public/images/photos/loading-portrait.webp",
+    "width": 1536,
+    "height": 1920,
+    "bytes": 264828
+  },
+  {
+    "file": "public/images/photos/loading.webp",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 267306
+  },
+  {
+    "file": "public/images/photos/logistics-office-portrait.webp",
+    "width": 1536,
+    "height": 1920,
+    "bytes": 174810
+  },
+  {
+    "file": "public/images/photos/logistics-office.webp",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 189778
+  },
+  {
+    "file": "public/images/photos/marketplace-portrait.webp",
+    "width": 1536,
+    "height": 1920,
+    "bytes": 189474
+  },
+  {
+    "file": "public/images/photos/marketplace.webp",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 207754
+  },
+  {
+    "file": "public/images/photos/team-portrait.webp",
+    "width": 1536,
+    "height": 1920,
+    "bytes": 223282
+  },
+  {
+    "file": "public/images/photos/team.webp",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 247492
+  },
+  {
+    "file": "public/images/photos/warehouse-portrait.webp",
+    "width": 1536,
+    "height": 1920,
+    "bytes": 195788
+  },
+  {
+    "file": "public/images/photos/warehouse.webp",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 189572
+  },
+  {
+    "file": "public/images/photos/winter-route-portrait.webp",
+    "width": 1536,
+    "height": 1920,
+    "bytes": 248582
+  },
+  {
+    "file": "public/images/photos/winter-route.webp",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 283854
+  }
+]
