@@ -1,0 +1,384 @@
+/* Stage 3. Same spacing, palette and type scale as the shared design system. */
+.home-hero .hero-layout {
+  min-height: 680px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  padding-block: var(--space-16) var(--space-10);
+}
+.home-hero .hero-copy {
+  max-width: 66ch;
+}
+.home-hero .hero-subtitle {
+  max-width: 34ch;
+  margin-top: var(--space-6);
+  color: var(--color-brand-mid);
+}
+.hero-promises {
+  display: grid;
+  gap: var(--space-3);
+  list-style: none;
+  margin: var(--space-8) 0 0;
+  padding: 0;
+}
+.hero-promises .check-item {
+  align-items: start;
+}
+.hero-promises .check-item svg {
+  margin-top: var(--space-1);
+}
+.home-hero .hero-actions {
+  margin-top: var(--space-8);
+}
+.home-hero .hero-visual {
+  width: 66%;
+  right: -8%;
+}
+.hero-entry {
+  animation: hero-entry 700ms ease-out both;
+}
+@keyframes hero-entry {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.hero-assurances {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  padding-bottom: var(--space-8);
+  font-size: 14px;
+  line-height: 20px;
+}
+.hero-assurances > span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.hero-assurances svg {
+  color: var(--color-brand-mid);
+}
+.home-hero .hero-bottom {
+  padding-block: var(--space-4);
+}
+.company-stats {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-8);
+  margin: 0;
+  padding-block: var(--space-12);
+}
+.company-stats > div {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+.company-stats dt {
+  font-size: 16px;
+  color: var(--color-muted);
+}
+.company-stats dd {
+  margin: 0;
+  color: var(--color-navy);
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+}
+.home-industries {
+  margin-top: var(--space-16);
+}
+.home-industry-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-10) var(--space-12);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.home-industry-grid li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: 18px;
+  font-weight: 500;
+}
+.home-industry-grid img {
+  flex: none;
+  opacity: 0.72;
+  transition: opacity 200ms;
+}
+.home-industry-grid li:hover img {
+  opacity: 1;
+}
+.home-process {
+  background: var(--color-surface);
+  padding-block: var(--section-space);
+}
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-12);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.process-grid li {
+  min-width: 0;
+}
+.process-illustration {
+  position: relative;
+  margin-bottom: var(--space-6);
+}
+.process-illustration img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.step-number {
+  position: absolute;
+  left: 0;
+  top: var(--space-4);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  color: var(--color-navy);
+  font-variant-numeric: tabular-nums;
+}
+.process-grid h3 {
+  max-width: 25ch;
+  min-height: 60px;
+}
+.process-grid p {
+  margin-top: var(--space-4);
+  max-width: 42ch;
+  color: var(--color-muted);
+}
+.process-grid .text-link {
+  margin-top: var(--space-6);
+}
+.process-action {
+  margin-top: var(--space-12);
+}
+.benefits-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-18);
+}
+.benefits-copy h2 {
+  max-width: 20ch;
+}
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-10) var(--space-8);
+  list-style: none;
+  padding: 0;
+  margin: var(--space-12) 0 0;
+}
+.benefits-grid .check-item {
+  align-items: start;
+  font-size: 18px;
+  line-height: 28px;
+}
+.benefits-grid .check-item svg {
+  margin-top: var(--space-1);
+}
+.manager-panel {
+  background: var(--color-subtle);
+}
+.manager-panel > img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.manager-copy {
+  padding: var(--space-8);
+}
+.manager-copy p {
+  margin-block: var(--space-4) var(--space-6);
+  max-width: 42ch;
+}
+.home-service-index.service-index {
+  padding-block: 0;
+  margin-block: var(--section-space);
+}
+@media (max-width: 1199px) {
+  .home-hero .hero-layout {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    padding-top: var(--space-12);
+  }
+  .home-hero .hero-visual {
+    width: 60%;
+    right: -8%;
+  }
+  .home-hero .hero-subtitle {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .hero-assurances {
+    gap: var(--space-6);
+  }
+  .process-grid {
+    gap: var(--space-8);
+  }
+  .benefits-layout {
+    gap: var(--space-10);
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  }
+  .benefits-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .home-hero .hero-layout {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  }
+  .home-hero .hero-visual {
+    width: 56%;
+    right: -12%;
+    top: 42%;
+  }
+  .home-hero .hero-copy h1 {
+    font-size: 40px;
+    line-height: 48px;
+  }
+  .home-industry-grid {
+    gap: var(--space-8);
+  }
+  .home-industry-grid li {
+    flex-direction: column;
+    align-items: start;
+    font-size: 16px;
+  }
+  .process-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-12);
+  }
+  .process-grid li > div {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    column-gap: var(--space-8);
+  }
+  .process-illustration {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    margin: 0;
+  }
+  .process-grid h3 {
+    min-height: 0;
+    align-self: end;
+  }
+  .process-grid .text-link {
+    align-self: start;
+  }
+  .process-grid p {
+    margin-top: var(--space-3);
+  }
+}
+@media (max-width: 767px) {
+  .home-hero .hero-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding-block: var(--space-4) var(--space-8);
+  }
+  .home-hero .hero-visual {
+    order: -1;
+    width: 100%;
+    right: auto;
+    margin: 0 0 var(--space-4);
+  }
+  .home-hero .hero-visual img {
+    max-height: 200px;
+    object-fit: contain;
+  }
+  .home-hero .hero-copy h1 {
+    font-size: 38px;
+    line-height: 44px;
+  }
+  .home-hero .hero-subtitle {
+    font-size: 22px;
+    line-height: 30px;
+    margin-top: var(--space-4);
+  }
+  .hero-promises {
+    margin-top: var(--space-6);
+    gap: var(--space-3);
+  }
+  .home-hero .hero-actions {
+    margin-top: var(--space-6);
+  }
+  .hero-assurances {
+    display: grid;
+    gap: var(--space-4);
+    padding-bottom: var(--space-6);
+  }
+  .company-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8);
+    padding-block: var(--space-10);
+  }
+  .company-stats > div:last-child {
+    grid-column: 1 / -1;
+  }
+  .company-stats dd {
+    font-size: 40px;
+    line-height: 48px;
+  }
+  .home-industries {
+    margin-top: var(--space-8);
+  }
+  .home-industry-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8) var(--space-4);
+  }
+  .home-industry-grid li {
+    flex-direction: column;
+    align-items: start;
+    gap: var(--space-3);
+    font-size: 16px;
+  }
+  .process-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-12);
+  }
+  .process-illustration img {
+    max-height: 240px;
+    object-fit: contain;
+  }
+  .process-illustration {
+    margin-bottom: var(--space-4);
+  }
+  .process-grid h3 {
+    min-height: 0;
+  }
+  .process-action .button {
+    width: 100%;
+  }
+  .benefits-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-10);
+  }
+  .benefits-copy h2 {
+    max-width: none;
+  }
+  .benefits-grid {
+    margin-top: var(--space-8);
+  }
+  .manager-copy {
+    padding: var(--space-6);
+  }
+  .manager-copy .button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,12 @@
+.gitignore
+README.md
+artifacts/browser-results.json
+artifacts/stage-3/changed-files.txt
+artifacts/stage-3/verification.md
+src/app/page.tsx
+src/components/home/HomeMotion.tsx
+src/components/home/HomeSections.tsx
+src/content/home.ts
+src/styles/globals.css
+src/styles/home.css
+tests/home-stage3.spec.ts

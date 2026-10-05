@@ -16,3 +16,6 @@ artifacts/stage-2/*.jpg
 artifacts/stage-2/*.png
 artifacts/stage-2/*.patch
 scripts/**/__pycache__/
+
+artifacts/stage-3/*.png
+artifacts/stage-3/*.patch
