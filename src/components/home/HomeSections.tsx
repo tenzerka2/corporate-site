@@ -96,7 +96,7 @@ export function HomeSections() {
               <div className="manager-copy">
                 <h3>{home.managerTitle}</h3>
                 <p>{home.managerDescription}</p>
-                <ButtonLink href="/help" variant="secondary">
+                <ButtonLink href="/contacts" variant="secondary">
                   {home.managerAction}
                 </ButtonLink>
               </div>

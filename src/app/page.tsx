@@ -11,6 +11,10 @@ import {
 import { ButtonLink, CheckItem, Container } from "@/components/ui";
 import { copy } from "@/content/site";
 import { home } from "@/content/home";
+import { labels } from "@/content/labels";
+import { faqBlock } from "@/content/logistics";
+import { JsonLd } from "@/components/page/PageParts";
+import { faqJsonLd, pageMetadata } from "@/lib/seo";
 import { HomeSections } from "@/components/home/HomeSections";
 import { CompanyStats } from "@/components/home/HomeMotion";
 import { Planner } from "@/components/logistics/Planner";
@@ -22,9 +26,19 @@ import {
 } from "@/components/logistics/HomeBlocks";
 const assuranceIcons = [ShieldCheck, FileCheck2, LocateFixed];
 
+export const metadata = {
+  ...pageMetadata({
+    title: labels.onegaLogistikGruzoperevozkiPoRossii,
+    description: home.metaDescription,
+    path: "/",
+  }),
+  title: { absolute: labels.onegaLogistikGruzoperevozkiPoRossii },
+};
+
 export default function Home() {
   return (
     <>
+      <JsonLd data={faqJsonLd(faqBlock.items)} />
       <section className="industrial-hero home-hero">
         <Container wide>
           <div className="hero-layout">

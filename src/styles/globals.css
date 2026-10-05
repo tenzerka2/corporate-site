@@ -2,6 +2,7 @@
 @import "./tokens.css";
 @import "./home.css";
 @import "./logistics.css";
+@import "./pages.css";
 * {
   box-sizing: border-box;
 }

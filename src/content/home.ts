@@ -1,5 +1,7 @@
 // All business figures describe the fictional demonstration company.
 export const home = {
+  metaDescription:
+    "Сборные грузы от 1 кг и отдельные машины до 20 т по России. Расчёт онлайн за 2 минуты, склады в 6 городах, цена в договоре.",
   subtitle: "Расчёт онлайн за 2 минуты, подача машины в день заявки",
   calculate: "Рассчитать стоимость",
   promises: [

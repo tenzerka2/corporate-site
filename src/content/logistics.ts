@@ -74,6 +74,7 @@ export const directionsBlock = {
   listTitle: "Популярные направления",
   listHint: "Нажмите на направление, чтобы увидеть маршрут и подставить города в калькулятор.",
   priceFrom: "от",
+  allLink: "Все направления и сроки",
   toCalculator: (from: string, to: string) =>
     `Открыть расчёт: ${from} → ${to}`,
   priceNote:

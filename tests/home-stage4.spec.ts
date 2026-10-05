@@ -123,12 +123,14 @@ test("заявка: предзаполнение, проверка полей, �
   await expect(open).toBeFocused();
 
   await open.click();
-  for (let i = 0; i < 20; i++) await page.keyboard.press("Tab");
-  expect(
-    await page.evaluate(() =>
-      Boolean(document.activeElement?.closest("[role=dialog]")),
-    ),
-  ).toBe(true);
+  const focusInDialog = () =>
+    page.evaluate(() => Boolean(document.activeElement?.closest("[role=dialog]")));
+  await expect.poll(focusInDialog).toBe(true);
+  // Floating UI focus guards bounce focus back; check after each bounce settles.
+  for (let i = 0; i < 20; i++) {
+    await page.keyboard.press("Tab");
+    await expect.poll(focusInDialog).toBe(true);
+  }
 
   await dialog.getByRole("button", { name: "Отправить заявку" }).click();
   await expect(dialog.getByLabel("Имя")).toBeFocused();

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useId, useState } from "react";
-import { ArrowDown } from "lucide-react";
+import Link from "next/link";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui";
 import { RussiaMap } from "@/components/RussiaMap";
 import { directionsBlock as copy, mapCopy } from "@/content/logistics";
@@ -84,6 +85,10 @@ function Directions({
               })}
             </ul>
             <p className="caption muted">{copy.priceNote}</p>
+            <Link className="text-link directions-all" href="/directions">
+              {copy.allLink}
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </Link>
             <a className="text-link directions-to-calculator" href="#calculator">
               {copy.toCalculator(cityById(route.from).name, cityById(route.to).name)}
               <ArrowDown size={18} aria-hidden="true" />

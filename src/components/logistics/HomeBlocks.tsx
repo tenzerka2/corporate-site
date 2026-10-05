@@ -100,7 +100,7 @@ export function RegularBlock() {
           })}
         </ul>
         <div className="regular-action">
-          <ButtonLink href="/help" variant="secondary">
+          <ButtonLink href="/contacts" variant="secondary">
             {regularBlock.action}
           </ButtonLink>
         </div>
@@ -109,16 +109,26 @@ export function RegularBlock() {
   );
 }
 
-export function FaqBlock() {
+export function FaqBlock({
+  id = "faq",
+  title = faqBlock.title,
+  description = faqBlock.description,
+  items = faqBlock.items,
+}: {
+  title?: string;
+  description?: string;
+  items?: readonly { title: string; content: string }[];
+  id?: string;
+}) {
   return (
-    <section className="section faq-block" id="faq" aria-labelledby="faq-title">
+    <section className="section faq-block" id={id} aria-labelledby={`${id}-title`}>
       <Container wide>
         <div className="faq-layout">
           <div>
-            <h2 id="faq-title">{faqBlock.title}</h2>
-            <p className="lead muted">{faqBlock.description}</p>
+            <h2 id={`${id}-title`}>{title}</h2>
+            <p className="lead muted">{description}</p>
           </div>
-          <Accordion items={faqBlock.items} />
+          <Accordion items={[...items]} />
         </div>
       </Container>
     </section>

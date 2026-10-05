@@ -48,9 +48,15 @@ function CityCard({ city }: { city: City }) {
 export function RussiaMap({
   route,
   onCitySelect,
+  network = true,
+  current,
 }: {
   route: { from: CityId; to: CityId } | null;
   onCitySelect?: (id: CityId) => void;
+  /** Draw routes from Moscow to every warehouse. */
+  network?: boolean;
+  /** City where a tracked shipment is now. */
+  current?: CityId;
 }) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [drawState, setDrawState] = useState<"static" | "pending" | "drawn">(
@@ -117,7 +123,7 @@ export function RussiaMap({
         data-draw={drawState}
       >
         <path d={russiaOutline} className="map-land" />
-        {networkRoutes.map((city, index) => (
+        {(network ? networkRoutes : []).map((city, index) => (
           <path
             key={city.id}
             d={routePath(origin, city)}
@@ -168,6 +174,12 @@ export function RussiaMap({
             )}
           </g>
         ))}
+        {current && (
+          <g className="map-current" aria-hidden="true">
+            <circle cx={cityById(current).x} cy={cityById(current).y} r={16} className="map-current-ring" />
+            <circle cx={cityById(current).x} cy={cityById(current).y} r={7} className="map-current-dot" />
+          </g>
+        )}
         {[from ?? origin, to]
           .filter((city): city is City => city !== null)
           .filter((city, index, list) => list.indexOf(city) === index)

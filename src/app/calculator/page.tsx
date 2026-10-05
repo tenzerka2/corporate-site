@@ -1,10 +1,12 @@
 import { StandaloneCalculator } from "@/components/logistics/StandaloneCalculator";
-import { calculatorCopy } from "@/content/logistics";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Расчёт стоимости",
-  description: calculatorCopy.description,
-};
+  description:
+    "Калькулятор грузоперевозок по России: цена и срок для сборного груза и отдельной машины сразу, без звонка менеджеру.",
+  path: "/calculator",
+});
 
 export default function CalculatorPage() {
   return <StandaloneCalculator />;

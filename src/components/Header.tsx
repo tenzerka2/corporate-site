@@ -240,7 +240,7 @@ export function Header() {
                       <span>
                         {labels.pomozhemVybratPodhodyaschiyFormatDostavki}
                       </span>
-                      <Link className="text-link" href="/help" onClick={close}>
+                      <Link className="text-link" href="/faq" onClick={close}>
                         {labels.voprosyIPomosch}
                         <ArrowUpRight size={16} />
                       </Link>

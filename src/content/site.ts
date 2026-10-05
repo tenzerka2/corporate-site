@@ -44,7 +44,7 @@ export const companyLinks = [
   { title: "О нас", href: "/about" },
   { title: "Вакансии", href: "/careers" },
   { title: "Новости", href: "/news" },
-  { title: "Реквизиты", href: "/details" },
+  { title: "Контакты", href: "/contacts" },
 ];
 export const clientLinks = [
   { title: "Тарифы", href: "/tariffs" },
@@ -66,7 +66,7 @@ export const utilityLinks = [
   { title: "Рассчитать доставку", href: "/calculator" },
   { title: "Отследить груз", href: "/tracking" },
   { title: "Личный кабинет", href: "/account" },
-  { title: "Вопросы и помощь", href: "/help" },
+  { title: "Вопросы и помощь", href: "/faq" },
 ];
 export const routes = [
   ...services,

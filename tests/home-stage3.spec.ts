@@ -67,14 +67,10 @@ test("главная: последовательность, адаптив, чи
   await page.getByRole("link", { name: "Рассчитать стоимость", exact: true }).first().click();
   await expect(page).toHaveURL(/#calculator$/);
   await expect(page.locator("#calculator")).toBeInViewport();
-  for (const [name, href] of [["Связаться с менеджером", "/help"]]) {
-    await page.getByRole("link", { name, exact: true }).first().click();
-    await expect(page).toHaveURL(new RegExp(`${href}$`));
-    await expect(
-      page.getByText("Раздел в разработке", { exact: true }),
-    ).toBeVisible();
-    await page.goBack();
-  }
+  await page.getByRole("link", { name: "Связаться с менеджером", exact: true }).click();
+  await expect(page).toHaveURL(/\/contacts$/);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Контакты");
+  await page.goBack();
   await page.goto("/#how-it-works");
   expect(
     await page
