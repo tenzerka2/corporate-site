@@ -1,6 +1,6 @@
-import { ButtonLink } from "@/components/ui";
+import { ButtonLink, Container } from "@/components/ui";
 import { PageHero, PageSection } from "@/components/page/PageParts";
-import { CompanyStats } from "@/components/home/HomeMotion";
+import { CompanyStats } from "@/components/home/CompanyStats";
 import { FinalBlock } from "@/components/logistics/HomeBlocks";
 import { aboutPage as copy, warehouses } from "@/content/company";
 import { cityById } from "@/lib/routes";
@@ -11,8 +11,15 @@ export const metadata = pageMetadata({ title: copy.title, description: copy.desc
 export default function AboutPage() {
   return (
     <>
-      <PageHero crumbs={[{ name: copy.title, path: "/about" }]} title={copy.title} lead={copy.lead} />
-      <CompanyStats />
+      <PageHero
+        crumbs={[{ name: copy.title, path: "/about" }]}
+        title={copy.title}
+        lead={copy.lead}
+        photo="terminal"
+      />
+      <Container wide>
+        <CompanyStats />
+      </Container>
       <PageSection id="story" title={copy.storyTitle}>
         <div className="prose-columns">
           {copy.story.map((paragraph) => (

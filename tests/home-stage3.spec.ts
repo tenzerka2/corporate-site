@@ -15,8 +15,10 @@ test("главная: последовательность, адаптив, чи
     await expect(hero.locator(".quick-quote")).toHaveCount(1);
     await expect(page.locator(".company-stats > div")).toHaveCount(5);
     await expect(page.locator(".service-row")).toHaveCount(4);
-    await expect(page.locator("#how-it-works .spec-grid > li")).toHaveCount(3);
-    await expect(page.locator(".home-conditions .spec-grid > div")).toHaveCount(6);
+    await expect(page.locator(".section-label")).toHaveCount(7);
+    await expect(page.locator(".photo-band")).toHaveCount(3);
+    await expect(page.locator(".warehouse-table tbody tr")).toHaveCount(6);
+    await expect(page.locator("#why-onega .spec-grid > div")).toHaveCount(6);
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -27,7 +29,7 @@ test("главная: последовательность, адаптив, чи
         ".site-header .logo",
         ".hero-copy h1",
         "#services-title",
-        "#process-title",
+        "#about-title",
         "#conditions-title",
       ];
       return selectors.map(
@@ -68,43 +70,26 @@ test("главная: последовательность, адаптив, чи
   await page.getByRole("link", { name: "Рассчитать стоимость", exact: true }).first().click();
   await expect(page).toHaveURL(/#calculator$/);
   await expect(page.locator("#calculator")).toBeInViewport();
-  await page.getByRole("link", { name: "Связаться с менеджером", exact: true }).click();
+  await page.getByRole("link", { name: "Написать менеджеру", exact: true }).click();
   await expect(page).toHaveURL(/\/contacts$/);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Контакты");
   await page.goBack();
-  await page.goto("/#how-it-works");
+  await page.goto("/#why-onega");
   expect(
     await page
-      .locator("#process-title")
+      .locator("#conditions-title")
       .evaluate((el) => el.getBoundingClientRect().top),
   ).toBeGreaterThanOrEqual(72);
 });
 
-test("движение: однократные счётчики и режим уменьшенной анимации", async ({
-  page,
+test("без лишнего движения: цифры и секции видны сразу, страница работает без JavaScript", async ({
   browser,
 }) => {
-  await page.goto("/");
-  await page.locator(".company-stats").scrollIntoViewIfNeeded();
-  await expect(page.locator("[data-counter]").first()).toHaveText("1 200+", {
-    timeout: 3000,
-  });
-  await page.locator(".home-conditions").scrollIntoViewIfNeeded();
-  await page.locator(".company-stats").scrollIntoViewIfNeeded();
-  await expect(page.locator("[data-counter]").first()).toHaveText("1 200+");
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.reload();
-  await expect(page.locator(".hero-visual")).toHaveCount(0);
-  await page.locator(".company-stats").scrollIntoViewIfNeeded();
-  await expect(page.locator("[data-counter]").first()).toHaveText("1 200+");
   const context = await browser.newContext({ javaScriptEnabled: false });
-  const staticPage = await context.newPage();
-  await staticPage.goto("/");
-  await expect(
-    staticPage.getByRole("heading", { name: "Как это работает", exact: true }),
-  ).toBeVisible();
-  await expect(staticPage.locator("[data-counter]").first()).toHaveText(
-    "1 200+",
-  );
+  const page = await context.newPage();
+  await page.goto("/");
+  await expect(page.locator(".company-stats dd").first()).toHaveText("1 200+");
+  await expect(page.getByRole("heading", { name: "Что мы делаем", exact: true })).toBeVisible();
+  await expect(page.locator("img[alt*='Тягач Онеги']").first()).toBeVisible();
   await context.close();
 });

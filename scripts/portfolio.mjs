@@ -100,7 +100,7 @@ const smoothScroll = (to, ms) =>
       }),
     { to, ms },
   );
-await smoothScroll("#how-it-works", 3500);
+await smoothScroll("#about-title", 3500);
 await page.waitForTimeout(800);
 await smoothScroll(".services-block", 3000);
 await page.waitForTimeout(800);
@@ -131,7 +131,7 @@ await calc.getByRole("button", { name: "Оформить заявку" }).click(
 await page.waitForTimeout(2500);
 await page.keyboard.press("Escape");
 await page.waitForTimeout(800);
-await smoothScroll(".faq-block", 2000);
+await smoothScroll("#warehouses-title", 2000);
 await page.waitForTimeout(1500);
 await context.close();
 const [raw] = (await readdir(`${out}/.video`)).filter((f) => f.endsWith(".webm"));
@@ -166,9 +166,9 @@ await page.evaluate(
     .cover{position:relative;width:1920px;height:1080px;overflow:hidden;background:#f2f4f7;font-family:var(--font-inter),sans-serif;color:#0b1f33}
     .cover-copy{position:absolute;left:120px;top:120px;width:560px}
     .cover-logo svg{height:48px;width:auto}
-    .cover-kicker{margin-top:72px;font-size:20px;font-weight:600;color:#4f5866}
-    .cover h1{margin-top:20px;font-size:56px;line-height:62px;letter-spacing:-.04em;color:#0a1f3a}
-    .cover-text{margin-top:28px;font-size:22px;line-height:32px;color:#4f5866}
+    .cover-kicker{margin-top:72px;font-size:20px;font-weight:600;color:#55554f}
+    .cover h1{margin-top:20px;font-size:56px;line-height:62px;letter-spacing:-.04em;color:#0c2340}
+    .cover-text{margin-top:28px;font-size:22px;line-height:32px;color:#55554f}
     .laptop{position:absolute;left:760px;top:170px;width:1240px}
     .laptop-screen{background:#0b1f33;border-radius:20px 20px 0 0;padding:22px 22px 26px}
     .laptop-screen img{display:block;width:100%;border-radius:4px}

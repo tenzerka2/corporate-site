@@ -2,7 +2,8 @@ import Link from "next/link";
 import {
   ArrowUpRight,
 } from "lucide-react";
-import { ButtonLink, Container } from "@/components/ui";
+import { ButtonLink, Container, SectionLabel } from "@/components/ui";
+import { home } from "@/content/home";
 import { Accordion } from "@/components/ui/interactive";
 import { site } from "@/content/site";
 import {
@@ -16,17 +17,19 @@ import { PresetLink } from "./PresetLink";
 
 export function ServicesBlock() {
   return (
-    <section className="section services-block" aria-labelledby="services-title">
+    <section className="home-section services-block" aria-labelledby="services-title">
       <Container wide>
+        <SectionLabel index="02">{home.servicesLabel}</SectionLabel>
         <div className="section-heading">
-          <div>
-            <h2 id="services-title">{servicesBlock.title}</h2>
-            <p className="lead muted measure">{servicesBlock.description}</p>
-          </div>
+          <h2 id="services-title">{home.servicesTitle}</h2>
+          <p className="lead muted measure">{servicesBlock.description}</p>
         </div>
         <ul className="service-rows">
-          {servicesBlock.items.map((service) => (
+          {servicesBlock.items.map((service, index) => (
             <li key={service.slug} className="service-row">
+              <span className="service-row-index" aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
               <div className="service-row-main">
                 <h3>
                   <Link href={service.href}>{service.title}</Link>

@@ -1,22 +1,22 @@
 @theme inline {
   --font-sans: var(--font-inter);
-  --color-ink: #0d1520;
-  --color-navy: #0a1f3a;
-  --color-muted: #4f5866;
-  --color-tertiary: #8a929e;
-  --color-border: #c9ced6;
-  --color-divider: #e2e5ea;
-  --color-surface: #f5f6f8;
-  --color-subtle: #eceef1;
+  --color-ink: #111111;
+  --color-navy: #0c2340;
+  --color-muted: #55554f;
+  --color-tertiary: #8c8c85;
+  --color-border: #c4c4bd;
+  --color-divider: #d8d8d3;
+  --color-surface: #f7f7f4;
+  --color-subtle: #ecece7;
   --color-white: #ffffff;
-  --color-brand-light: #e8ebef;
-  --color-brand-mid: #aeb6c2;
+  --color-brand-light: #ecece7;
+  --color-brand-mid: #b7bcc4;
   --color-orange: #f26b1d;
   --color-orange-hover: #d95a10;
   --color-success: #039855;
   --color-error: #d92d20;
   --radius-control: 4px;
-  --radius-card: 8px;
+  --radius-card: 4px;
   --radius-hero: 0px;
   --shadow-card: 0 1px 3px rgba(13, 21, 32, 0.05);
   --shadow-hover:

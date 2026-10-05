@@ -149,3 +149,12 @@ export function Field({
     </div>
   );
 }
+/** Editorial section marker: number and name above a heading, on a rule. */
+export function SectionLabel({ index, children }: { index: string; children: ReactNode }) {
+  return (
+    <p className="section-label">
+      <span>{index}</span>
+      {children}
+    </p>
+  );
+}

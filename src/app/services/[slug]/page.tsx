@@ -49,6 +49,7 @@ export default async function ServicePage({ params }: Props) {
           </>
         }
         aside={<HeroFacts facts={page.facts} />}
+        photo={page.photo}
       />
       <PageSection id="includes" title={serviceCopy.includes}>
         <dl className="spec-grid spec-grid-3">

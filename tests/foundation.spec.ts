@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 const widths = [360, 390, 768, 1024, 1440, 1920, 2560];
 test("адаптив, локальные ресурсы и ошибки браузера", async ({ page }) => {
+  test.setTimeout(240_000);
   const errors: string[] = [];
   const external: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));

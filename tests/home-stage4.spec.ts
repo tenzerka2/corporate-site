@@ -167,9 +167,7 @@ test("вторая половина главной: состав, адаптив
     await page.evaluate(() => document.fonts.ready);
     await expect(page.locator(".service-row")).toHaveCount(4);
     await expect(page.locator(".directions-list li")).toHaveCount(8);
-    await expect(page.locator(".regular-block .spec-grid > div")).toHaveCount(4);
-    await expect(page.locator(".faq-block .accordion > div")).toHaveCount(8);
-    await expect(page.locator(".final-panel .button")).toHaveCount(2);
+    await expect(page.locator(".contact-actions a")).toHaveCount(3);
     expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
     ).toBe(true);
@@ -186,6 +184,7 @@ test("вторая половина главной: состав, адаптив
   }
   await page.getByRole("link", { name: "Подобрать машину" }).click();
   await expect(page.locator("#calculator input[value=ftl]")).toBeChecked();
+  await page.goto("/faq");
   const question = page.getByRole("button", { name: "Что входит в страховку?" });
   await question.click();
   await expect(question).toHaveAttribute("aria-expanded", "true");

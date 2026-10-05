@@ -52,7 +52,7 @@ test("SEO: уникальные заголовки и описания, canonica
     });
     expect(types, path).toContain("Organization");
     if (path !== "/" && path !== "/calculator") expect(types, path).toContain("BreadcrumbList");
-    if (path === "/" || path.startsWith("/services/") || path === "/faq")
+    if (path.startsWith("/services/") || path === "/faq")
       expect(types, path).toContain("FAQPage");
     if (path === "/contacts") expect(types.filter((t) => t === "LocalBusiness")).toHaveLength(6);
   }

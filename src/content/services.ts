@@ -1,6 +1,7 @@
 // Service pages. Prices for routes are calculated from src/lib/tariff.ts.
 import type { CityId } from "@/lib/routes";
 import type { ShipmentMode } from "@/lib/tariff";
+import type { PhotoKey } from "./photos";
 
 export type ServiceSlug = "groupage" | "ftl" | "warehouse" | "marketplaces";
 
@@ -25,6 +26,7 @@ export type TariffTable =
 
 export type ServicePage = {
   slug: ServiceSlug;
+  photo: PhotoKey;
   title: string;
   description: string;
   subtitle: string;
@@ -39,6 +41,7 @@ export type ServicePage = {
 export const servicePages: ServicePage[] = [
   {
     slug: "groupage",
+    photo: "pallets",
     title: "Сборные грузы",
     description:
       "Сборные грузы по России от 1 кг: платите только за свой вес и объём. Склады в 6 городах, страхование и документы в ЭДО.",
@@ -104,6 +107,7 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: "ftl",
+    photo: "highway",
     title: "Отдельная машина",
     description:
       "Отдельная машина под ваш груз: от газели 1,5 т до фуры 20 т. Подача в день заявки, без перегрузов и складов по пути.",
@@ -156,6 +160,7 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: "warehouse",
+    photo: "warehouse",
     title: "Склад и хранение",
     description:
       "Ответственное хранение, приёмка, маркировка и комплектация заказов на складах в 6 городах. Первые 3 дня хранения бесплатно.",
@@ -213,6 +218,7 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: "marketplaces",
+    photo: "loading",
     title: "Доставка на маркетплейсы",
     description:
       "Поставки на склады Wildberries, Ozon и Яндекс Маркета: маркировка, этикетки, бронь окна приёмки и документы.",

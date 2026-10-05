@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import { Container } from "@/components/ui";
 import { labels } from "@/content/labels";
 import { breadcrumbJsonLd, serializeJsonLd, type Crumb } from "@/lib/seo";
+import type { PhotoKey } from "@/content/photos";
+import { PhotoBand } from "./Photo";
 
 export function JsonLd({ data }: { data: unknown }) {
   return (
@@ -20,16 +22,19 @@ export function PageHero({
   lead,
   actions,
   aside,
+  photo,
 }: {
   crumbs: Crumb[];
   title: string;
   lead?: ReactNode;
   actions?: ReactNode;
   aside?: ReactNode;
+  photo?: PhotoKey;
 }) {
   const trail: Crumb[] = [{ name: labels.glavnaya, path: "/" }, ...crumbs];
   return (
-    <section className="industrial-hero page-hero">
+    <>
+    <section className="page-hero">
       <JsonLd data={breadcrumbJsonLd(trail)} />
       <Container wide>
         <nav className="breadcrumbs page-breadcrumbs" aria-label={labels.hlebnyeKroshki}>
@@ -55,6 +60,8 @@ export function PageHero({
         </div>
       </Container>
     </section>
+    {photo && <PhotoBand name={photo} priority />}
+    </>
   );
 }
 

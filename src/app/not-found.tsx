@@ -5,7 +5,7 @@ export const metadata = { title: copy.title };
 
 export default function NotFound() {
   return (
-    <section className="industrial-hero not-found">
+    <section className="not-found">
       <Container wide>
         <div className="not-found-layout">
           <p className="not-found-code" aria-hidden="true">

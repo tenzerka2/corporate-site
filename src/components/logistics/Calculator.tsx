@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useId, useMemo, useState, type Dispatch, type SetStateAction } from "react";
 import { ArrowLeftRight, Check, FileText } from "lucide-react";
-import { Container, Field, Button } from "@/components/ui";
+import { Container, Field, Button, SectionLabel } from "@/components/ui";
 import { Select } from "@/components/ui/interactive";
 import { cities } from "@/content/cities";
 import { calculatorCopy as copy } from "@/content/logistics";
@@ -67,10 +67,12 @@ export function Calculator({
   state,
   setState,
   headingLevel = 2,
+  label,
 }: {
   state: CalculatorState;
   setState: Dispatch<SetStateAction<CalculatorState>>;
   headingLevel?: 1 | 2;
+  label?: { index: string; text: string };
 }) {
   const id = useId();
   const outcome = useCalculation(state);
@@ -113,6 +115,7 @@ export function Calculator({
       <Container wide>
         <div className="calculator-layout">
           <div className="calculator-intro">
+            {label && <SectionLabel index={label.index}>{label.text}</SectionLabel>}
             <Heading id={`${id}-title`}>{copy.title}</Heading>
             <p className="lead">{copy.description}</p>
             <ul className="calculator-points">

@@ -3,6 +3,7 @@
 /* First screen */
 .page-hero {
   padding-block: var(--space-8) var(--space-16);
+  border-bottom: 1px solid var(--color-divider);
 }
 .page-breadcrumbs ol {
   display: flex;
@@ -15,14 +16,15 @@
 .page-breadcrumbs li {
   display: inline-flex;
   gap: var(--space-3);
-  color: var(--color-brand-mid);
+  font-size: 14px;
+  color: var(--color-muted);
 }
 .page-breadcrumbs li + li::before {
   content: "/";
-  color: var(--color-brand-mid);
+  color: var(--color-tertiary);
 }
 .page-breadcrumbs a {
-  color: white;
+  color: var(--color-ink);
 }
 .page-breadcrumbs a:hover {
   text-decoration: underline;
@@ -39,7 +41,11 @@
 }
 .page-hero h1,
 .not-found h1 {
-  color: white;
+  color: var(--color-ink);
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.05em;
   max-width: 20ch;
   overflow-wrap: break-word;
 }
@@ -48,7 +54,7 @@
   margin-top: var(--space-6);
   font-size: 20px;
   line-height: 30px;
-  color: var(--color-brand-mid);
+  color: var(--color-muted);
 }
 .page-hero .hero-actions {
   margin-top: var(--space-8);
@@ -56,19 +62,19 @@
 .hero-facts {
   display: grid;
   margin: 0;
-  border-top: 1px solid #aeb6c233;
+  border-top: 1px solid var(--color-ink);
 }
 .hero-facts > div {
   display: flex;
   flex-direction: column-reverse;
   gap: var(--space-1);
   padding-block: var(--space-4);
-  border-bottom: 1px solid #aeb6c233;
+  border-bottom: 1px solid var(--color-divider);
 }
 .hero-facts dt {
   font-size: 14px;
   line-height: 20px;
-  color: var(--color-brand-mid);
+  color: var(--color-muted);
 }
 .hero-facts dd {
   margin: 0;
@@ -76,7 +82,7 @@
   line-height: 36px;
   font-weight: 600;
   letter-spacing: -0.03em;
-  color: white;
+  color: var(--color-ink);
 }
 
 /* Sections */
@@ -591,8 +597,9 @@
   }
   .page-hero h1,
   .not-found h1 {
-    font-size: 36px;
-    line-height: 42px;
+    font-size: 32px;
+    line-height: 36px;
+    letter-spacing: -0.035em;
   }
   .page-hero-lead {
     font-size: 18px;
@@ -701,4 +708,21 @@
   .data-table caption {
     padding: var(--space-4);
   }
+}
+
+/* Light first screen of inner pages: secondary action is an outline on the page colour. */
+.page-hero .hero-actions .button-secondary,
+.not-found .hero-actions .button-secondary {
+  color: var(--color-ink);
+  background: transparent;
+  border-color: var(--color-ink);
+}
+.not-found {
+  border-bottom: 1px solid var(--color-divider);
+}
+.not-found .page-hero-lead {
+  color: var(--color-muted);
+}
+.not-found-code {
+  color: var(--color-divider);
 }
