@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.env*
+*.tsbuildinfo
+test-results/
+playwright-report/
+artifacts/*.png
+artifacts/*.patch
+
+artifacts/*.blend
+artifacts/*.blend1
+artifacts/*.log
