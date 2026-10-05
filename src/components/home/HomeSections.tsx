@@ -52,27 +52,31 @@ export function HomeSections() {
           <ol className="process-grid">
             {home.steps.map((step, index) => (
               <li key={step.slug}>
-                <Reveal delay={index * 60}>
-                  <div className="process-illustration">
-                    <span className="step-number" aria-hidden="true">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <Image
-                      src={`/images/illustrations/${step.slug}.svg`}
-                      width={480}
-                      height={360}
-                      alt=""
-                    />
+                <div className="process-step">
+                  <Image
+                    className="process-photo"
+                    src={`/images/photos/${step.photo}.webp`}
+                    width={1920}
+                    height={1080}
+                    alt={step.photoAlt}
+                    unoptimized
+                  />
+                  <div className="process-copy">
+                    <div className="process-heading">
+                      <span className="step-number" aria-hidden="true">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <h3>{step.title}</h3>
+                    </div>
+                    <p>{step.description}</p>
+                    {index === 0 && (
+                      <Link href="/calculator" className="text-link">
+                        {home.openCalculator}
+                        <ArrowUpRight size={18} aria-hidden="true" />
+                      </Link>
+                    )}
                   </div>
-                  <h3>{step.title}</h3>
-                  <p>{step.description}</p>
-                  {index === 0 && (
-                    <Link href="/calculator" className="text-link">
-                      {home.openCalculator}
-                      <ArrowUpRight size={18} aria-hidden="true" />
-                    </Link>
-                  )}
-                </Reveal>
+                </div>
               </li>
             ))}
           </ol>

@@ -14,7 +14,7 @@ const hero=await sharp(`${dir}/hero.png`).resize(870).toBuffer();
 const title=Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630"><g fill="white" font-family="DejaVu Sans,sans-serif" font-size="48" font-weight="bold"><text x="64" y="180">Грузоперевозки</text><text x="64" y="240">по России</text><text x="64" y="300">для бизнеса</text></g><path d="M64 343h80" stroke="#F26B1D" stroke-width="5"/></svg>');
 await sharp({create:{width:1200,height:630,channels:3,background:'#0B2A4A'}}).composite([{input:hero,left:330,top:84},{input:logo,left:64,top:48},{input:title}]).png().toFile('public/images/og.png');
 // One page for reviewing the family of visual assets.
-const assets=[...['groupage','ftl','warehouse','marketplaces'].map(x=>`${dir}/${x}.webp`),...['calculation','pickup','delivery'].map(x=>`public/images/illustrations/${x}.svg`),'public/images/russia-map.svg'];
+const assets=[...['groupage','ftl','warehouse','marketplaces'].map(x=>`${dir}/${x}.webp`),...['logistics-office','loading','customer-handover'].map(x=>`public/images/photos/${x}.webp`),'public/images/russia-map.svg'];
 const layers=[];
 for(let i=0;i<assets.length;i++)layers.push({input:await sharp(assets[i]).resize(400,300,{fit:'contain',background:'#F9FAFB'}).png().toBuffer(),left:i%4*400,top:Math.floor(i/4)*300});
 layers.push({input:await sharp('public/images/photos/contact-sheet.png').toBuffer(),left:0,top:600});
