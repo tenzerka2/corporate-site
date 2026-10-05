@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpRight, Calculator } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { ButtonLink, Container } from "@/components/ui";
 import { HeroFacts, PageHero, PageSection } from "@/components/page/PageParts";
 import { MapExplorer, StandaloneCalculator } from "@/components/logistics/StandaloneCalculator";
@@ -59,7 +59,7 @@ export default async function DirectionPage({ params }: Props) {
         title={copy.h1(from.name, to.name)}
         lead={copy.heroLead(formatDays(quote.days), formatRoubles(quote.price))}
         actions={
-          <ButtonLink href="#calculator" icon={<Calculator size={19} aria-hidden="true" />}>
+          <ButtonLink href="#calculator">
             {copy.calculate}
           </ButtonLink>
         }

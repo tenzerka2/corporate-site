@@ -1,12 +1,6 @@
 import Link from "next/link";
 import {
   ArrowUpRight,
-  Calculator as CalculatorIcon,
-  CalendarClock,
-  FileSignature,
-  Phone,
-  ReceiptText,
-  TrendingDown,
 } from "lucide-react";
 import { ButtonLink, Container } from "@/components/ui";
 import { Accordion } from "@/components/ui/interactive";
@@ -17,15 +11,8 @@ import {
   regularBlock,
   servicesBlock,
 } from "@/content/logistics";
-import { Reveal } from "@/components/home/HomeMotion";
 import { PresetLink } from "./PresetLink";
 
-const regularIcons = {
-  contract: FileSignature,
-  schedule: CalendarClock,
-  report: ReceiptText,
-  tariff: TrendingDown,
-};
 
 export function ServicesBlock() {
   return (
@@ -37,36 +24,34 @@ export function ServicesBlock() {
             <p className="lead muted measure">{servicesBlock.description}</p>
           </div>
         </div>
-        <ul className="services-grid">
-          {servicesBlock.items.map((service, index) => (
-            <li key={service.slug}>
-              <Reveal className="service-card" delay={index * 60}>
-                <div className="service-figure">
-                  <span className="service-figure-value">{service.figure}</span>
-                  <span className="service-figure-label">
-                    {service.figureLabel}
-                  </span>
+        <ul className="service-rows">
+          {servicesBlock.items.map((service) => (
+            <li key={service.slug} className="service-row">
+              <div className="service-row-main">
+                <h3>
+                  <Link href={service.href}>{service.title}</Link>
+                </h3>
+                <p>{service.text[0]}</p>
+              </div>
+              <dl className="service-row-specs">
+                <div>
+                  <dt>{service.figureLabel}</dt>
+                  <dd>{service.figure}</dd>
                 </div>
-                <div className="service-body">
-                  <h3>{service.title}</h3>
-                  {service.text.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                  <p className="service-details">{service.details}</p>
-                  <div className="service-actions">
-                    <PresetLink
-                      mode={service.mode}
-                      className="button button-secondary button-small"
-                    >
-                      {service.action}
-                    </PresetLink>
-                    <Link href={service.href} className="text-link">
-                      {servicesBlock.more}
-                      <ArrowUpRight size={18} aria-hidden="true" />
-                    </Link>
-                  </div>
+                <div>
+                  <dt>{servicesBlock.detailsLabel}</dt>
+                  <dd>{service.details}</dd>
                 </div>
-              </Reveal>
+              </dl>
+              <div className="service-row-actions">
+                <PresetLink mode={service.mode} className="button button-secondary button-small">
+                  {service.action}
+                </PresetLink>
+                <Link href={service.href} className="text-link">
+                  {servicesBlock.more}
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                </Link>
+              </div>
             </li>
           ))}
         </ul>
@@ -85,20 +70,14 @@ export function RegularBlock() {
             <p className="lead muted measure">{regularBlock.description}</p>
           </div>
         </div>
-        <ul className="regular-grid">
-          {regularBlock.items.map((item, index) => {
-            const Icon = regularIcons[item.icon as keyof typeof regularIcons];
-            return (
-              <li key={item.title}>
-                <Reveal className="regular-item" delay={index * 60}>
-                  <Icon size={28} aria-hidden="true" />
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </Reveal>
-              </li>
-            );
-          })}
-        </ul>
+        <dl className="spec-grid spec-grid-2">
+          {regularBlock.items.map((item) => (
+            <div key={item.title}>
+              <dt>{item.title}</dt>
+              <dd>{item.text}</dd>
+            </div>
+          ))}
+        </dl>
         <div className="regular-action">
           <ButtonLink href="/contacts" variant="secondary">
             {regularBlock.action}
@@ -146,14 +125,12 @@ export function FinalBlock() {
           </div>
           <div className="final-actions">
             <PresetLink className="button button-primary button-regular">
-              <CalculatorIcon size={19} aria-hidden="true" />
               {finalBlock.calculate}
             </PresetLink>
             <a
               className="button button-secondary button-regular"
               href={`tel:${site.phone.replace(/\D/g, "")}`}
             >
-              <Phone size={19} aria-hidden="true" />
               {finalBlock.call}
             </a>
           </div>

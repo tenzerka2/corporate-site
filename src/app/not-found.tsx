@@ -1,4 +1,3 @@
-import { ArrowLeft, Calculator } from "lucide-react";
 import { ButtonLink, Container } from "@/components/ui";
 import { notFoundCopy as copy } from "@/content/company";
 
@@ -16,10 +15,10 @@ export default function NotFound() {
             <h1>{copy.title}</h1>
             <p className="page-hero-lead">{copy.text}</p>
             <div className="hero-actions">
-              <ButtonLink href="/calculator" icon={<Calculator size={19} aria-hidden="true" />}>
+              <ButtonLink href="/calculator">
                 {copy.calculate}
               </ButtonLink>
-              <ButtonLink href="/" variant="secondary" icon={<ArrowLeft size={19} aria-hidden="true" />}>
+              <ButtonLink href="/" variant="secondary">
                 {copy.home}
               </ButtonLink>
             </div>

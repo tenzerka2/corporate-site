@@ -117,10 +117,7 @@ export function Calculator({
             <p className="lead">{copy.description}</p>
             <ul className="calculator-points">
               {copy.points.map((point) => (
-                <li key={point}>
-                  <Check size={20} aria-hidden="true" />
-                  {point}
-                </li>
+                <li key={point}>{point}</li>
               ))}
             </ul>
           </div>

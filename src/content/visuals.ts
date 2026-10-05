@@ -21,13 +21,3 @@ export const visualCopy = {
   photoAlt: "Фотография для демонстрационного проекта Онега",
   source: "География: Natural Earth",
 };
-export const industryAssets = [
-  { slug: "retail", title: "Ритейл" },
-  { slug: "production", title: "Производство" },
-  { slug: "marketplaces", title: "Маркетплейсы" },
-  { slug: "construction", title: "Стройка" },
-  { slug: "agriculture", title: "Агро" },
-  { slug: "pharma", title: "Фарма" },
-  { slug: "autoparts", title: "Автозапчасти" },
-  { slug: "furniture", title: "Мебель" },
-];

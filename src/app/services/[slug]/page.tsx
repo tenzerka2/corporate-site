@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpRight, Calculator, Check } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { ButtonLink } from "@/components/ui";
 import { HeroFacts, JsonLd, PageHero, PageSection } from "@/components/page/PageParts";
 import { ServiceTariff } from "@/components/page/ServiceTariff";
@@ -40,7 +40,7 @@ export default async function ServicePage({ params }: Props) {
         lead={page.subtitle}
         actions={
           <>
-            <ButtonLink href="#calculator" icon={<Calculator size={19} aria-hidden="true" />}>
+            <ButtonLink href="#calculator">
               {serviceCopy.calculate}
             </ButtonLink>
             <ButtonLink href="/tariffs" variant="secondary">
@@ -51,23 +51,20 @@ export default async function ServicePage({ params }: Props) {
         aside={<HeroFacts facts={page.facts} />}
       />
       <PageSection id="includes" title={serviceCopy.includes}>
-        <ul className="includes-grid">
+        <dl className="spec-grid spec-grid-3">
           {page.includes.map((item) => (
-            <li key={item.title}>
-              <Check size={20} aria-hidden="true" />
-              <div>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            </li>
+            <div key={item.title}>
+              <dt>{item.title}</dt>
+              <dd>{item.text}</dd>
+            </div>
           ))}
-        </ul>
+        </dl>
       </PageSection>
       <PageSection id="tariffs" title={serviceCopy.tariffs} tone="surface">
         <ServiceTariff table={page.tariff} />
       </PageSection>
       <PageSection id="process" title={serviceCopy.process}>
-        <ol className="process-grid">
+        <ol className="spec-grid spec-grid-3">
           {page.steps.map((step, index) => (
             <li key={step.title}>
               <span className="step-number" aria-hidden="true">

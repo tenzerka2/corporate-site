@@ -10,11 +10,13 @@ test("главная: последовательность, адаптив, чи
     await page.goto("/");
     await page.evaluate(() => document.fonts.ready);
     const hero = page.locator(".home-hero");
-    await expect(hero.locator(".hero-promises li")).toHaveCount(3);
+    // Strict layout: no checklists or icon rows on the first screen.
+    await expect(hero.locator(".check-item, svg.lucide-check")).toHaveCount(0);
+    await expect(hero.locator(".quick-quote")).toHaveCount(1);
     await expect(page.locator(".company-stats > div")).toHaveCount(5);
-    await expect(page.locator(".home-industry-grid li")).toHaveCount(8);
-    await expect(page.locator(".process-grid > li")).toHaveCount(3);
-    await expect(page.locator(".benefits-grid > li")).toHaveCount(6);
+    await expect(page.locator(".service-row")).toHaveCount(4);
+    await expect(page.locator("#how-it-works .spec-grid > li")).toHaveCount(3);
+    await expect(page.locator(".home-conditions .spec-grid > div")).toHaveCount(6);
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -24,10 +26,9 @@ test("главная: последовательность, адаптив, чи
       const selectors = [
         ".site-header .logo",
         ".hero-copy h1",
-        "#industries-title",
-        "#process-title",
-        "#benefits-title",
         "#services-title",
+        "#process-title",
+        "#conditions-title",
       ];
       return selectors.map(
         (selector) =>
@@ -88,7 +89,7 @@ test("движение: однократные счётчики и режим у
   await expect(page.locator("[data-counter]").first()).toHaveText("1 200+", {
     timeout: 3000,
   });
-  await page.locator(".home-benefits").scrollIntoViewIfNeeded();
+  await page.locator(".home-conditions").scrollIntoViewIfNeeded();
   await page.locator(".company-stats").scrollIntoViewIfNeeded();
   await expect(page.locator("[data-counter]").first()).toHaveText("1 200+");
   await page.emulateMedia({ reducedMotion: "reduce" });

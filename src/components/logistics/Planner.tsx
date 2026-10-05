@@ -13,15 +13,21 @@ const number = new Intl.NumberFormat("ru-RU");
 
 /** Links elsewhere on the page preset the calculator with this event. */
 export const CALCULATOR_EVENT = "onega:calculator";
-export type CalculatorPreset = { mode?: ShipmentMode };
+export type CalculatorPreset = Partial<
+  Pick<CalculatorState, "from" | "to" | "weight" | "volume">
+> & { mode?: ShipmentMode };
 
 export function usePresetListener(
   setState: (update: (current: CalculatorState) => CalculatorState) => void,
 ) {
   useEffect(() => {
     const listener = (event: Event) => {
-      const { mode } = (event as CustomEvent<CalculatorPreset>).detail ?? {};
-      if (mode) setState((current) => ({ ...current, mode }));
+      const detail = (event as CustomEvent<CalculatorPreset>).detail ?? {};
+      const preset = Object.fromEntries(
+        Object.entries(detail).filter(([, value]) => value !== undefined),
+      ) as CalculatorPreset;
+      if (Object.keys(preset).length)
+        setState((current) => ({ ...current, ...preset }));
     };
     window.addEventListener(CALCULATOR_EVENT, listener);
     return () => window.removeEventListener(CALCULATOR_EVENT, listener);

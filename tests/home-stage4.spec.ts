@@ -69,7 +69,7 @@ test("направления подставляют города в кальку
   const route = page.getByRole("button", { name: /Москва → Новосибирск/ });
   await route.click();
   await expect(route).toHaveAttribute("aria-pressed", "true");
-  await expect(page.getByRole("combobox", { name: "Куда", exact: true })).toHaveText(
+  await expect(page.locator("#calculator").getByRole("combobox", { name: "Куда", exact: true })).toHaveText(
     "Новосибирск",
   );
   await expect(page.locator(".map-label")).toHaveText(["Москва", "Новосибирск"]);
@@ -92,7 +92,7 @@ test("направления подставляют города в кальку
   await map.getByRole("button", { name: "Омск", exact: true }).focus();
   await expect(page.getByRole("tooltip")).toContainText("Партнёрский терминал");
   await page.keyboard.press("Enter");
-  await expect(page.getByRole("combobox", { name: "Куда", exact: true })).toHaveText("Омск");
+  await expect(page.locator("#calculator").getByRole("combobox", { name: "Куда", exact: true })).toHaveText("Омск");
 
   const axe = await new AxeBuilder({ page })
     .include("#geography")
@@ -165,9 +165,9 @@ test("вторая половина главной: состав, адаптив
     await page.setViewportSize({ width, height: 1000 });
     await page.goto("/");
     await page.evaluate(() => document.fonts.ready);
-    await expect(page.locator(".services-grid > li")).toHaveCount(4);
+    await expect(page.locator(".service-row")).toHaveCount(4);
     await expect(page.locator(".directions-list li")).toHaveCount(8);
-    await expect(page.locator(".regular-grid > li")).toHaveCount(4);
+    await expect(page.locator(".regular-block .spec-grid > div")).toHaveCount(4);
     await expect(page.locator(".faq-block .accordion > div")).toHaveCount(8);
     await expect(page.locator(".final-panel .button")).toHaveCount(2);
     expect(

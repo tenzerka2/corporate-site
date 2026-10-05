@@ -1,4 +1,4 @@
-import { ButtonLink, Container } from "@/components/ui";
+import { ButtonLink } from "@/components/ui";
 import { PageHero, PageSection } from "@/components/page/PageParts";
 import { CompanyStats } from "@/components/home/HomeMotion";
 import { FinalBlock } from "@/components/logistics/HomeBlocks";
@@ -12,9 +12,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHero crumbs={[{ name: copy.title, path: "/about" }]} title={copy.title} lead={copy.lead} />
-      <Container wide>
-        <CompanyStats />
-      </Container>
+      <CompanyStats />
       <PageSection id="story" title={copy.storyTitle}>
         <div className="prose-columns">
           {copy.story.map((paragraph) => (
@@ -27,7 +25,7 @@ export default function AboutPage() {
         </figure>
       </PageSection>
       <PageSection id="principles" title={copy.principlesTitle} tone="surface">
-        <ul className="principles-grid">
+        <ul className="spec-grid spec-grid-3">
           {copy.principles.map((item, index) => (
             <li key={item.title}>
               <span className="step-number" aria-hidden="true">

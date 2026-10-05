@@ -102,7 +102,9 @@ export function CompanyStats() {
     };
   }, []);
   return (
-    <dl className="company-stats" ref={ref} aria-label={home.statsLabel}>
+    <section className="stats-band" aria-label={home.statsLabel}>
+    <div className="container container-wide">
+    <dl className="company-stats" ref={ref}>
       {home.stats.map((stat) => (
         <div key={stat.label}>
           <dt>{stat.label}</dt>
@@ -119,5 +121,7 @@ export function CompanyStats() {
         </div>
       ))}
     </dl>
+    </div>
+    </section>
   );
 }
