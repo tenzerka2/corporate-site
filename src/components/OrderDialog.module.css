@@ -1,0 +1,66 @@
+.dialog {
+  width: min(640px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+}
+.dialog::backdrop {
+  background: rgba(17, 17, 17, 0.55);
+}
+.body {
+  padding: 32px;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.head h2 {
+  font-size: 28px;
+}
+.close {
+  width: 40px;
+  height: 40px;
+  margin: -6px -8px 0 0;
+  border: 0;
+  background: transparent;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+.summary {
+  grid-column: 1 / -1;
+  padding: 14px 16px;
+  background: var(--bg);
+  font-size: 15px;
+}
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 16px;
+}
+.wide {
+  grid-column: 1 / -1;
+}
+.done {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+@media (max-width: 767px) {
+  .body {
+    padding: 24px 16px;
+  }
+  .form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .form :global(.button),
+  .done :global(.button) {
+    width: 100%;
+  }
+}

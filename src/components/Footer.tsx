@@ -1,70 +1,32 @@
-import { labels } from "@/content/labels";
-import Link from "next/link";
-import { ArrowUpRight, Calculator } from "lucide-react";
-import { Logo } from "./Logo";
-import { ButtonLink, Container } from "./ui";
-import {
-  clientLinks,
-  companyLinks,
-  copy,
-  legalLinks,
-  services,
-  site,
-} from "@/content/site";
+import { company, nav } from "@/content/site";
+import styles from "./Footer.module.css";
+
 export function Footer() {
   return (
-    <footer className="site-footer">
-      <Container wide>
-        <div className="footer-grid">
-          <div className="footer-brand">
-            <Link href="/" aria-label={labels.onegaGlavnaya}>
-              <Logo dark />
-            </Link>
-            <p>{site.description}</p>
-            <a className="footer-phone" href={`tel:${site.phone.replace(/\D/g, "")}`}>
-              {site.phone}
+    <footer className={styles.footer}>
+      <div className={`container ${styles.grid}`}>
+        <div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-dark.svg" alt="Онега" width="132" height="32" className={styles.logo} />
+          <p className={styles.legal}>{company.legalName}</p>
+        </div>
+        <nav aria-label="Разделы">
+          {nav.map((item) => (
+            <a key={item.href} href={item.href}>
+              {item.label}
             </a>
-            <a href={`mailto:${site.email}`}>{site.email}</a>
-            <ButtonLink href="/calculator" icon={<Calculator size={19} />}>
-              {labels.rasschitatDostavku}
-            </ButtonLink>
-          </div>
-          {[
-            { title: labels.kompaniya, links: companyLinks },
-            { title: labels.klientam, links: clientLinks },
-            { title: labels.uslugi, links: services },
-          ].map((group) => (
-            <nav key={group.title} aria-label={group.title}>
-              <h2>{group.title}</h2>
-              {group.links.map((link) => (
-                <Link href={link.href} key={link.href}>
-                  {link.title}
-                </Link>
-              ))}
-            </nav>
           ))}
+        </nav>
+        <div className={styles.contacts}>
+          <a href={company.phoneHref}>{company.phone}</a>
+          <a href={`mailto:${company.email}`}>{company.email}</a>
+          <span>{company.address}</span>
         </div>
-        <div className="footer-legal">
-          {legalLinks.map((link) => (
-            <Link href={link.href} key={link.href}>
-              {link.title}
-            </Link>
-          ))}
-        </div>
-        <div className="footer-bottom">
-          <span>© 2026 {site.legalName}</span>
-          <span>{copy.demoNote}</span>
-          <a
-            className="demo-badge"
-            href="https://shvetsov.studio"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {site.demo}
-            <ArrowUpRight size={15} />
-          </a>
-        </div>
-      </Container>
+      </div>
+      <div className={`container ${styles.bottom}`}>
+        <span>© 2026 {company.legalName}. {company.demoNote}</span>
+        <span className={styles.demo}>{company.demo}</span>
+      </div>
     </footer>
   );
 }

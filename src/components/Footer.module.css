@@ -1,0 +1,56 @@
+.footer {
+  background: var(--navy);
+  color: #fff;
+  font-size: 15px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--gap);
+  padding-block: 56px;
+}
+.logo {
+  width: auto;
+  height: 30px;
+}
+.legal {
+  margin-top: 16px;
+  color: #c9d1dc;
+}
+.grid nav,
+.contacts {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+.grid a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.contacts span {
+  color: #c9d1dc;
+}
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 20px 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  color: #c9d1dc;
+  font-size: 14px;
+}
+.demo {
+  color: #fff;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-block: 40px;
+  }
+  .bottom {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

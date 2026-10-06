@@ -1,90 +1,176 @@
-export const site = {
+// All copy for the demo company. Company, people and figures are fictional.
+import terminal from "@/assets/photos/terminal-dock.webp";
+import warehouse from "@/assets/photos/warehouse-racks.webp";
+import highway from "@/assets/photos/highway.webp";
+
+export const company = {
   name: "Онега",
   legalName: "ООО «Онега Логистик»",
-  description: "Грузоперевозки по России для бизнеса",
   phone: "8 800 000-00-00",
+  phoneHref: "tel:88000000000",
   email: "info@onega.example",
+  address: "Москва, Складской проезд, 7",
+  hours: "Пн–Пт 08:00–20:00",
   demo: "Демо-проект Shvetsov Studio",
+  demoNote: "Компания, контакты и данные вымышлены. Заявки никуда не отправляются.",
 };
-export const services = [
-  {
-    title: "Сборные грузы",
-    href: "/services/groupage",
-    description:
-      "Объединяем небольшие отправления в одной машине. Вы платите только за место вашего груза.",
-    action: "Рассчитать доставку",
-    icon: "packages",
+
+export const nav = [
+  { label: "Услуги", href: "#services" },
+  { label: "Расчёт", href: "#calculator" },
+  { label: "О компании", href: "#company" },
+  { label: "Контакты", href: "#contacts" },
+];
+
+export const hero = {
+  title: "Возим грузы\nпо всей России",
+  text: "Сборные грузы от 1 кг и отдельные машины до 20 т. Шесть собственных складов.",
+  primary: { label: "Рассчитать стоимость", href: "#calculator" },
+  secondary: { label: "Связаться с менеджером", href: "#contacts" },
+  photo: {
+    image: terminal,
+    alt: "Тягач с белым полуприцепом у погрузочных ворот складского терминала",
   },
-  {
-    title: "Отдельная машина",
-    href: "/services/ftl",
-    description:
-      "Выделяем машину под ваш груз. Согласуем маршрут и время подачи на погрузку.",
-    action: "Подобрать машину",
-    icon: "truck",
+};
+
+export const services = {
+  title: "Услуги",
+  text: "Перевозки и хранение для компаний, от одной коробки до регулярных рейсов по графику.",
+  more: "Подробнее",
+  items: [
+    {
+      id: "groupage",
+      title: "Сборные грузы",
+      text: "Отправка вместе с грузами других компаний. Оплата только за свой вес и объём.",
+      param: "от 1 кг",
+      paramLabel: "минимальная отправка",
+    },
+    {
+      id: "truck",
+      title: "Отдельная машина",
+      text: "Машина под ваш груз, от газели до фуры. Без перегрузов и складов по пути.",
+      param: "до 20 т",
+      paramLabel: "в одной машине",
+    },
+    {
+      id: "storage",
+      title: "Склад и хранение",
+      text: "Приёмка, ответственное хранение, маркировка и комплектация заказов.",
+      param: "6 складов",
+      paramLabel: "первые 3 дня бесплатно",
+    },
+  ],
+  photo: {
+    image: warehouse,
+    alt: "Ричтрак между стеллажами с паллетами на складе",
+    caption: "Склад в Москве, Складской проезд, 7",
   },
-  {
-    title: "Склад и хранение",
-    href: "/services/warehouse",
-    description:
-      "Принимаем, храним и комплектуем товары. Готовим партии к следующей отправке.",
-    action: "Рассчитать хранение",
-    icon: "warehouse",
-  },
-  {
+  marketplaces: {
     title: "Доставка на маркетплейсы",
-    href: "/services/marketplaces",
-    description:
-      "Готовим поставки к приёмке. Доставляем товары на склады в согласованное окно.",
+    text: "Привозим поставки на склады Wildberries, Ozon и Яндекс Маркета по их требованиям. Готовим маркировку, бронируем окно приёмки и присылаем акт в день сдачи.",
+    facts: [
+      { value: "3", label: "площадки" },
+      { value: "от 1 короба", label: "размер поставки" },
+      { value: "6 ₽", label: "маркировка единицы товара" },
+    ],
     action: "Рассчитать поставку",
-    icon: "box",
   },
-] as const;
-export const companyLinks = [
-  { title: "О нас", href: "/about" },
-  { title: "Вакансии", href: "/careers" },
-  { title: "Новости", href: "/news" },
-  { title: "Контакты", href: "/contacts" },
-];
-export const clientLinks = [
-  { title: "Тарифы", href: "/tariffs" },
-  { title: "Направления", href: "/directions" },
-  { title: "Документы", href: "/documents" },
-  { title: "Вопросы и ответы", href: "/faq" },
-  { title: "Отследить груз", href: "/tracking" },
-];
-export const legalLinks = [
-  { title: "Политика конфиденциальности", href: "/privacy" },
-  { title: "Пользовательское соглашение", href: "/terms" },
-  { title: "Публичная оферта", href: "/offer" },
-];
-export const utilityLinks = [
-  { title: "Рассчитать доставку", href: "/calculator" },
-  { title: "Отследить груз", href: "/tracking" },
-  { title: "Личный кабинет", href: "/account" },
-  { title: "Вопросы и помощь", href: "/faq" },
-];
-export const routes = [
-  ...services,
-  ...companyLinks,
-  ...clientLinks,
-  ...legalLinks,
-  ...utilityLinks,
-];
-export const copy = {
-  home: {
-    title: "Доставка грузов\nпо России",
-    description:
-      "Сборные грузы, отдельные машины и складская логистика. Мы организуем перевозку от отправителя до получателя.",
-    calculation: "Рассчитать доставку",
-    tracking: "Отследить груз",
-    note: "Демо-проект. Компания вымышлена, заявки никуда не отправляются.",
-    imageAlt: "Трёхмерная модель магистрального тягача «Онега» с полуприцепом",
-    uiLink: "Дизайн-система",
+};
+
+export const calculator = {
+  title: "Расчёт стоимости",
+  text: "Цена пересчитывается сразу. Итоговую стоимость менеджер фиксирует в договоре.",
+  from: "Откуда",
+  to: "Куда",
+  swap: "Поменять города местами",
+  weight: "Вес, кг",
+  volume: "Объём, м³",
+  more: "Дополнительные параметры",
+  mode: "Тип перевозки",
+  modes: { groupage: "Сборный груз", truck: "Отдельная машина" },
+  options: "Дополнительно",
+  pickup: "Забрать от двери",
+  delivery: "Доставить до двери",
+  packaging: "Жёсткая упаковка",
+  pickupHint: "+900 ₽",
+  deliveryHint: "+900 ₽",
+  packagingHint: "+12 % к перевозке",
+  result: "Предварительная стоимость",
+  from_: "от",
+  term: "Срок в пути",
+  distance: "Расстояние",
+  vehicle: "Машина",
+  shared: "Сборная машина",
+  lines: {
+    transport: "Перевозка",
+    pickup: "Забор от двери",
+    delivery: "Доставка до двери",
+    packaging: "Упаковка",
   },
-  aboutQuote:
-    "«За каждой поставкой стоит чья-то работа. Наша задача: чтобы груз оказался на месте вовремя».",
-  quoteCaption: "Руководитель «Онега Логистик», вымышленная цитата",
-  photoPlaceholder: "Здесь будет фото нашей команды",
-  demoNote: "Компания, контакты и данные вымышлены.",
+  none: "—",
+  order: "Оформить заявку",
+  note: "Расчёт предварительный.",
+  errors: {
+    weight: "Укажите вес больше нуля",
+    volume: "Укажите объём больше нуля",
+    capacity: "Больше 20 т или 82 м³ не помещается в одну машину. Оформите заявку, разделим груз.",
+  },
+};
+
+export const order = {
+  title: "Заявка на перевозку",
+  close: "Закрыть",
+  name: "Имя",
+  phone: "Телефон",
+  companyName: "Компания",
+  comment: "Комментарий",
+  commentHint: "Адреса, время погрузки, особенности груза",
+  consent: "Даю согласие на обработку персональных данных",
+  submit: "Отправить заявку",
+  done: "Заявка принята",
+  doneText: (number: string) =>
+    `Номер заявки ${number}. Менеджер позвонит в течение 15 минут в рабочее время.`,
+  ok: "Готово",
+  errors: {
+    name: "Укажите имя",
+    phone: "Укажите телефон полностью",
+    consent: "Нужно согласие на обработку данных",
+  },
+};
+
+export const about = {
+  title: "О компании",
+  statement: "С 2015 года возим грузы между собственными складами в шести городах.",
+  text: [
+    "У нас 140 машин и партнёрские терминалы в 180 городах. Цену считаем до погрузки и фиксируем в договоре.",
+    "У каждого клиента менеджер с прямым номером. Закрывающие документы приходят в ЭДО в день доставки.",
+  ],
+  figures: [
+    { value: "140", label: "машин в парке" },
+    { value: "6", label: "собственных складов" },
+    { value: "180", label: "городов доставки" },
+    { value: "1 200+", label: "тонн в месяц" },
+  ],
+  photo: {
+    image: highway,
+    alt: "Тягач с полуприцепом на трассе",
+  },
+  warehousesTitle: "Склады",
+  warehouses: [
+    { city: "Москва", address: "Складской проезд, 7", area: "12 000 м²" },
+    { city: "Санкт-Петербург", address: "Промышленная улица, 18", area: "6 500 м²" },
+    { city: "Казань", address: "Транспортная улица, 4", area: "4 000 м²" },
+    { city: "Краснодар", address: "Логистический проезд, 11", area: "3 500 м²" },
+    { city: "Екатеринбург", address: "Терминальная улица, 9", area: "5 000 м²" },
+    { city: "Новосибирск", address: "Сибирский проезд, 3", area: "4 500 м²" },
+  ],
+};
+
+export const contacts = {
+  title: "Контакты",
+  text: "Отвечаем в течение 15 минут в рабочее время. Поможем рассчитать сложный груз и подобрать машину.",
+  phone: "Телефон",
+  email: "Почта",
+  address: "Офис и главный склад",
+  hours: "Часы работы",
 };
