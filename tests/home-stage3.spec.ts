@@ -12,13 +12,17 @@ test("главная: последовательность, адаптив, чи
     const hero = page.locator(".home-hero");
     // Strict layout: no checklists or icon rows on the first screen.
     await expect(hero.locator(".check-item, svg.lucide-check")).toHaveCount(0);
-    await expect(hero.locator(".quick-quote")).toHaveCount(1);
+    // Calm hero: headline, one line of copy, actions, one photo. No form, no metadata bar.
+    await expect(hero.locator("input, .quick-quote, .hero-meta")).toHaveCount(0);
+    await expect(hero.locator(".hero-photo img")).toHaveCount(1);
+    const headline = await hero.locator("h1").evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
+    expect(headline).toBeLessThanOrEqual(width < 768 ? 48 : 76);
     await expect(page.locator(".company-stats > div")).toHaveCount(5);
-    await expect(page.locator(".svc")).toHaveCount(4);
-    await expect(page.locator(".svc .photo-figure")).toHaveCount(3);
-    await expect(page.locator(".section-label")).toHaveCount(7);
-    await expect(page.locator(".photo-band")).toHaveCount(2);
-    await expect(page.locator(".photo-code").first()).toHaveText("F01");
+    await expect(page.locator(".service-item")).toHaveCount(3);
+    await expect(page.locator(".marketplace-block")).toHaveCount(1);
+    await expect(page.locator(".section-services .photo-band")).toHaveCount(1);
+    await expect(page.locator(".section-label")).toHaveCount(0);
+    await expect(page.locator(".photo-code")).toHaveCount(0);
     await expect(page.locator(".warehouse-table tbody tr")).toHaveCount(6);
     await expect(page.locator("#why-onega .terms > div")).toHaveCount(6);
     expect(
@@ -95,7 +99,7 @@ test("без лишнего движения: цифры и секции вид�
   const page = await context.newPage();
   await page.goto("/");
   await expect(page.locator(".company-stats dd").first()).toHaveText("1 200+");
-  await expect(page.getByRole("heading", { name: "Что мы делаем", exact: true })).toBeVisible();
+  await expect(page.locator("#services-title")).toBeVisible();
   await expect(page.locator("img[alt*='Тягач Онеги']").first()).toBeVisible();
   await context.close();
 });

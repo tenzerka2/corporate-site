@@ -5,19 +5,11 @@ import { photos, type PhotoKey } from "@/content/photos";
 // load on a small self-hosted server, so photos are served as they are.
 
 function Caption({ name, wide = false }: { name: PhotoKey; wide?: boolean }) {
-  const photo = photos[name];
-  const [title, place, spec] = photo.caption;
-  const content = (
-    <>
-      <span className="photo-code">{photo.code}</span>
-      <span className="photo-title">{title}</span>
-      <span>{place}</span>
-      <span>{spec}</span>
-    </>
-  );
+  const [title, place] = photos[name].caption;
+  const text = `${title}, ${place}`;
   return (
     <figcaption className="photo-caption">
-      {wide ? <div className="container container-wide photo-caption-grid">{content}</div> : <div className="photo-caption-grid">{content}</div>}
+      {wide ? <div className="container container-wide">{text}</div> : text}
     </figcaption>
   );
 }

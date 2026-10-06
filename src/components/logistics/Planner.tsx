@@ -2,8 +2,7 @@
 import { useEffect, useId, useState } from "react";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { Container, SectionLabel } from "@/components/ui";
-import { home } from "@/content/home";
+import { Container } from "@/components/ui";
 import { RussiaMap } from "@/components/RussiaMap";
 import { directionsBlock as copy, mapCopy } from "@/content/logistics";
 import { cityById, routeQuote, type CityId } from "@/lib/routes";
@@ -46,7 +45,6 @@ function Directions({
   return (
     <section className="home-section directions" id="geography" aria-labelledby={`${id}-title`}>
       <Container wide>
-        <SectionLabel index="03">{home.geographyLabel}</SectionLabel>
         <div className="section-heading">
           <div>
             <h2 id={`${id}-title`}>{copy.title}</h2>
@@ -114,14 +112,10 @@ export function Planner() {
   usePresetListener(setState);
   return (
     <>
+      <Calculator state={state} setState={setState} />
       <Directions
         route={{ from: state.from, to: state.to }}
         onRoute={(from, to) => setState((current) => ({ ...current, from, to }))}
-      />
-      <Calculator
-        state={state}
-        setState={setState}
-        label={{ index: "04", text: home.calculatorLabel }}
       />
     </>
   );

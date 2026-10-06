@@ -2,7 +2,8 @@ import { ButtonLink, Container } from "@/components/ui";
 import { home } from "@/content/home";
 import { labels } from "@/content/labels";
 import { pageMetadata } from "@/lib/seo";
-import { PhotoBand } from "@/components/page/Photo";
+import Image from "next/image";
+import { photos } from "@/content/photos";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import {
@@ -12,7 +13,6 @@ import {
   ServicesIndex,
   WarehousesSection,
 } from "@/components/home/HomeSections";
-import { QuickQuote } from "@/components/logistics/QuickQuote";
 import { Planner } from "@/components/logistics/Planner";
 
 export const metadata = {
@@ -24,27 +24,17 @@ export const metadata = {
   title: { absolute: labels.onegaLogistikGruzoperevozkiPoRossii },
 };
 
-// Title page, F01 terminal, company, service index with its own photos,
-// geography and calculation, F05 warehouse, warehouses, terms, contact.
+// Hero with one photo, services, calculation, then company, warehouses, terms, contact.
 export default function Home() {
   return (
     <>
       <section className="home-hero">
         <Container wide>
-          <div className="hero-meta">
-            {home.meta.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
-          </div>
           <div className="hero-grid">
-            <h1 className="hero-title">{home.title}</h1>
-            <div className="hero-aside">
-              <p className="hero-facts-text">
-                {home.facts.map((line) => (
-                  <span key={line}>{line}</span>
-                ))}
-              </p>
-              <div className="hero-links">
+            <div className="hero-copy">
+              <h1 className="hero-title">{home.title}</h1>
+              <p className="hero-subtitle">{home.subtitle}</p>
+              <div className="hero-actions">
                 <ButtonLink href="#calculator">{home.calculate}</ButtonLink>
                 <Link href="/tracking" className="text-link">
                   {home.tracking}
@@ -52,15 +42,22 @@ export default function Home() {
                 </Link>
               </div>
             </div>
+            <div className="hero-photo">
+              <Image
+                src={photos.terminal.image}
+                alt={photos.terminal.alt}
+                sizes="(min-width: 1024px) 58vw, 100vw"
+                placeholder="blur"
+                priority
+                unoptimized
+              />
+            </div>
           </div>
-          <QuickQuote />
         </Container>
       </section>
-      <PhotoBand name="terminal" priority />
-      <AboutSection />
       <ServicesIndex />
       <Planner />
-      <PhotoBand name="warehouse" />
+      <AboutSection />
       <WarehousesSection />
       <ConditionsSection />
       <ContactSection />

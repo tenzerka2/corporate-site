@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useId, useMemo, useState, type Dispatch, type SetStateAction } from "react";
-import { ArrowLeftRight, Check } from "lucide-react";
-import { Container, Field, Button, SectionLabel } from "@/components/ui";
+import { ArrowLeftRight, Check, ChevronDown } from "lucide-react";
+import { Container, Field, Button } from "@/components/ui";
 import { Select } from "@/components/ui/interactive";
 import { cities } from "@/content/cities";
 import { calculatorCopy as copy } from "@/content/logistics";
@@ -67,16 +67,16 @@ export function Calculator({
   state,
   setState,
   headingLevel = 2,
-  label,
 }: {
   state: CalculatorState;
   setState: Dispatch<SetStateAction<CalculatorState>>;
   headingLevel?: 1 | 2;
-  label?: { index: string; text: string };
 }) {
   const id = useId();
   const outcome = useCalculation(state);
   const [orderOpen, setOrderOpen] = useState(false);
+  // On phones the mode and extra options fold away; on desktop they are always shown.
+  const [moreOpen, setMoreOpen] = useState(false);
   const [announcement, setAnnouncement] = useState("");
   const weightError =
     !outcome.ok && (outcome.error === "weight" || outcome.error === "capacity")
@@ -112,124 +112,128 @@ export function Calculator({
   return (
     <section className="calc" id="calculator" aria-labelledby={`${id}-title`}>
       <Container wide>
-        {label && <SectionLabel index={label.index}>{label.text}</SectionLabel>}
         <div className="calc-head">
-          <p className="calc-kicker">{copy.title}</p>
           <Heading id={`${id}-title`} className="calc-route">
             <span className="sr-only">{copy.headingPrefix} </span>
             {from} <span className="calc-arrow">→</span> {to}
           </Heading>
+          <p className="calc-kicker">{copy.description}</p>
         </div>
-        <div className="calc-grid">
-          <form
-            className="calc-form"
-            aria-label={copy.formLabel}
-            onSubmit={(event) => event.preventDefault()}
-            noValidate
-          >
-            <div className="calc-row calc-cities">
-              <Field label={copy.from} htmlFor={`${id}-from`}>
-                <Select
-                  id={`${id}-from`}
-                  label={copy.from}
-                  value={state.from}
-                  options={cityOptions}
-                  onChange={(value) => update("from", value as CityId)}
-                />
-              </Field>
-              <button
-                type="button"
-                className="calc-swap"
-                aria-label={copy.swap}
-                onClick={() =>
-                  setState((current) => ({ ...current, from: current.to, to: current.from }))
+        <div className="calc-grid" role="group" aria-label={copy.formLabel}>
+          <div className="calc-cities">
+            <Field label={copy.from} htmlFor={`${id}-from`}>
+              <Select
+                id={`${id}-from`}
+                label={copy.from}
+                value={state.from}
+                options={cityOptions}
+                onChange={(value) => update("from", value as CityId)}
+              />
+            </Field>
+            <button
+              type="button"
+              className="calc-swap"
+              aria-label={copy.swap}
+              onClick={() =>
+                setState((current) => ({ ...current, from: current.to, to: current.from }))
+              }
+            >
+              <ArrowLeftRight size={18} aria-hidden="true" />
+            </button>
+            <Field label={copy.to} htmlFor={`${id}-to`}>
+              <Select
+                id={`${id}-to`}
+                label={copy.to}
+                value={state.to}
+                options={cityOptions}
+                onChange={(value) => update("to", value as CityId)}
+              />
+            </Field>
+          </div>
+          <div className="calc-cargo">
+            <Field label={copy.weight} htmlFor={`${id}-weight`} error={weightError}>
+              <input
+                id={`${id}-weight`}
+                className="input"
+                inputMode="decimal"
+                autoComplete="off"
+                value={state.weight}
+                aria-invalid={weightError ? true : undefined}
+                aria-describedby={weightError ? `${id}-weight-error` : undefined}
+                onChange={(event) =>
+                  update("weight", event.target.value.replace(/[^\d.,\s]/g, ""))
                 }
-              >
-                <ArrowLeftRight size={18} aria-hidden="true" />
-              </button>
-              <Field label={copy.to} htmlFor={`${id}-to`}>
-                <Select
-                  id={`${id}-to`}
-                  label={copy.to}
-                  value={state.to}
-                  options={cityOptions}
-                  onChange={(value) => update("to", value as CityId)}
-                />
-              </Field>
-            </div>
-            <div className="calc-row calc-cargo">
-              <fieldset className="calc-mode">
-                <legend>{copy.mode}</legend>
-                <div>
-                  {(["groupage", "ftl"] as const).map((mode) => (
-                    <label key={mode} className="calc-toggle">
-                      <input
-                        type="radio"
-                        name={`${id}-mode`}
-                        value={mode}
-                        checked={state.mode === mode}
-                        onChange={() => update("mode", mode)}
-                      />
-                      <span>{copy.modes[mode]}</span>
-                    </label>
-                  ))}
-                </div>
-              </fieldset>
-              <Field label={copy.weight} htmlFor={`${id}-weight`} error={weightError}>
-                <input
-                  id={`${id}-weight`}
-                  className="input"
-                  inputMode="decimal"
-                  autoComplete="off"
-                  value={state.weight}
-                  aria-invalid={weightError ? true : undefined}
-                  aria-describedby={weightError ? `${id}-weight-error` : undefined}
-                  onChange={(event) =>
-                    update("weight", event.target.value.replace(/[^\d.,\s]/g, ""))
-                  }
-                />
-              </Field>
-              <Field label={copy.volume} htmlFor={`${id}-volume`} error={volumeError}>
-                <input
-                  id={`${id}-volume`}
-                  className="input"
-                  inputMode="decimal"
-                  autoComplete="off"
-                  value={state.volume}
-                  aria-invalid={volumeError ? true : undefined}
-                  aria-describedby={volumeError ? `${id}-volume-error` : undefined}
-                  onChange={(event) =>
-                    update("volume", event.target.value.replace(/[^\d.,\s]/g, ""))
-                  }
-                />
-              </Field>
-            </div>
-            <fieldset className="calc-row calc-options">
-              <legend>{copy.options}</legend>
-              <div className="calc-options-list">
-              {(
-                [
-                  ["pickup", copy.pickupHint],
-                  ["delivery", copy.deliveryHint],
-                  ["packaging", copy.packagingHint],
-                ] as const
-              ).map(([key, hint]) => (
-                <label key={key} className="checkbox">
-                  <input
-                    type="checkbox"
-                    checked={state[key]}
-                    onChange={(event) => update(key, event.target.checked)}
-                  />
-                  <span className="checkbox-box" aria-hidden="true">
-                    <Check size={14} />
-                  </span>
-                  <span className="checkbox-label">{copy[key]}</span>
-                  <span className="checkbox-hint">{hint}</span>
-                </label>
-              ))}
+              />
+            </Field>
+            <Field label={copy.volume} htmlFor={`${id}-volume`} error={volumeError}>
+              <input
+                id={`${id}-volume`}
+                className="input"
+                inputMode="decimal"
+                autoComplete="off"
+                value={state.volume}
+                aria-invalid={volumeError ? true : undefined}
+                aria-describedby={volumeError ? `${id}-volume-error` : undefined}
+                onChange={(event) =>
+                  update("volume", event.target.value.replace(/[^\d.,\s]/g, ""))
+                }
+              />
+            </Field>
+          </div>
+          <button
+            type="button"
+            className="calc-more-toggle"
+            aria-expanded={moreOpen}
+            aria-controls={`${id}-more`}
+            onClick={() => setMoreOpen((open) => !open)}
+          >
+            {copy.moreParams}
+            <ChevronDown size={18} aria-hidden="true" />
+          </button>
+          <div id={`${id}-more`} className={`calc-more ${moreOpen ? "is-open" : ""}`}>
+            <fieldset className="calc-mode">
+              <legend>{copy.mode}</legend>
+              <div className="calc-segment">
+                {(["groupage", "ftl"] as const).map((mode) => (
+                  <label key={mode}>
+                    <input
+                      type="radio"
+                      name={`${id}-mode`}
+                      value={mode}
+                      checked={state.mode === mode}
+                      onChange={() => update("mode", mode)}
+                    />
+                    <span>{copy.modes[mode]}</span>
+                  </label>
+                ))}
               </div>
             </fieldset>
-          </form>
+            <fieldset className="calc-options">
+              <legend>{copy.options}</legend>
+              <div className="calc-options-list">
+                {(
+                  [
+                    ["pickup", copy.pickupHint],
+                    ["delivery", copy.deliveryHint],
+                    ["packaging", copy.packagingHint],
+                  ] as const
+                ).map(([key, hint]) => (
+                  <label key={key} className="checkbox">
+                    <input
+                      type="checkbox"
+                      checked={state[key]}
+                      onChange={(event) => update(key, event.target.checked)}
+                    />
+                    <span className="checkbox-box" aria-hidden="true">
+                      <Check size={14} />
+                    </span>
+                    <span className="checkbox-label">{copy[key]}</span>
+                    <span className="checkbox-hint">{hint}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          </div>
           <section className="calc-result" aria-labelledby={`${id}-result`}>
             <p className="calc-result-label" id={`${id}-result`}>
               {copy.resultLabel}

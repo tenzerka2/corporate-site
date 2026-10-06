@@ -165,7 +165,9 @@ test("вторая половина главной: состав, адаптив
     await page.setViewportSize({ width, height: 1000 });
     await page.goto("/");
     await page.evaluate(() => document.fonts.ready);
-    await expect(page.locator(".svc")).toHaveCount(4);
+    await expect(page.locator(".service-item")).toHaveCount(3);
+    // Phones show the extra calculator options only on request.
+    await expect(page.locator(".calc-more-toggle")).toBeVisible({ visible: width < 768 });
     await expect(page.locator(".directions-list li")).toHaveCount(8);
     await expect(page.locator(".contact-actions a")).toHaveCount(3);
     expect(
@@ -182,8 +184,9 @@ test("вторая половина главной: состав, адаптив
           style: clean,
         });
   }
-  await page.locator(".svc-b").getByRole("link", { name: "Рассчитать" }).click();
-  await expect(page.locator("#calculator input[value=ftl]")).toBeChecked();
+  await page.locator("#calculator").getByText("Отдельная машина", { exact: true }).click();
+  await page.locator(".marketplace-block").getByRole("link", { name: "Рассчитать" }).click();
+  await expect(page.locator("#calculator input[value=groupage]")).toBeChecked();
   await page.goto("/faq");
   const question = page.getByRole("button", { name: "Что входит в страховку?" });
   await question.click();
