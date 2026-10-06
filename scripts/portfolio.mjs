@@ -102,7 +102,7 @@ const smoothScroll = (to, ms) =>
   );
 await smoothScroll("#about-title", 3500);
 await page.waitForTimeout(800);
-await smoothScroll(".services-block", 3000);
+await smoothScroll(".section-services", 3000);
 await page.waitForTimeout(800);
 await smoothScroll(0, 1800);
 await page.getByRole("button", { name: "Услуги", exact: true }).click();

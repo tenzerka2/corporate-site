@@ -86,7 +86,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "timedOut",
-                  "duration": 240108,
+                  "duration": 240113,
                   "error": {
                     "message": "\u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
                     "stack": "\u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
@@ -107,7 +107,7 @@
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:43:51.270Z",
+                  "startTime": "2026-10-06T07:58:59.924Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -142,12 +142,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4062,
+                  "duration": 4484,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:47:52.468Z",
+                  "startTime": "2026-10-06T08:03:00.980Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -176,12 +176,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6811,
+                  "duration": 6896,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:47:56.720Z",
+                  "startTime": "2026-10-06T08:03:05.654Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -210,12 +210,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1267,
+                  "duration": 1495,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:48:03.544Z",
+                  "startTime": "2026-10-06T08:03:12.572Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -244,12 +244,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 723,
+                  "duration": 835,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:48:04.822Z",
+                  "startTime": "2026-10-06T08:03:14.082Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -278,12 +278,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6141,
+                  "duration": 6685,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:48:05.557Z",
+                  "startTime": "2026-10-06T08:03:14.927Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -306,7 +306,7 @@
       "specs": [
         {
           "title": "главная: последовательность, адаптив, читаемые тексты и действия",
-          "ok": false,
+          "ok": true,
           "tags": [],
           "tests": [
             {
@@ -319,48 +319,18 @@
                 {
                   "workerIndex": 1,
                   "parallelIndex": 0,
-                  "status": "failed",
-                  "duration": 9502,
-                  "error": {
-                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
-                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at /home/user/corporate-site/tests/home-stage3.spec.ts:58:10",
-                    "location": {
-                      "file": "/home/user/corporate-site/tests/home-stage3.spec.ts",
-                      "column": 10,
-                      "line": 58
-                    },
-                    "snippet": "  56 |       await expect\n  57 |         .poll(() => image.evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth > 0))\n> 58 |         .toBe(true);\n     |          ^\n  59 |     }\n  60 |     await expect\n  61 |       .poll("
-                  },
-                  "errors": [
-                    {
-                      "location": {
-                        "file": "/home/user/corporate-site/tests/home-stage3.spec.ts",
-                        "column": 10,
-                        "line": 58
-                      },
-                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  56 |       await expect\n  57 |         .poll(() => image.evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth > 0))\n> 58 |         .toBe(true);\n     |          ^\n  59 |     }\n  60 |     await expect\n  61 |       .poll(\n    at /home/user/corporate-site/tests/home-stage3.spec.ts:58:10"
-                    }
-                  ],
+                  "status": "passed",
+                  "duration": 15431,
+                  "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:48:11.716Z",
+                  "startTime": "2026-10-06T08:03:21.633Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "error-context",
-                      "contentType": "text/markdown",
-                      "path": "/home/user/corporate-site/test-results/home-stage3-главная-послед-5363c--читаемые-тексты-и-действия/error-context.md"
-                    }
-                  ],
-                  "errorLocation": {
-                    "file": "/home/user/corporate-site/tests/home-stage3.spec.ts",
-                    "column": 10,
-                    "line": 58
-                  }
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
           "id": "98b27c7f68fa597cbf72-b82749de33997de8a997",
@@ -381,15 +351,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 678,
+                  "duration": 911,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:48:22.047Z",
+                  "startTime": "2026-10-06T08:03:37.081Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -423,15 +393,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1893,
+                  "duration": 2112,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:48:22.982Z",
+                  "startTime": "2026-10-06T08:03:38.067Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -457,15 +427,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2684,
+                  "duration": 3167,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:48:24.891Z",
+                  "startTime": "2026-10-06T08:03:40.216Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -491,15 +461,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3818,
+                  "duration": 4214,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:48:27.584Z",
+                  "startTime": "2026-10-06T08:03:43.403Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -525,15 +495,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 9173,
+                  "duration": 5355,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:48:31.415Z",
+                  "startTime": "2026-10-06T08:03:47.633Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -559,15 +529,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1292,
+                  "duration": 1580,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:48:40.597Z",
+                  "startTime": "2026-10-06T08:03:53.005Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -601,15 +571,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2884,
+                  "duration": 3798,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:48:41.910Z",
+                  "startTime": "2026-10-06T08:03:54.621Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -624,7 +594,7 @@
         },
         {
           "title": "страницы: адаптив без горизонтального скролла и доступность",
-          "ok": false,
+          "ok": true,
           "tags": [],
           "tests": [
             {
@@ -635,42 +605,20 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 2,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
-                  "status": "timedOut",
-                  "duration": 600180,
-                  "error": {
-                    "message": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
-                    "stack": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m"
-                  },
-                  "errors": [
-                    {
-                      "message": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m"
-                    },
-                    {
-                      "location": {
-                        "file": "/home/user/corporate-site/tests/stage5.spec.ts",
-                        "column": 18,
-                        "line": 79
-                      },
-                      "message": "Error: page.goto: Test timeout of 600000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3106/services/groupage\", waiting until \"load\"\u001b[22m\n\n\n  77 |     await page.setViewportSize({ width, height: 900 });\n  78 |     for (const path of pages) {\n> 79 |       await page.goto(path);\n     |                  ^\n  80 |       expect(\n  81 |         await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),\n  82 |         `${path} @ ${width}`,\n    at /home/user/corporate-site/tests/stage5.spec.ts:79:18"
-                    }
-                  ],
+                  "status": "passed",
+                  "duration": 57454,
+                  "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:48:44.809Z",
+                  "startTime": "2026-10-06T08:03:58.435Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "error-context",
-                      "contentType": "text/markdown",
-                      "path": "/home/user/corporate-site/test-results/stage5-страницы-адаптив-бе-7f341-ьного-скролла-и-доступность/error-context.md"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
           "id": "e3b4797897cdae8f29a9-cb3e723c594a54bc7036",
@@ -691,15 +639,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 3,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 785,
+                  "duration": 793,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:58:45.890Z",
+                  "startTime": "2026-10-06T08:04:55.905Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -725,15 +673,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 3,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 619,
+                  "duration": 760,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:58:46.865Z",
+                  "startTime": "2026-10-06T08:04:56.709Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -759,15 +707,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 3,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 696,
+                  "duration": 841,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:58:47.500Z",
+                  "startTime": "2026-10-06T08:04:57.481Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -793,15 +741,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 3,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 886,
+                  "duration": 799,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:58:48.211Z",
+                  "startTime": "2026-10-06T08:04:58.342Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -827,15 +775,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 3,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 257,
+                  "duration": 292,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:58:49.110Z",
+                  "startTime": "2026-10-06T08:04:59.153Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -861,15 +809,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 3,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1510,
+                  "duration": 1608,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:58:49.379Z",
+                  "startTime": "2026-10-06T08:04:59.458Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -895,15 +843,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 3,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 523,
+                  "duration": 655,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:58:50.900Z",
+                  "startTime": "2026-10-06T08:05:01.076Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -937,15 +885,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 3,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1556,
+                  "duration": 1458,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:58:51.448Z",
+                  "startTime": "2026-10-06T08:05:01.755Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -971,15 +919,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 3,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5029,
+                  "duration": 5213,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:58:53.017Z",
+                  "startTime": "2026-10-06T08:05:03.232Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -997,11 +945,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-06T07:43:50.489Z",
-    "duration": 907657.653,
-    "expected": 21,
+    "startTime": "2026-10-06T07:58:59.155Z",
+    "duration": 369435.989,
+    "expected": 23,
     "skipped": 0,
-    "unexpected": 3,
+    "unexpected": 1,
     "flaky": 0
   }
 }
