@@ -1,7 +1,7 @@
 // All copy for the demo company. Company, people and figures are fictional.
 import terminal from "@/assets/photos/terminal-dock.webp";
 import office from "@/assets/photos/office.webp";
-import fleetYard from "@/assets/photos/fleet-yard.webp";
+import unloading from "@/assets/photos/unloading.webp";
 import pallets from "@/assets/photos/pallets.webp";
 import loading from "@/assets/photos/loading.webp";
 
@@ -61,8 +61,8 @@ export const steps = {
     {
       title: "Мы забираем груз и везём по маршруту",
       text: "Приезжаем к вам в согласованное время. Статус груза видно на сайте по номеру заявки и приходит в СМС.",
-      image: fleetYard,
-      alt: "Тягачи Онеги на стоянке перед выездом в рейс",
+      image: unloading,
+      alt: "Погрузчик выкатывает паллету из кузова фуры у докшелтера",
       link: { label: "Отследить груз", href: "/tracking" },
     },
     {

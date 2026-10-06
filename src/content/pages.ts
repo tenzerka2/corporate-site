@@ -1,7 +1,7 @@
 // Copy for the company and client pages.
-import fleetYard from "@/assets/photos/fleet-yard.webp";
+import aerial from "@/assets/photos/aerial-terminal.webp";
+import reefer from "@/assets/photos/reefer-winter.webp";
 import office from "@/assets/photos/office.webp";
-import terminal from "@/assets/photos/terminal-dock.webp";
 import warehouse from "@/assets/photos/warehouse-racks.webp";
 
 export const warehouseList = [
@@ -93,8 +93,8 @@ export const aboutPage = {
   badge: "С 2015 года",
   h1: "Онега Логистик:\nгрузы, склады, люди",
   lead: "Возим грузы между собственными складами в шести городах. 140 машин, 420 сотрудников, 1 200 тонн в месяц.",
-  image: terminal,
-  alt: "Тягач Онеги у погрузочных ворот терминала",
+  image: aerial,
+  alt: "Складской комплекс Онеги с высоты: фуры у погрузочных ворот",
   stats: [
     { value: "11 лет", label: "на рынке" },
     { value: "140", label: "машин в парке" },
@@ -125,8 +125,8 @@ export const aboutPage = {
     { value: "24", label: "грузовика 10 т" },
     { value: "32", label: "фуры 20 т" },
   ],
-  fleetImage: fleetYard,
-  fleetAlt: "Тягачи Онеги в ряд на стоянке у склада",
+  fleetImage: reefer,
+  fleetAlt: "Рефрижератор Онеги на зимней трассе в сумерках",
   requisitesTitle: "Реквизиты",
   requisites: [
     ["Полное название", "Общество с ограниченной ответственностью «Онега Логистик»"],

@@ -30,6 +30,8 @@
 }
 .fleet > div > dl {
   width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-radius: var(--radius-card);
 }
 .fleetText {
   color: var(--muted);

@@ -1,6 +1,10 @@
 // Service pages. One shape for every service, rendered by app/services/[slug].
 import type { StaticImageData } from "next/image";
+import driver from "@/assets/photos/driver.webp";
 import highway from "@/assets/photos/highway.webp";
+import loading from "@/assets/photos/loading.webp";
+import vanCity from "@/assets/photos/van-city.webp";
+import warehouse from "@/assets/photos/warehouse-racks.webp";
 import fleetYard from "@/assets/photos/fleet-yard.webp";
 import marketplace from "@/assets/photos/marketplace.webp";
 import picking from "@/assets/photos/picking.webp";
@@ -45,7 +49,7 @@ export type Service = {
   benefits: { title: string; text: string }[];
   offer: { title: string; text: string; tabs: OfferTab[] };
   steps: { title: string; text: string }[];
-  story: { label: string; title: string; text: string; figures: Fact[] };
+  story: { label: string; title: string; text: string; figures: Fact[]; image: StaticImageData; alt: string };
   faq: { q: string; a: string }[];
 };
 
@@ -151,6 +155,8 @@ export const services: Service[] = [
       { title: "Выдача", text: "Получатель забирает груз на складе или мы доставляем его до двери." },
     ],
     story: {
+      image: vanCity,
+      alt: "Водитель выгружает коробки из фургона у входа в офисное здание",
       label: "Пример клиента",
       title: "Производитель косметики из Казани отправляет 40 магазинам в 12 городах",
       text: "Раньше компания возила товар отдельными машинами раз в неделю. Перешли на сборные отправки два раза в неделю: склады магазинов стали получать товар чаще, а логистика подешевела.",
@@ -235,6 +241,8 @@ export const services: Service[] = [
       { title: "Сдача", text: "Получатель подписывает накладную, документы приходят в ЭДО в тот же день." },
     ],
     story: {
+      image: driver,
+      alt: "Водитель сверяет документы на планшете у тягача перед рейсом",
       label: "Пример клиента",
       title: "Строительная компания из Екатеринбурга возит металлоконструкции на объекты",
       text: "Каждую неделю 6–8 фур с площадки в Екатеринбурге на стройки в Тюмени и Челябинске. Машины подаются по графику, ставки зафиксированы на год.",
@@ -356,6 +364,8 @@ export const services: Service[] = [
       { title: "Отгрузка", text: "Собираем заказы и отправляем получателям по России." },
     ],
     story: {
+      image: warehouse,
+      alt: "Ричтрак между стеллажами с паллетами на складе",
       label: "Пример клиента",
       title: "Интернет-магазин товаров для дома перенёс весь склад в Онегу",
       text: "Магазин держал свой склад на 800 м² и пятерых сотрудников. Теперь товар хранится у нас в Москве, заказы собираются в день оформления.",
@@ -461,6 +471,8 @@ export const services: Service[] = [
       { title: "Акт", text: "Присылаем акт приёмки и закрывающие документы в день сдачи." },
     ],
     story: {
+      image: loading,
+      alt: "Сотрудник закатывает паллету с коробами в кузов грузовика",
       label: "Пример клиента",
       title: "Бренд детской одежды поставляет на три площадки из одного склада",
       text: "Раньше поставки готовили сами и теряли до 10 % коробов на приёмке из-за ошибок в маркировке. Теперь весь товар хранится у нас, поставки уходят дважды в неделю.",
