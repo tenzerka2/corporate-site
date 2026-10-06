@@ -1,21 +1,21 @@
 @theme inline {
   --font-sans: var(--font-inter);
   --color-ink: #111111;
-  --color-navy: #0c2340;
-  --color-muted: #55554f;
+  --color-navy: #0b2a4a;
+  --color-muted: #666660;
   --color-tertiary: #8c8c85;
-  --color-border: #c4c4bd;
-  --color-divider: #d8d8d3;
-  --color-surface: #f7f7f4;
-  --color-subtle: #ecece7;
+  --color-border: #bdbdb5;
+  --color-divider: #d3d3cc;
+  --color-surface: #f4f4f0;
+  --color-subtle: #eaeae4;
   --color-white: #ffffff;
-  --color-brand-light: #ecece7;
+  --color-brand-light: #eaeae4;
   --color-brand-mid: #b7bcc4;
   --color-orange: #f26b1d;
   --color-orange-hover: #d95a10;
   --color-success: #039855;
-  --color-error: #d92d20;
-  --radius-control: 4px;
+  --color-error: #b42318;
+  --radius-control: 3px;
   --radius-card: 4px;
   --radius-hero: 0px;
   --shadow-card: 0 1px 3px rgba(13, 21, 32, 0.05);
@@ -25,7 +25,7 @@
 }
 :root {
   --container: 1172px;
-  --container-wide: 1472px;
+  --container-wide: 1392px;
   --gutter: 24px;
   --section-space: 120px;
   --header-height: 88px;

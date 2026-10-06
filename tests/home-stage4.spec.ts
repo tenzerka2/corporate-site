@@ -36,7 +36,7 @@ test("калькулятор пересчитывает цену, выбирае
   const ftl = await digits(page);
   await calculator.locator(".checkbox-label", { hasText: "Жёсткая упаковка" }).click();
   await expect.poll(() => digits(page)).toBeGreaterThan(ftl);
-  await expect(calculator.locator(".calculator-breakdown")).toContainText(
+  await expect(calculator.locator(".calc-lines")).toContainText(
     "Жёсткая упаковка",
   );
 
@@ -55,7 +55,7 @@ test("калькулятор пересчитывает цену, выбирае
   await calculator.getByRole("combobox", { name: "Куда", exact: true }).click();
   await page.getByRole("textbox", { name: "Поиск: Куда" }).fill("Владив");
   await page.getByRole("option", { name: "Владивосток" }).click();
-  await expect(calculator.locator(".calculator-facts")).toContainText("дн");
+  await expect(calculator.locator(".calc-lines")).toContainText("дн");
   await scrollTo(page, "#calculator");
   await calculator.screenshot({ path: "artifacts/stage-4/calculator-result-1440.png", style: clean });
 });
@@ -165,7 +165,7 @@ test("вторая половина главной: состав, адаптив
     await page.setViewportSize({ width, height: 1000 });
     await page.goto("/");
     await page.evaluate(() => document.fonts.ready);
-    await expect(page.locator(".service-row")).toHaveCount(4);
+    await expect(page.locator(".svc")).toHaveCount(4);
     await expect(page.locator(".directions-list li")).toHaveCount(8);
     await expect(page.locator(".contact-actions a")).toHaveCount(3);
     expect(
@@ -173,7 +173,7 @@ test("вторая половина главной: состав, адаптив
     ).toBe(true);
     if ([390, 768, 1440].includes(width))
       for (const [name, selector] of [
-        ["services", ".services-block"],
+        ["services", ".section-services"],
         ["calculator", "#calculator"],
         ["directions", "#geography"],
       ])
@@ -182,7 +182,7 @@ test("вторая половина главной: состав, адаптив
           style: clean,
         });
   }
-  await page.getByRole("link", { name: "Подобрать машину" }).click();
+  await page.locator(".svc-b").getByRole("link", { name: "Рассчитать" }).click();
   await expect(page.locator("#calculator input[value=ftl]")).toBeChecked();
   await page.goto("/faq");
   const question = page.getByRole("button", { name: "Что входит в страховку?" });
@@ -195,7 +195,7 @@ test("отдельная страница калькулятора учитыв�
 }) => {
   await page.goto("/calculator?service=truck");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Рассчитайте стоимость за 2 минуты",
+    "Расчёт стоимости: Москва → Екатеринбург",
   );
   await expect(page.locator("#calculator input[value=ftl]")).toBeChecked();
   const axe = await new AxeBuilder({ page })

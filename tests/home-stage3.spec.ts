@@ -14,11 +14,13 @@ test("главная: последовательность, адаптив, чи
     await expect(hero.locator(".check-item, svg.lucide-check")).toHaveCount(0);
     await expect(hero.locator(".quick-quote")).toHaveCount(1);
     await expect(page.locator(".company-stats > div")).toHaveCount(5);
-    await expect(page.locator(".service-row")).toHaveCount(4);
+    await expect(page.locator(".svc")).toHaveCount(4);
+    await expect(page.locator(".svc .photo-figure")).toHaveCount(3);
     await expect(page.locator(".section-label")).toHaveCount(7);
-    await expect(page.locator(".photo-band")).toHaveCount(3);
+    await expect(page.locator(".photo-band")).toHaveCount(2);
+    await expect(page.locator(".photo-code").first()).toHaveText("F01");
     await expect(page.locator(".warehouse-table tbody tr")).toHaveCount(6);
-    await expect(page.locator("#why-onega .spec-grid > div")).toHaveCount(6);
+    await expect(page.locator("#why-onega .terms > div")).toHaveCount(6);
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -27,8 +29,8 @@ test("главная: последовательность, адаптив, чи
     const alignment = await page.evaluate(() => {
       const selectors = [
         ".site-header .logo",
-        ".hero-copy h1",
-        "#services-title",
+        ".hero-title",
+        "#warehouses-title",
         "#about-title",
         "#conditions-title",
       ];
@@ -48,9 +50,13 @@ test("главная: последовательность, адаптив, чи
       ),
     ).toHaveCount(0);
     await page.screenshot({ path: `artifacts/stage-3/hero-${width}.png` });
-    await page.evaluate(() => {
-      for (const image of document.images) image.loading = "eager";
-    });
+    // Scroll to every lazy image like a visitor would, then require all of them loaded.
+    for (const image of await page.locator("main img").all()) {
+      await image.scrollIntoViewIfNeeded();
+      await expect
+        .poll(() => image.evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth > 0))
+        .toBe(true);
+    }
     await expect
       .poll(
         () =>

@@ -3,15 +3,17 @@ import { home } from "@/content/home";
 import { labels } from "@/content/labels";
 import { pageMetadata } from "@/lib/seo";
 import { PhotoBand } from "@/components/page/Photo";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import {
   AboutSection,
   ConditionsSection,
   ContactSection,
+  ServicesIndex,
   WarehousesSection,
 } from "@/components/home/HomeSections";
 import { QuickQuote } from "@/components/logistics/QuickQuote";
 import { Planner } from "@/components/logistics/Planner";
-import { ServicesBlock } from "@/components/logistics/HomeBlocks";
 
 export const metadata = {
   ...pageMetadata({
@@ -22,36 +24,45 @@ export const metadata = {
   title: { absolute: labels.onegaLogistikGruzoperevozkiPoRossii },
 };
 
-// Order: short first screen, terminal photo, company, services, geography and
-// calculator, warehouses, terms, contact. One idea per screen, no filler blocks.
+// Title page, F01 terminal, company, service index with its own photos,
+// geography and calculation, F05 warehouse, warehouses, terms, contact.
 export default function Home() {
   return (
     <>
       <section className="home-hero">
         <Container wide>
-          <div className="hero-layout">
-            <div className="hero-copy">
-              <h1>{home.title}</h1>
-              <p className="hero-subtitle">{home.subtitle}</p>
-              <div className="hero-actions">
+          <div className="hero-meta">
+            {home.meta.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+          <div className="hero-grid">
+            <h1 className="hero-title">{home.title}</h1>
+            <div className="hero-aside">
+              <p className="hero-facts-text">
+                {home.facts.map((line) => (
+                  <span key={line}>{line}</span>
+                ))}
+              </p>
+              <div className="hero-links">
                 <ButtonLink href="#calculator">{home.calculate}</ButtonLink>
-                <ButtonLink href="/tracking" variant="secondary">
+                <Link href="/tracking" className="text-link">
                   {home.tracking}
-                </ButtonLink>
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                </Link>
               </div>
             </div>
-            <QuickQuote />
           </div>
+          <QuickQuote />
         </Container>
       </section>
       <PhotoBand name="terminal" priority />
       <AboutSection />
-      <ServicesBlock />
-      <PhotoBand name="highway" />
+      <ServicesIndex />
       <Planner />
+      <PhotoBand name="warehouse" />
       <WarehousesSection />
       <ConditionsSection />
-      <PhotoBand name="loading" />
       <ContactSection />
       <Container wide>
         <p className="demo-note">{home.note}</p>

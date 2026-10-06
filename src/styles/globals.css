@@ -62,18 +62,18 @@ p {
 h1,
 .display-text {
   font-size: 64px;
-  line-height: 68px;
+  line-height: 66px;
   letter-spacing: -0.045em;
-  font-weight: 700;
-  color: var(--color-navy);
+  font-weight: 500;
+  color: var(--color-ink);
 }
 h2,
 .h2-text {
   font-size: 40px;
   line-height: 46px;
   letter-spacing: -0.035em;
-  font-weight: 700;
-  color: var(--color-navy);
+  font-weight: 500;
+  color: var(--color-ink);
 }
 h3,
 .h3-text {
@@ -81,7 +81,7 @@ h3,
   line-height: 30px;
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: var(--color-navy);
+  color: var(--color-ink);
 }
 .hero-subtitle {
   font-size: 26px;

@@ -154,6 +154,7 @@ export function SectionLabel({ index, children }: { index: string; children: Rea
   return (
     <p className="section-label">
       <span>{index}</span>
+      <span aria-hidden="true">/</span>
       {children}
     </p>
   );

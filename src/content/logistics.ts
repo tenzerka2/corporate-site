@@ -108,6 +108,7 @@ export const mapCopy = {
 
 export const calculatorCopy = {
   title: "Рассчитайте стоимость за 2 минуты",
+  headingPrefix: "Расчёт стоимости:",
   description:
     "Укажите города и параметры груза. Цена пересчитывается сразу, а в заявку попадут те же данные.",
   points: [
@@ -130,7 +131,7 @@ export const calculatorCopy = {
   pickupHint: "+900 ₽",
   deliveryHint: "+900 ₽",
   packagingHint: "+12 % к перевозке",
-  resultLabel: "Предварительный расчёт",
+  resultLabel: "Предварительная стоимость",
   from_: "от",
   term: "Срок в пути",
   distance: "Расстояние по дорогам",
