@@ -33,6 +33,24 @@ const paths = {
   arrow: <path d="M5 12h14M13.5 6.5 19 12l-5.5 5.5" />,
   chevron: <path d="m6.5 9.5 5.5 5.5 5.5-5.5" />,
   menu: <path d="M4 7h16M4 12h16M4 17h16" />,
+  search: (
+    <>
+      <circle cx="11" cy="11" r="6.5" />
+      <path d="m16 16 4.5 4.5" />
+    </>
+  ),
+  pin: (
+    <>
+      <path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z" />
+      <circle cx="12" cy="10" r="2.3" />
+    </>
+  ),
+  user: (
+    <>
+      <circle cx="12" cy="8" r="3.8" />
+      <path d="M4.5 20c1.2-3.8 4-5.5 7.5-5.5s6.3 1.7 7.5 5.5" />
+    </>
+  ),
 } as const;
 
 export type IconName = keyof typeof paths;

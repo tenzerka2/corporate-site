@@ -4,6 +4,9 @@
   border-radius: var(--radius-block);
   background: var(--soft);
 }
+.bare {
+  margin-top: 48px;
+}
 .head {
   display: grid;
   gap: 12px;

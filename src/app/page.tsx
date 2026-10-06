@@ -1,86 +1,39 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Calculator } from "@/components/Calculator";
 import { Icon } from "@/components/Icon";
-import { company, contacts, hero, reviews, services, stats, steps, warehouses, why } from "@/content/site";
+import { CheckList } from "@/components/ui/CheckList";
+import { Hero } from "@/components/ui/Hero";
+import { Steps } from "@/components/ui/Steps";
+import { warehouseList } from "@/content/pages";
+import { services } from "@/content/services";
+import { company, contacts, hero, reviews, stats, steps, why } from "@/content/site";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <>
-      <section className={styles.hero} aria-labelledby="hero-title">
-        <div className={styles.heroBox}>
-          <div className={styles.heroPhoto}>
-            <Image src={hero.photo.image} alt={hero.photo.alt} fill sizes="(min-width: 1024px) 55vw, 100vw" placeholder="blur" priority />
-          </div>
-          <div className={`container ${styles.heroCopy}`}>
-            <p className={styles.badge}>{hero.badge}</p>
-            <h1 id="hero-title">{hero.title}</h1>
-            <p className={styles.lead}>{hero.lead}</p>
-            <ul className={styles.checks}>
-              {hero.points.map((point) => (
-                <li key={point}>
-                  <Icon name="check" size={18} />
-                  {point}
-                </li>
-              ))}
-            </ul>
-            <div className={styles.heroActions}>
-              <a className="button" href={hero.primary.href}>
-                <Icon name="calc" size={22} />
-                {hero.primary.label}
-              </a>
-              <a className="button button-secondary" href={hero.secondary.href}>
-                {hero.secondary.label}
-              </a>
-            </div>
-            <ul className={styles.promises}>
-              {hero.promises.map((item) => (
-                <li key={item.text}>
-                  <Icon name={item.icon} size={18} />
-                  {item.text}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="container">
-          <dl className={styles.stats}>
-            {stats.map((item) => (
-              <div key={item.label}>
-                <dt>{item.label}</dt>
-                <dd>{item.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
+      <Hero
+        badge={hero.badge}
+        title={hero.title}
+        lead={hero.lead}
+        points={hero.points}
+        actions={[
+          { label: hero.primary.label, href: hero.primary.href, icon: "calc" },
+          { label: hero.secondary.label, href: hero.secondary.href, secondary: true },
+        ]}
+        promises={hero.promises}
+        photo={hero.photo}
+        stats={stats}
+      />
 
-      <section id="how" className={styles.section} aria-labelledby="how-title">
+      <section id="how" className="section" aria-labelledby="how-title">
         <div className="container">
-          <div className={styles.center}>
+          <div className="head-center">
             <h2 id="how-title">{steps.title}</h2>
-            <p className="muted">{steps.text}</p>
+            <p>{steps.text}</p>
           </div>
-          <ol className={styles.steps}>
-            {steps.items.map((step, index) => (
-              <li key={step.title} className={styles.step}>
-                <div className={styles.stepPhoto}>
-                  <Image src={step.image} alt={step.alt} sizes="(min-width: 1024px) 360px, 100vw" placeholder="blur" />
-                  <span className={styles.stepNum} aria-hidden="true">
-                    {index + 1}
-                  </span>
-                </div>
-                <div className={styles.stepBody}>
-                  <h3>{step.title}</h3>
-                  <p className="muted">{step.text}</p>
-                  <a className="link" href={step.link.href}>
-                    {step.link.label}
-                    <Icon name="arrow" size={16} />
-                  </a>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <Steps items={steps.items} />
           <div className={styles.centerAction}>
             <a className="button" href="#calculator">
               <Icon name="calc" />
@@ -90,54 +43,49 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="why" className={styles.block} aria-labelledby="why-title">
+      <section id="why" className="block" aria-labelledby="why-title">
         <div className={`container ${styles.why}`}>
           <div className={styles.whyPhoto}>
             <Image src={why.image} alt={why.alt} sizes="(min-width: 1024px) 520px, 100vw" placeholder="blur" />
           </div>
           <div>
             <h2 id="why-title">{why.title}</h2>
-            <ul className={styles.whyList}>
-              {why.items.map((item) => (
-                <li key={item}>
-                  <Icon name="check" size={18} />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <a className="button" href="#contacts">
-              <Icon name="phone" />
+            <div className={styles.whyList}>
+              <CheckList items={why.items} columns={2} />
+            </div>
+            <Link className="button" href="/about">
               {why.action}
-            </a>
+              <Icon name="arrow" size={18} />
+            </Link>
           </div>
         </div>
       </section>
 
-      <section id="services" className={styles.section} aria-labelledby="services-title">
+      <section id="services" className="section" aria-labelledby="services-title">
         <div className="container">
-          <div className={styles.center}>
-            <h2 id="services-title">{services.title}</h2>
-            <p className="muted">{services.text}</p>
+          <div className="head-center">
+            <h2 id="services-title">Наши услуги</h2>
+            <p>Перевозки и хранение для компаний: от одной коробки до регулярных рейсов по графику. Все услуги работают через одного менеджера и один договор.</p>
           </div>
-          <ul className={styles.services}>
-            {services.items.map((item) => (
-              <li key={item.id} className={styles.service}>
+          <ul className={`plain-list ${styles.services}`}>
+            {services.map((item) => (
+              <li key={item.slug} className={styles.service}>
                 <div className={styles.servicePhoto}>
                   <Image src={item.image} alt={item.alt} sizes="(min-width: 1024px) 560px, 100vw" placeholder="blur" />
                 </div>
                 <div className={styles.serviceBody}>
                   <h3>{item.title}</h3>
-                  <p className="muted">{item.text}</p>
-                  <ul className={styles.tags}>
-                    {item.facts.map((fact) => (
-                      <li key={fact}>{fact}</li>
+                  <p className="muted">{item.summary}</p>
+                  <ul className={`plain-list ${styles.tags}`}>
+                    {item.tags.map((tag) => (
+                      <li key={tag}>{tag}</li>
                     ))}
                   </ul>
-                  <a className="button button-secondary" href="#calculator">
-                    {services.action}
+                  <Link className="button button-secondary" href={`/services/${item.slug}`}>
+                    Подробнее
                     <span className="sr-only">: {item.title}</span>
                     <Icon name="arrow" size={18} />
-                  </a>
+                  </Link>
                 </div>
               </li>
             ))}
@@ -147,13 +95,13 @@ export default function Home() {
 
       <Calculator />
 
-      <section id="reviews" className={styles.section} aria-labelledby="reviews-title">
+      <section id="reviews" className="section" aria-labelledby="reviews-title">
         <div className="container">
-          <div className={styles.center}>
+          <div className="head-center">
             <h2 id="reviews-title">{reviews.title}</h2>
-            <p className="muted">{reviews.text}</p>
+            <p>{reviews.text}</p>
           </div>
-          <ul className={styles.reviews}>
+          <ul className={`plain-list ${styles.reviews}`}>
             {reviews.items.map((item) => (
               <li key={item.company}>
                 <blockquote>
@@ -169,16 +117,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="warehouses" className={styles.block} aria-labelledby="warehouses-title">
+      <section id="warehouses" className="block" aria-labelledby="warehouses-title">
         <div className="container">
-          <div className={styles.center}>
-            <h2 id="warehouses-title">{warehouses.title}</h2>
-            <p className="muted">{warehouses.text}</p>
+          <div className="head-center">
+            <h2 id="warehouses-title">Шесть собственных складов</h2>
+            <p>Принимаем и отправляем грузы ежедневно с 08:00 до 20:00</p>
           </div>
-          <ul className={styles.warehouses}>
-            {warehouses.items.map((item) => (
-              <li key={item.city}>
-                <h3>{item.city}</h3>
+          <ul className={`plain-list ${styles.warehouses}`}>
+            {warehouseList.map((item) => (
+              <li key={item.id}>
+                <h3>
+                  <Link href={`/warehouses#${item.id}`} className={styles.cardLink}>
+                    {item.city}
+                  </Link>
+                </h3>
                 <p className="muted">{item.address}</p>
                 <p className={styles.area}>{item.area}</p>
               </li>
@@ -187,7 +139,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contacts" className={styles.section} aria-labelledby="contacts-title">
+      <section id="contacts" className="section" aria-labelledby="contacts-title">
         <div className="container">
           <div className={styles.cta}>
             <div>

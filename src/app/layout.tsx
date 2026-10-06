@@ -12,7 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Онега Логистик: грузоперевозки по России",
+  title: { default: "Онега Логистик: грузоперевозки по России", template: "%s | Онега Логистик" },
   description:
     "Сборные грузы от 1 кг и отдельные машины до 20 т по России. Шесть собственных складов, расчёт стоимости онлайн.",
   robots: { index: false, follow: false },

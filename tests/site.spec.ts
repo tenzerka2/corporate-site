@@ -3,39 +3,74 @@ import AxeBuilder from "@axe-core/playwright";
 
 const widths = [360, 390, 768, 1024, 1440, 1920];
 
-test("главная: структура, адаптив, доступность", async ({ page }) => {
+const pages = [
+  "/",
+  "/services",
+  "/services/groupage",
+  "/services/truck",
+  "/services/storage",
+  "/services/marketplaces",
+  "/tariffs",
+  "/calculator",
+  "/tracking",
+  "/about",
+  "/warehouses",
+  "/contacts",
+  "/privacy",
+];
+
+test("главная: структура и карточка цифр внахлёст", async ({ page }) => {
   for (const width of widths) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
-    await expect(page.locator("h1")).toHaveCount(1);
     const size = await page.locator("h1").evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
     expect(size, `h1 @ ${width}`).toBeLessThanOrEqual(width < 768 ? 48 : 76);
-    // Hero: headline, copy, actions, photo. No form inside.
     await expect(page.locator("section:first-of-type input, section:first-of-type select")).toHaveCount(0);
     await expect(page.locator("#how ol > li")).toHaveCount(3);
     await expect(page.locator("#services h3")).toHaveCount(4);
-    // The figures card sits on the lower edge of the hero.
     const overlap = await page.evaluate(() => {
       const box = document.querySelector("section:first-of-type > div")!.getBoundingClientRect();
       const card = document.querySelector("section:first-of-type dl")!.getBoundingClientRect();
       return card.top < box.bottom && card.bottom > box.bottom;
     });
     expect(overlap, `stats @ ${width}`).toBe(true);
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `scroll @ ${width}`).toBe(true);
-    if (width === 390 || width === 1440) {
-      const axe = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
-      expect(axe.violations.map((v) => `${v.id} ${v.nodes.map((n) => n.target).join(",")}`), `axe @ ${width}`).toEqual([]);
+  }
+});
+
+test("все страницы: один h1, без горизонтального скролла, доступность", async ({ page }) => {
+  for (const path of pages) {
+    for (const width of [360, 768, 1440]) {
+      await page.setViewportSize({ width, height: 900 });
+      const response = await page.goto(path);
+      expect(response?.status(), path).toBe(200);
+      await expect(page.locator("h1"), path).toHaveCount(1);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `scroll ${path} @ ${width}`).toBe(true);
+      if (width !== 768) {
+        const axe = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
+        expect(axe.violations.map((v) => `${v.id} ${v.nodes.map((n) => n.target).join(",")}`), `axe ${path} @ ${width}`).toEqual([]);
+      }
     }
   }
 });
 
-test("все ссылки ведут на существующие адреса", async ({ page, request }) => {
-  await page.goto("/");
-  const hrefs = await page.locator("a[href]").evaluateAll((els) => els.map((e) => e.getAttribute("href")!));
-  for (const href of hrefs) {
-    if (href.startsWith("#")) expect(await page.locator(href).count(), href).toBe(1);
-    else if (href.startsWith("/")) expect((await request.get(href)).status(), href).toBe(200);
+test("все ссылки ведут на существующие страницы и якоря", async ({ page }) => {
+  const known = new Set(pages);
+  for (const path of pages) {
+    await page.goto(path);
+    const hrefs = await page.locator("a[href]").evaluateAll((els) => els.map((e) => e.getAttribute("href")!));
+    for (const href of hrefs) {
+      if (/^(tel|mailto):/.test(href)) continue;
+      const [route, hash] = href.split("#");
+      const target = route || path;
+      expect(known.has(target), `${path} -> ${href}`).toBe(true);
+      if (hash) {
+        if (target !== path) await page.goto(target);
+        expect(await page.locator(`#${hash}`).count(), `${path} -> ${href}`).toBe(1);
+        if (target !== path) await page.goto(path);
+      }
+    }
   }
+  expect((await page.goto("/services/nope"))?.status()).toBe(404);
 });
 
 test("калькулятор: пересчёт, машина, ошибка, обмен городов", async ({ page }) => {
@@ -97,6 +132,50 @@ test("заявка: проверка полей, Escape, клик вне, воз
   await dialog.getByText("Даю согласие").click();
   await dialog.getByRole("button", { name: "Отправить заявку" }).click();
   await expect(page.getByRole("dialog", { name: "Заявка принята" })).toContainText(/ОН-\d{6}-\d{4}/);
+});
+
+test("выпадающее меню: открытие, переход, Escape", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  const trigger = page.getByRole("button", { name: "Услуги" });
+  await trigger.click();
+  await expect(page.locator("#menu-0")).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(page.locator("#menu-0")).toBeHidden();
+  await expect(trigger).toBeFocused();
+  await trigger.click();
+  await page.locator("#menu-0").getByRole("link", { name: /Отдельная машина/ }).click();
+  await expect(page).toHaveURL(/\/services\/truck$/);
+  await expect(page.locator("h1")).toContainText("Отдельная машина");
+  await expect(page.locator("#menu-0")).toBeHidden();
+});
+
+test("вкладки условий: клик и стрелки", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/services/truck");
+  const tabs = page.getByRole("tab");
+  await expect(tabs).toHaveCount(4);
+  await expect(page.getByRole("tabpanel")).toContainText("1\u00a0500 кг");
+  await tabs.nth(3).click();
+  await expect(page.getByRole("tabpanel")).toContainText("Фура 20 т");
+  await page.keyboard.press("ArrowDown");
+  await expect(tabs.nth(0)).toBeFocused();
+  await expect(tabs.nth(0)).toHaveAttribute("aria-selected", "true");
+  await page.keyboard.press("End");
+  await expect(tabs.nth(3)).toHaveAttribute("aria-selected", "true");
+});
+
+test("отслеживание: номер находится, ошибка на неверный", async ({ page }) => {
+  await page.goto("/tracking");
+  const field = page.getByLabel("Номер заявки");
+  await field.fill("123");
+  await page.getByRole("button", { name: "Найти" }).click();
+  await expect(page.getByText("Не нашли заявку")).toBeVisible();
+  await field.fill("он 260901 4821");
+  await page.getByRole("button", { name: "Найти" }).click();
+  await expect(page.getByText("ОН-260901-4821")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: /→/ })).toBeVisible();
+  await expect(page.locator("article ol li")).toHaveCount(5);
 });
 
 test("мобильное меню: Escape закрывает и возвращает фокус", async ({ page }) => {

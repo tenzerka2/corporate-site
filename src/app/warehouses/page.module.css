@@ -1,0 +1,75 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap);
+}
+.card {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  scroll-margin-top: calc(var(--header) + 24px);
+}
+.card:target {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(11, 74, 139, 0.15);
+}
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+.cardHead h3 {
+  font-size: 24px;
+}
+.area {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.note {
+  color: var(--muted);
+}
+.meta {
+  display: grid;
+  gap: 8px;
+}
+.meta li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.meta svg {
+  flex: none;
+  color: var(--navy);
+}
+.meta a:hover {
+  color: var(--navy);
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tags li {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--soft);
+  font-size: 14px;
+  font-weight: 500;
+}
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .card {
+    padding: 20px;
+  }
+  .cardHead h3 {
+    font-size: 20px;
+  }
+}

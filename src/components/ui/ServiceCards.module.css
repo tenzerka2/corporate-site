@@ -1,0 +1,77 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap);
+}
+.grid[data-count="3"] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+.card:hover {
+  border-color: var(--field);
+}
+.card:focus-within {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+.card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.body {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 12px;
+  flex: 1;
+  padding: 28px 32px 32px;
+}
+.body h3 {
+  font-size: 22px;
+}
+/* The whole card is clickable through the heading link. */
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.link:focus-visible {
+  outline: 0;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tags li {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--soft);
+  font-size: 14px;
+  font-weight: 500;
+}
+.more {
+  margin-top: 4px;
+}
+@media (max-width: 1023px) {
+  .grid,
+  .grid[data-count="3"] {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 640px;
+    margin-inline: auto;
+  }
+}
+@media (max-width: 767px) {
+  .body {
+    padding: 22px 20px 24px;
+  }
+}

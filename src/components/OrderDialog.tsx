@@ -12,7 +12,7 @@ export function OrderDialog({
 }: {
   open: boolean;
   onClose: () => void;
-  summary: string;
+  summary?: string;
 }) {
   const id = useId();
   const ref = useRef<HTMLDialogElement>(null);
@@ -72,13 +72,18 @@ export function OrderDialog({
           <div role="status" className={styles.done}>
             <p>{copy.doneText(done)}</p>
             <p className="muted">{company.demoNote}</p>
-            <button type="button" className="button" onClick={close}>
-              {copy.ok}
-            </button>
+            <div className={styles.doneActions}>
+              <button type="button" className="button" onClick={close}>
+                {copy.ok}
+              </button>
+              <a className="button button-secondary" href="/tracking">
+                {copy.track}
+              </a>
+            </div>
           </div>
         ) : (
           <form ref={form} className={styles.form} onSubmit={submit} noValidate>
-            <p className={styles.summary}>{summary}</p>
+            {summary && <p className={styles.summary}>{summary}</p>}
             <div>
               <label className="label" htmlFor={`${id}-name`}>
                 {copy.name}
@@ -158,6 +163,9 @@ export function OrderDialog({
                 />
                 <span>{copy.consent}</span>
               </label>
+              <a className={`link ${styles.policy}`} href="/privacy" target="_blank">
+                {copy.policy}
+              </a>
               {errors.consent && (
                 <span id={`${id}-consent-error`} className="error">
                   {copy.errors.consent}

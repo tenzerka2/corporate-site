@@ -9,7 +9,9 @@ import {
   roadKm,
   transitDays,
   vehicleFor,
+  zoneDays,
   zoneFor,
+  zoneRange,
   type QuoteInput,
 } from "./tariff";
 
@@ -48,6 +50,12 @@ describe("сборный груз", () => {
     const zone = zoneFor(roadKm("moscow", "ekaterinburg"));
     expect(ok({ weightKg: 900, volumeM3: 1 }).lines.transport).toBe(900 * zone.perKg);
     expect(ok({ weightKg: 100, volumeM3: 3 }).lines.transport).toBe(3 * zone.perM3);
+  });
+  it("подписи зон для таблиц", () => {
+    expect(zoneRange(0)).toBe("до 800 км");
+    expect(zoneRange(1).replace(/\s/g, " ")).toBe("800–2 000 км");
+    expect(zoneRange(3).replace(/\s/g, " ")).toBe("дальше 4 000 км");
+    expect(formatDays(zoneDays(0))).toBe("3–4 дня");
   });
   it("зоны меняются на границах 800, 2 000 и 4 000 км", () => {
     expect(zoneFor(800).upToKm).toBe(800);

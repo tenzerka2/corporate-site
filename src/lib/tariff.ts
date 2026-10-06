@@ -67,6 +67,22 @@ export function roadKm(from: CityId, to: CityId) {
   return Math.max(LOCAL_KM, Math.round(haversine(a.lat, a.lon, b.lat, b.lon) * ROAD_FACTOR));
 }
 
+/** «до 800 км», «800–2 000 км», «дальше 4 000 км». */
+export function zoneRange(index: number) {
+  const km = (n: number) => n.toLocaleString("ru-RU");
+  const from = index === 0 ? 0 : zones[index - 1].upToKm;
+  const to = zones[index].upToKm;
+  if (from === 0) return `до ${km(to)} км`;
+  if (to === Infinity) return `дальше ${km(from)} км`;
+  return `${km(from)}–${km(to)} км`;
+}
+
+/** Transit time quoted for a zone: by its upper bound, 5 000 km for the open-ended one. */
+export function zoneDays(index: number) {
+  const to = zones[index].upToKm;
+  return transitDays(to === Infinity ? 5000 : to, "groupage");
+}
+
 export function zoneFor(km: number) {
   return zones.find((zone) => km <= zone.upToKm)!;
 }

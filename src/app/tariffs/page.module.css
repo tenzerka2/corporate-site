@@ -1,0 +1,82 @@
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+.table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.table th,
+.table td {
+  padding: 16px 24px;
+  text-align: left;
+  border-top: 1px solid var(--line);
+}
+.table thead th {
+  border-top: 0;
+  background: var(--soft-2);
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+.table tbody th {
+  font-weight: 600;
+}
+.table td:not(:first-child),
+.table thead th:not(:first-child) {
+  text-align: right;
+}
+.pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap);
+}
+.panel {
+  padding: 32px;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+.panel h2 {
+  margin-bottom: 16px;
+  font-size: 24px;
+}
+.rows {
+  margin: 0;
+}
+.rows div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 12px;
+  border-top: 1px solid var(--line);
+}
+.rows dt {
+  color: var(--muted);
+}
+.rows dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+}
+.note {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 15px;
+}
+@media (max-width: 1023px) {
+  .pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .table th,
+  .table td {
+    padding: 12px 14px;
+  }
+  .panel {
+    padding: 20px 16px;
+  }
+}

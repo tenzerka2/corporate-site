@@ -1,0 +1,22 @@
+.list {
+  display: grid;
+  gap: 14px 32px;
+}
+.list[data-cols="2"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.list svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--navy);
+}
+@media (max-width: 767px) {
+  .list[data-cols="2"] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

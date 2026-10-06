@@ -1,0 +1,48 @@
+.faq {
+  display: grid;
+  gap: 12px;
+  max-width: 880px;
+  margin-inline: auto;
+}
+.item {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+.item summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  font-size: 18px;
+  font-weight: 600;
+  list-style: none;
+  cursor: pointer;
+}
+.item summary::-webkit-details-marker {
+  display: none;
+}
+.item summary svg {
+  flex: none;
+  color: var(--navy);
+  transition: transform 0.15s;
+}
+.item[open] summary svg {
+  transform: rotate(180deg);
+}
+.item summary:focus-visible {
+  border-radius: var(--radius-card);
+}
+.item p {
+  padding: 0 24px 22px;
+}
+@media (max-width: 767px) {
+  .item summary {
+    padding: 16px 18px;
+    font-size: 16px;
+  }
+  .item p {
+    padding: 0 18px 18px;
+  }
+}

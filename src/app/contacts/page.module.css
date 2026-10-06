@@ -1,0 +1,91 @@
+.departments {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap);
+}
+.departments li {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 8px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+.phone {
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.phone:hover {
+  color: var(--navy);
+}
+.office {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 64px;
+  align-items: center;
+}
+.office img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+}
+.officeText {
+  margin: 16px 0 24px;
+  font-size: 18px;
+}
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+.table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+}
+.table th,
+.table td {
+  padding: 14px 24px;
+  border-top: 1px solid var(--line);
+  text-align: left;
+}
+.table thead th {
+  border-top: 0;
+  background: var(--soft-2);
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+.table tbody th a {
+  color: var(--navy);
+  font-weight: 600;
+}
+.table a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 1023px) {
+  .departments {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .office {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+}
+@media (max-width: 767px) {
+  .departments {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .departments li {
+    padding: 20px;
+  }
+  .table th,
+  .table td {
+    padding: 12px 14px;
+  }
+}

@@ -1,0 +1,117 @@
+.history {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px var(--gap);
+}
+.history li {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 24px 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+.year {
+  color: var(--navy);
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.fleet {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 64px;
+  align-items: center;
+}
+.fleet > div {
+  display: grid;
+  justify-items: start;
+  gap: 24px;
+}
+.fleet > div > dl {
+  width: 100%;
+}
+.fleetText {
+  color: var(--muted);
+  font-size: 17px;
+}
+.fleetPhoto {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+}
+.cities {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+}
+.cities a {
+  display: grid;
+  gap: 2px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+.cities a:hover {
+  border-color: var(--field);
+}
+.cities strong {
+  color: var(--navy);
+  font-weight: 600;
+}
+.cities span {
+  color: var(--muted);
+  font-size: 14px;
+}
+.requisites {
+  max-width: 880px;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+.requisites div {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 16px;
+  padding: 14px 24px;
+}
+.requisites div + div {
+  border-top: 1px solid var(--line);
+}
+.requisites dt {
+  color: var(--muted);
+}
+.requisites dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 1023px) {
+  .history {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .fleet {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+  .cities {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 767px) {
+  .history {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .history li {
+    padding: 20px;
+  }
+  .cities {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .requisites div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+    padding: 12px 16px;
+  }
+}

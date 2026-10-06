@@ -1,0 +1,33 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  gap: 40px var(--gap);
+  --cols: 4;
+}
+.grid[data-cols="3"] {
+  --cols: 3;
+}
+.grid[data-cols="2"] {
+  --cols: 2;
+}
+.grid li {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 2px solid var(--navy);
+}
+@media (max-width: 1023px) {
+  .grid,
+  .grid[data-cols="3"] {
+    --cols: 2;
+  }
+}
+@media (max-width: 767px) {
+  .grid,
+  .grid[data-cols="3"],
+  .grid[data-cols="2"] {
+    --cols: 1;
+    gap: 28px;
+  }
+}

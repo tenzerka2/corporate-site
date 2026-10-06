@@ -31,7 +31,8 @@ const initial: CalcState = {
 
 const numeric = (value: string) => value.replace(/[^\d.,\s]/g, "");
 
-export function Calculator() {
+/** On the home page the block has its own heading; on /calculator the page hero introduces it. */
+export function Calculator({ heading = true }: { heading?: boolean }) {
   const id = useId();
   const [state, setState] = useState<CalcState>(initial);
   const [moreOpen, setMoreOpen] = useState(false);
@@ -58,9 +59,9 @@ export function Calculator() {
   const error = result.ok ? null : result.error;
 
   return (
-    <section id="calculator" className={styles.section} aria-labelledby={`${id}-title`}>
+    <section id="calculator" className={`${styles.section} ${heading ? "" : styles.bare}`} aria-labelledby={`${id}-title`}>
       <div className="container">
-        <div className={styles.head}>
+        <div className={heading ? styles.head : "sr-only"}>
           <h2 id={`${id}-title`}>{copy.title}</h2>
           <p className="muted">{copy.text}</p>
         </div>
