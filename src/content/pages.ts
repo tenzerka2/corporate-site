@@ -1,6 +1,6 @@
 // Copy for the company and client pages.
-import highway from "@/assets/photos/highway.webp";
-import loading from "@/assets/photos/loading.webp";
+import fleetYard from "@/assets/photos/fleet-yard.webp";
+import office from "@/assets/photos/office.webp";
 import terminal from "@/assets/photos/terminal-dock.webp";
 import warehouse from "@/assets/photos/warehouse-racks.webp";
 
@@ -125,8 +125,8 @@ export const aboutPage = {
     { value: "24", label: "грузовика 10 т" },
     { value: "32", label: "фуры 20 т" },
   ],
-  fleetImage: highway,
-  fleetAlt: "Тягач Онеги на трассе",
+  fleetImage: fleetYard,
+  fleetAlt: "Тягачи Онеги в ряд на стоянке у склада",
   requisitesTitle: "Реквизиты",
   requisites: [
     ["Полное название", "Общество с ограниченной ответственностью «Онега Логистик»"],
@@ -150,8 +150,8 @@ export const contactsPage = {
   ],
   officeTitle: "Главный офис",
   office: "Москва, Складской проезд, 7. Пн–Пт 08:00–20:00, Сб 09:00–15:00.",
-  officeImage: loading,
-  officeAlt: "Погрузка паллеты в грузовик у главного склада",
+  officeImage: office,
+  officeAlt: "Логисты в офисе за мониторами с картой маршрутов, за окном стоянка тягачей",
   formTitle: "Оставить заявку",
   formText: "Опишите груз и маршрут. Менеджер перезвонит, уточнит детали и пришлёт расчёт.",
   formAction: "Оставить заявку",

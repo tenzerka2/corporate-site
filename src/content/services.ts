@@ -1,10 +1,10 @@
 // Service pages. One shape for every service, rendered by app/services/[slug].
 import type { StaticImageData } from "next/image";
 import highway from "@/assets/photos/highway.webp";
-import loading from "@/assets/photos/loading.webp";
-import pallets from "@/assets/photos/pallets.webp";
-import terminal from "@/assets/photos/terminal-dock.webp";
-import warehouse from "@/assets/photos/warehouse-racks.webp";
+import fleetYard from "@/assets/photos/fleet-yard.webp";
+import marketplace from "@/assets/photos/marketplace.webp";
+import picking from "@/assets/photos/picking.webp";
+import sorting from "@/assets/photos/sorting.webp";
 import {
   DOOR_FEE,
   GROUPAGE_MIN,
@@ -90,10 +90,10 @@ export const services: Service[] = [
       "Забор от двери и доставка до двери в 180 городах.",
       "Страховка груза на полную стоимость.",
     ],
-    image: pallets,
-    alt: "Паллеты с упакованным грузом на складе",
-    heroImage: pallets,
-    heroAlt: "Паллеты, обмотанные плёнкой, в зоне отгрузки склада",
+    image: sorting,
+    alt: "Сотрудник сканирует короба на роликовом конвейере в сортировочной зоне",
+    heroImage: sorting,
+    heroAlt: "Сортировка сборных грузов: сотрудник в оранжевом жилете сканирует короба на конвейере",
     summary:
       "Отправка вместе с грузами других компаний. Платите только за свой вес и объём, минимальная отправка 1 кг. Отправляем ежедневно из всех шести складов.",
     tags: ["от 1 кг", `от ${formatRub(GROUPAGE_MIN)}`, "2–9 дней"],
@@ -275,10 +275,10 @@ export const services: Service[] = [
       "Учёт в WMS, остатки онлайн в личном кабинете.",
       "Отгрузка в день заказа при поступлении до 14:00.",
     ],
-    image: warehouse,
-    alt: "Стеллажи с паллетами на складе",
-    heroImage: warehouse,
-    heroAlt: "Ричтрак между высокими стеллажами с паллетами",
+    image: picking,
+    alt: "Сотрудник собирает заказ у стола комплектации рядом со стеллажами",
+    heroImage: picking,
+    heroAlt: "Комплектация заказа: сотрудник упаковывает товар в короб на складе",
     summary:
       "Приёмка, ответственное хранение, маркировка и комплектация заказов. Склады класса А в Москве, Петербурге, Казани, Краснодаре, Екатеринбурге и Новосибирске.",
     tags: ["35 500 м²", "3 дня бесплатно", "WMS-учёт"],
@@ -392,10 +392,10 @@ export const services: Service[] = [
       "Маркировка, упаковка и документы под требования площадки.",
       "Акт приёмки в день сдачи.",
     ],
-    image: loading,
-    alt: "Погрузка коробов в грузовик для поставки на маркетплейс",
-    heroImage: loading,
-    heroAlt: "Сотрудник закатывает паллету с коробами в кузов грузовика",
+    image: marketplace,
+    alt: "Паллета из промаркированных коробов для поставки на маркетплейс",
+    heroImage: marketplace,
+    heroAlt: "Сотрудник обматывает плёнкой паллету с промаркированными коробами",
     summary:
       "Привозим поставки на склады Wildberries, Ozon и Яндекс Маркета по их требованиям. Готовим маркировку, бронируем окно приёмки и присылаем акт в день сдачи.",
     tags: ["3 площадки", "от 1 короба", "6 ₽ маркировка"],
@@ -504,6 +504,6 @@ export const servicesHub = {
     { title: "Сопровождение", text: "Экспедитор с грузом весь рейс для ценных и опасных грузов. По запросу." },
     { title: "Документы в ЭДО", text: "Акты и счета-фактуры через Диадок или СБИС в день доставки. Бесплатно." },
   ],
-  heroImage: terminal,
-  heroAlt: "Тягач с полуприцепом у погрузочных ворот терминала",
+  heroImage: fleetYard,
+  heroAlt: "Ряд тёмно-синих тягачей Онеги на стоянке у склада",
 };

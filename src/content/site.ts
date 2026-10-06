@@ -1,6 +1,7 @@
 // All copy for the demo company. Company, people and figures are fictional.
 import terminal from "@/assets/photos/terminal-dock.webp";
-import highway from "@/assets/photos/highway.webp";
+import office from "@/assets/photos/office.webp";
+import fleetYard from "@/assets/photos/fleet-yard.webp";
 import pallets from "@/assets/photos/pallets.webp";
 import loading from "@/assets/photos/loading.webp";
 
@@ -60,8 +61,8 @@ export const steps = {
     {
       title: "Мы забираем груз и везём по маршруту",
       text: "Приезжаем к вам в согласованное время. Статус груза видно на сайте по номеру заявки и приходит в СМС.",
-      image: highway,
-      alt: "Тягач с полуприцепом на трассе",
+      image: fleetYard,
+      alt: "Тягачи Онеги на стоянке перед выездом в рейс",
       link: { label: "Отследить груз", href: "/tracking" },
     },
     {
@@ -85,8 +86,8 @@ export const why = {
     "Документы в ЭДО в день доставки",
     "Первые 3 дня хранения на складе бесплатно",
   ],
-  image: terminal,
-  alt: "Тягач Онеги у погрузочных ворот терминала",
+  image: office,
+  alt: "Логист в гарнитуре за мониторами с картой маршрутов",
   action: "Подробнее о компании",
 };
 
