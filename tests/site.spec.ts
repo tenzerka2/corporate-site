@@ -11,8 +11,16 @@ test("главная: структура, адаптив, доступность
     const size = await page.locator("h1").evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
     expect(size, `h1 @ ${width}`).toBeLessThanOrEqual(width < 768 ? 48 : 76);
     // Hero: headline, copy, actions, photo. No form inside.
-    await expect(page.locator("#hero-title ~ * input, section:first-of-type select")).toHaveCount(0);
-    await expect(page.locator("#services ol > li")).toHaveCount(3);
+    await expect(page.locator("section:first-of-type input, section:first-of-type select")).toHaveCount(0);
+    await expect(page.locator("#how ol > li")).toHaveCount(3);
+    await expect(page.locator("#services h3")).toHaveCount(4);
+    // The figures card sits on the lower edge of the hero.
+    const overlap = await page.evaluate(() => {
+      const box = document.querySelector("section:first-of-type > div")!.getBoundingClientRect();
+      const card = document.querySelector("section:first-of-type dl")!.getBoundingClientRect();
+      return card.top < box.bottom && card.bottom > box.bottom;
+    });
+    expect(overlap, `stats @ ${width}`).toBe(true);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `scroll @ ${width}`).toBe(true);
     if (width === 390 || width === 1440) {
       const axe = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
@@ -36,7 +44,7 @@ test("калькулятор: пересчёт, машина, ошибка, об
   const calc = page.locator("#calculator");
   const total = calc.getByTestId("total");
   await expect(total).toContainText("7 500");
-  await expect(calc.locator("h2").first()).toContainText("Москва → Екатеринбург");
+  await expect(calc.getByTestId("route")).toContainText("Москва → Екатеринбург");
   await calc.getByLabel("Вес, кг").fill("900");
   await expect(total).toContainText("20 700");
   await calc.getByText("Отдельная машина").click();
@@ -47,9 +55,9 @@ test("калькулятор: пересчёт, машина, ошибка, об
   await expect(calc.getByRole("status")).toContainText("не помещается");
   await calc.getByLabel("Вес, кг").fill("250");
   await calc.getByRole("button", { name: "Поменять города местами" }).click();
-  await expect(calc.locator("h2").first()).toContainText("Екатеринбург → Москва");
+  await expect(calc.getByTestId("route")).toContainText("Екатеринбург → Москва");
   await calc.getByLabel("Куда", { exact: true }).selectOption({ label: "Казань" });
-  await expect(calc.locator("h2").first()).toContainText("Екатеринбург → Казань");
+  await expect(calc.getByTestId("route")).toContainText("Екатеринбург → Казань");
 });
 
 test("калькулятор на телефоне: доп. параметры свёрнуты, цена сразу после веса", async ({ page }) => {

@@ -1,16 +1,23 @@
 .section {
-  padding-block: 112px 120px;
-  border-top: 1px solid var(--line);
+  margin: 112px 16px 0;
+  padding-block: 80px;
+  border-radius: var(--radius-block);
+  background: var(--soft);
 }
 .head {
   display: grid;
-  gap: 8px;
-  margin-bottom: 40px;
+  gap: 12px;
+  max-width: 720px;
+  margin: 0 auto 40px;
+  text-align: center;
+  font-size: 17px;
 }
 .route {
-  font-size: 48px;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  grid-area: h;
+  font-size: 26px;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 .arrow {
   color: var(--orange);
@@ -21,12 +28,17 @@
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-template-areas:
+    "h h h h h h h h r r r r"
     "c c c c c c c c r r r r"
     "w w w w w w w w r r r r"
     "m m m m m m m m r r r r";
-  grid-template-rows: auto auto 1fr;
-  gap: 28px var(--gap);
+  grid-template-rows: auto auto auto 1fr;
+  gap: 28px 40px;
   align-items: start;
+  padding: 40px;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
 .cities {
   grid-area: c;
@@ -80,6 +92,7 @@
 }
 .segment {
   display: inline-flex;
+  overflow: hidden;
   border: 1px solid var(--field);
   border-radius: var(--radius);
   background: var(--surface);
@@ -121,7 +134,8 @@
   display: grid;
   gap: 16px;
   padding: 24px;
-  background: var(--surface);
+  border-radius: 12px;
+  background: var(--soft-2);
   border: 1px solid var(--line);
 }
 .resultLabel {
@@ -131,7 +145,7 @@
 .total {
   font-size: 44px;
   line-height: 1.1;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -166,7 +180,7 @@
 @media (max-width: 1023px) {
   .grid {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "c" "w" "m" "r";
+    grid-template-areas: "h" "c" "w" "m" "r";
     grid-template-rows: none;
   }
   .result {
@@ -175,10 +189,11 @@
 }
 @media (max-width: 767px) {
   .section {
-    padding-block: 64px;
+    margin: 72px 8px 0;
+    padding-block: 56px;
   }
   .route {
-    font-size: 30px;
+    font-size: 22px;
   }
   .head p {
     display: none;
@@ -188,8 +203,9 @@
   }
   /* Phone: from, to, weight and volume, price, then the folded options. */
   .grid {
-    grid-template-areas: "c" "w" "r" "t" "m";
+    grid-template-areas: "h" "c" "w" "r" "t" "m";
     gap: 16px;
+    padding: 20px 16px;
   }
   .cities {
     grid-template-columns: minmax(0, 1fr) 48px;
@@ -208,6 +224,7 @@
   }
   .result {
     padding: 20px 16px;
+    margin-inline: -4px;
     gap: 12px;
   }
   .total {

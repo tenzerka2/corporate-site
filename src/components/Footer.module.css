@@ -1,6 +1,7 @@
 .footer {
-  background: var(--navy);
-  color: #fff;
+  margin-top: 96px;
+  border-top: 1px solid var(--line);
+  background: var(--soft-2);
   font-size: 15px;
 }
 .grid {
@@ -15,7 +16,7 @@
 }
 .legal {
   margin-top: 16px;
-  color: #c9d1dc;
+  color: var(--muted);
 }
 .grid nav,
 .contacts {
@@ -23,27 +24,38 @@
   align-content: start;
   gap: 10px;
 }
+.grid nav a {
+  color: var(--navy);
+}
 .grid a:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 .contacts span {
-  color: #c9d1dc;
+  color: var(--muted);
 }
 .bottom {
   display: flex;
   justify-content: space-between;
   gap: 24px;
   padding-block: 20px 28px;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  color: #c9d1dc;
+  background: linear-gradient(var(--line), var(--line)) top center / calc(100% - var(--gutter) * 2) 1px no-repeat;
+  color: var(--muted);
   font-size: 14px;
 }
 .demo {
-  color: #fff;
+  align-self: flex-start;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--soft);
+  color: var(--ink);
+  font-weight: 500;
   white-space: nowrap;
 }
 @media (max-width: 767px) {
+  .footer {
+    margin-top: 72px;
+  }
   .grid {
     grid-template-columns: 1fr;
     gap: 28px;

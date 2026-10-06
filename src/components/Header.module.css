@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--bg);
+  background: var(--surface);
   border-bottom: 1px solid var(--line);
 }
 .bar {
@@ -10,48 +10,64 @@
   align-items: center;
   gap: 40px;
   height: var(--header);
+  max-width: none;
 }
 .logo img {
   width: auto;
-  height: 30px;
+  height: 32px;
 }
 .nav {
   display: flex;
-  gap: 32px;
-  margin-left: auto;
-  font-size: 15px;
-}
-.nav a:hover,
-.phone:hover {
+  gap: 28px;
+  font-size: 16px;
   color: var(--navy);
 }
-.phone {
-  font-size: 15px;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
+.nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: auto;
+}
+.divider {
+  width: 1px;
+  height: 40px;
+  background: var(--line);
+}
+.iconLink {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  font-size: 13px;
+  line-height: 1.2;
+  color: var(--ink);
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.iconLink:hover {
+  color: var(--navy);
 }
 .burger {
   display: none;
   width: 40px;
   height: 40px;
-  margin-left: -10px;
-  padding: 0 10px;
+  margin-left: -8px;
+  padding: 8px;
   border: 0;
+  border-radius: var(--radius);
   background: transparent;
+  color: var(--ink);
   cursor: pointer;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
 }
-.burger span {
-  display: block;
-  height: 1.5px;
-  background: var(--ink);
+.burger:hover {
+  background: var(--soft);
 }
 .panel {
   border-top: 1px solid var(--line);
-  background: var(--bg);
+  background: var(--surface);
 }
 .panel nav {
   display: grid;
@@ -64,25 +80,44 @@
 }
 .panel .panelPhone {
   border-bottom: 0;
-  font-weight: 500;
+  font-weight: 600;
 }
 @media (min-width: 1024px) {
   .panel {
     display: none;
   }
 }
+@media (max-width: 1279px) {
+  .divider,
+  .iconLink:last-child {
+    display: none;
+  }
+}
 @media (max-width: 1023px) {
   .nav,
-  .phone {
+  .iconLink {
     display: none;
   }
   .burger {
-    display: flex;
+    display: block;
   }
   .bar {
     gap: 12px;
   }
-  .cta {
-    margin-left: auto;
+}
+.ctaShort {
+  display: none;
+}
+@media (max-width: 479px) {
+  .ctaLong {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .ctaShort {
+    display: inline;
   }
 }

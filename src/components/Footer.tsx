@@ -7,7 +7,7 @@ export function Footer() {
       <div className={`container ${styles.grid}`}>
         <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-dark.svg" alt="Онега" width="132" height="32" className={styles.logo} />
+          <img src="/logo.svg" alt="Онега" width="132" height="32" className={styles.logo} />
           <p className={styles.legal}>{company.legalName}</p>
         </div>
         <nav aria-label="Разделы">

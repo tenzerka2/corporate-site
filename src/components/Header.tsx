@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { company, nav } from "@/content/site";
+import { Icon } from "./Icon";
 import styles from "./Header.module.css";
 
 export function Header() {
@@ -42,9 +43,7 @@ export function Header() {
           aria-controls="site-menu"
           onClick={() => setOpen((value) => !value)}
         >
-          <span />
-          <span />
-          <span />
+          <Icon name="menu" size={24} />
         </button>
         <Link href="/" className={styles.logo} aria-label="Онега, на главную">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -57,12 +56,24 @@ export function Header() {
             </a>
           ))}
         </nav>
-        <a className={styles.phone} href={company.phoneHref}>
-          {company.phone}
-        </a>
-        <a className={`button button-small ${styles.cta}`} href="#calculator">
-          Рассчитать
-        </a>
+        <div className={styles.actions}>
+          <a className={`button button-secondary button-small ${styles.cta}`} href="#calculator">
+            <Icon name="calc" />
+            <span className={styles.ctaLong}>Рассчитать доставку</span>
+            <span className={styles.ctaShort} aria-hidden="true">
+              Расчёт
+            </span>
+          </a>
+          <span className={styles.divider} aria-hidden="true" />
+          <a className={styles.iconLink} href={company.phoneHref}>
+            <Icon name="phone" size={22} />
+            <span>{company.phone}</span>
+          </a>
+          <a className={styles.iconLink} href={`mailto:${company.email}`}>
+            <Icon name="mail" size={22} />
+            <span>Написать</span>
+          </a>
+        </div>
       </div>
       <div
         ref={panel}

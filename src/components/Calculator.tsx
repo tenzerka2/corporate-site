@@ -3,6 +3,7 @@ import { useId, useMemo, useRef, useState } from "react";
 import { cities, city, type CityId } from "@/content/cities";
 import { calculator as copy } from "@/content/site";
 import { formatDays, formatKm, formatRub, parseNumber, quote, type Mode } from "@/lib/tariff";
+import { Icon } from "./Icon";
 import { OrderDialog } from "./OrderDialog";
 import styles from "./Calculator.module.css";
 
@@ -60,14 +61,15 @@ export function Calculator() {
     <section id="calculator" className={styles.section} aria-labelledby={`${id}-title`}>
       <div className="container">
         <div className={styles.head}>
-          <h2 id={`${id}-title`} className={styles.route}>
-            <span className="sr-only">{copy.title}: </span>
-            {city(state.from).name} <span className={styles.arrow}>→</span> {city(state.to).name}
-          </h2>
+          <h2 id={`${id}-title`}>{copy.title}</h2>
           <p className="muted">{copy.text}</p>
         </div>
 
         <div className={styles.grid}>
+          <p className={styles.route} data-testid="route">
+            <span className="sr-only">{copy.route}: </span>
+            {city(state.from).name} <span className={styles.arrow}>→</span> {city(state.to).name}
+          </p>
           <div className={styles.cities}>
             <div>
               <label className="label" htmlFor={`${id}-from`}>
@@ -240,6 +242,7 @@ export function Calculator() {
               onClick={() => setOrderOpen(true)}
             >
               {copy.order}
+              <Icon name="arrow" size={18} />
             </button>
             <p className={styles.note}>{copy.note}</p>
           </div>
