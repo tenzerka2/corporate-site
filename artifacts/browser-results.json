@@ -3,8 +3,7 @@
     "argv": [
       "/opt/node22/bin/node",
       "/home/user/corporate-site/node_modules/.bin/playwright",
-      "test",
-      "tests/home-stage3.spec.ts"
+      "test"
     ],
     "configFile": "/home/user/corporate-site/playwright.config.ts",
     "rootDir": "/home/user/corporate-site/tests",
@@ -66,6 +65,240 @@
   },
   "suites": [
     {
+      "title": "foundation.spec.ts",
+      "file": "foundation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "адаптив, локальные ресурсы и ошибки браузера",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 240108,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/user/corporate-site/tests/foundation.spec.ts",
+                        "column": 18,
+                        "line": 21
+                      },
+                      "message": "Error: page.goto: Test timeout of 240000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3106/services/groupage\", waiting until \"load\"\u001b[22m\n\n\n  19 |     await page.setViewportSize({ width, height: 900 });\n  20 |     for (const route of [\"/\", \"/ui\", \"/services/groupage\"]) {\n> 21 |       await page.goto(route);\n     |                  ^\n  22 |       await page.evaluate(() => document.fonts.ready);\n  23 |       await expect(page.locator(\"h1\")).toBeVisible();\n  24 |       expect(\n    at /home/user/corporate-site/tests/foundation.spec.ts:21:18"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:43:51.270Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/user/corporate-site/test-results/foundation-адаптив-локальные-ресурсы-и-ошибки-браузера/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "6b60d0cacd30be8ae473-e47921ecc166c11f7399",
+          "file": "foundation.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "мега-меню, Escape, клик вне, полный экран и переходы",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4062,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:47:52.468Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b60d0cacd30be8ae473-644aa97835044979559d",
+          "file": "foundation.spec.ts",
+          "line": 44,
+          "column": 1
+        },
+        {
+          "title": "мобильное меню, прокрутка и отсутствие лишних порталов",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6811,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:47:56.720Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b60d0cacd30be8ae473-feea1a9c991dfca78000",
+          "file": "foundation.spec.ts",
+          "line": 88,
+          "column": 1
+        },
+        {
+          "title": "селекты, поиск, клавиатура, flip и сохранение высоты",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1267,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:48:03.544Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b60d0cacd30be8ae473-c2a9c2161bb9d4be85c2",
+          "file": "foundation.spec.ts",
+          "line": 123,
+          "column": 1
+        },
+        {
+          "title": "вкладки, аккордеон, якоря и все внутренние ссылки",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 723,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:48:04.822Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b60d0cacd30be8ae473-bc65cbc0967351def6a6",
+          "file": "foundation.spec.ts",
+          "line": 169,
+          "column": 1
+        },
+        {
+          "title": "доступность страниц и всплывающих слоёв",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6141,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:48:05.557Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b60d0cacd30be8ae473-41963680c22e288ab01c",
+          "file": "foundation.spec.ts",
+          "line": 201,
+          "column": 1
+        }
+      ]
+    },
+    {
       "title": "home-stage3.spec.ts",
       "file": "home-stage3.spec.ts",
       "column": 0,
@@ -84,10 +317,10 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "failed",
-                  "duration": 16606,
+                  "duration": 9502,
                   "error": {
                     "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
                     "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at /home/user/corporate-site/tests/home-stage3.spec.ts:58:10",
@@ -111,7 +344,7 @@
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:39:46.483Z",
+                  "startTime": "2026-10-06T07:48:11.716Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -148,15 +381,15 @@
               "projectName": "",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 2,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 464,
+                  "duration": 678,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-06T07:40:04.066Z",
+                  "startTime": "2026-10-06T07:48:22.047Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -170,15 +403,605 @@
           "column": 1
         }
       ]
+    },
+    {
+      "title": "home-stage4.spec.ts",
+      "file": "home-stage4.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "калькулятор пересчитывает цену, выбирает машину и сообщает об ошибках",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1893,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:48:22.982Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ac8b68c6668b71120ede-aad55110cc0ce16306d8",
+          "file": "home-stage4.spec.ts",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "направления подставляют города в калькулятор, карта показывает карточку города",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2684,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:48:24.891Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ac8b68c6668b71120ede-b0a60a203a011f54e60d",
+          "file": "home-stage4.spec.ts",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "заявка: предзаполнение, проверка полей, фокус, Escape и экран успеха",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3818,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:48:27.584Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ac8b68c6668b71120ede-89047efafa300402e320",
+          "file": "home-stage4.spec.ts",
+          "line": 105,
+          "column": 1
+        },
+        {
+          "title": "вторая половина главной: состав, адаптив и ссылки",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9173,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:48:31.415Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ac8b68c6668b71120ede-13f7e2c06c96f6e7f803",
+          "file": "home-stage4.spec.ts",
+          "line": 162,
+          "column": 1
+        },
+        {
+          "title": "отдельная страница калькулятора учитывает услугу из меню",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1292,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:48:40.597Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ac8b68c6668b71120ede-ad6669f8a748ff5cd68c",
+          "file": "home-stage4.spec.ts",
+          "line": 193,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "stage5.spec.ts",
+      "file": "stage5.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "SEO: уникальные заголовки и описания, canonical, один H1, валидный JSON-LD",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2884,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:48:41.910Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3b4797897cdae8f29a9-4545cc527d48d907d380",
+          "file": "stage5.spec.ts",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "страницы: адаптив без горизонтального скролла и доступность",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 600180,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/user/corporate-site/tests/stage5.spec.ts",
+                        "column": 18,
+                        "line": 79
+                      },
+                      "message": "Error: page.goto: Test timeout of 600000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:3106/services/groupage\", waiting until \"load\"\u001b[22m\n\n\n  77 |     await page.setViewportSize({ width, height: 900 });\n  78 |     for (const path of pages) {\n> 79 |       await page.goto(path);\n     |                  ^\n  80 |       expect(\n  81 |         await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),\n  82 |         `${path} @ ${width}`,\n    at /home/user/corporate-site/tests/stage5.spec.ts:79:18"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:48:44.809Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/user/corporate-site/test-results/stage5-страницы-адаптив-бе-7f341-ьного-скролла-и-доступность/error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e3b4797897cdae8f29a9-cb3e723c594a54bc7036",
+          "file": "stage5.spec.ts",
+          "line": 73,
+          "column": 1
+        },
+        {
+          "title": "отслеживание: демо-номер, таймлайн, документы и неверный номер",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 785,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:58:45.890Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3b4797897cdae8f29a9-be666a7209ef29c9c6d9",
+          "file": "stage5.spec.ts",
+          "line": 103,
+          "column": 1
+        },
+        {
+          "title": "услуга и направление предзаполняют калькулятор",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 619,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:58:46.865Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3b4797897cdae8f29a9-7ff1cb9b932c0e83fb12",
+          "file": "stage5.spec.ts",
+          "line": 124,
+          "column": 1
+        },
+        {
+          "title": "контакты: форма проверяет поля и показывает подтверждение",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 696,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:58:47.500Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3b4797897cdae8f29a9-1268028c109f78aef4cc",
+          "file": "stage5.spec.ts",
+          "line": 139,
+          "column": 1
+        },
+        {
+          "title": "вакансии: строки раскрываются, отклик выбирает вакансию и проверяет поля",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 886,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:58:48.211Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3b4797897cdae8f29a9-d3670d8c0ddb97564ecc",
+          "file": "stage5.spec.ts",
+          "line": 150,
+          "column": 1
+        },
+        {
+          "title": "новости: даты и полный текст без пустых страниц",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 257,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:58:49.110Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3b4797897cdae8f29a9-0abcf2ba365405819e17",
+          "file": "stage5.spec.ts",
+          "line": 163,
+          "column": 1
+        },
+        {
+          "title": "личный кабинет: вход отключён, демо-кабинет ведёт в отслеживание",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1510,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:58:49.379Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3b4797897cdae8f29a9-1f26bec7ceee4c9e736a",
+          "file": "stage5.spec.ts",
+          "line": 170,
+          "column": 1
+        },
+        {
+          "title": "404 в стиле сайта с переходом к расчёту",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 523,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:58:50.900Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e3b4797897cdae8f29a9-9654aa8fdcd3f60a0716",
+          "file": "stage5.spec.ts",
+          "line": 185,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "visuals.spec.ts",
+      "file": "visuals.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "карта: город, маршрут и клавиатура",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1556,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:58:51.448Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "821bf1ebb4ae78f6d65d-cbb7df9b7b80ac13f92e",
+          "file": "visuals.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "визуальная система: адаптив и отсутствие отклонённых материалов",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5029,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-06T07:58:53.017Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "821bf1ebb4ae78f6d65d-f379fb35834ebd328bc6",
+          "file": "visuals.spec.ts",
+          "line": 20,
+          "column": 1
+        }
+      ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-06T07:39:45.731Z",
-    "duration": 19093.322,
-    "expected": 1,
+    "startTime": "2026-10-06T07:43:50.489Z",
+    "duration": 907657.653,
+    "expected": 21,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 3,
     "flaky": 0
   }
 }

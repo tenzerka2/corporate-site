@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { photos, type PhotoKey } from "@/content/photos";
 
+// Sources are already 1672 px WebP, 150–300 KB. Runtime resizing stalled under
+// load on a small self-hosted server, so photos are served as they are.
+
 function Caption({ name, wide = false }: { name: PhotoKey; wide?: boolean }) {
   const photo = photos[name];
   const [title, place, spec] = photo.caption;
@@ -24,7 +27,7 @@ export function PhotoBand({ name, priority = false }: { name: PhotoKey; priority
   const photo = photos[name];
   return (
     <figure className="photo-band">
-      <Image src={photo.image} alt={photo.alt} sizes="100vw" placeholder="blur" priority={priority} />
+      <Image src={photo.image} alt={photo.alt} sizes="100vw" placeholder="blur" unoptimized priority={priority} />
       <Caption name={name} wide />
     </figure>
   );
@@ -43,7 +46,7 @@ export function PhotoFigure({
   const photo = photos[name];
   return (
     <figure className={`photo-figure ${className}`}>
-      <Image src={photo.image} alt={photo.alt} sizes={sizes} placeholder="blur" />
+      <Image src={photo.image} alt={photo.alt} sizes={sizes} placeholder="blur" unoptimized />
       <Caption name={name} />
     </figure>
   );
