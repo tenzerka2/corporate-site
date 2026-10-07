@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { publicAsset } from "@/lib/paths";
 import { footerColumns } from "@/content/navigation";
 import { company } from "@/content/site";
 import styles from "./Footer.module.css";
@@ -9,9 +10,9 @@ export function Footer() {
       <div className={`container ${styles.grid}`}>
         <div className={styles.brand}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.svg" alt="Онега" width="132" height="32" className={styles.logo} />
+          <img src={publicAsset("/logo.svg")} alt="Онега" width="132" height="32" className={styles.logo} />
           <p>Грузоперевозки по России и складская логистика с 2015 года.</p>
-          <span className={styles.demo}>{company.demo}</span>
+          <Link href="https://shvetsov.studio/cases/onega" className={styles.demo}>{company.demo} ↗</Link>
         </div>
         {footerColumns.map((column) => (
           <nav key={column.title} aria-label={column.title}>
@@ -29,12 +30,12 @@ export function Footer() {
           <h2 className={styles.title}>Контакты</h2>
           <ul className="plain-list">
             <li>
-              <a href={company.phoneHref} className={styles.strong}>
+              <Link href={company.phoneHref} className={styles.strong}>
                 {company.phone}
-              </a>
+              </Link>
             </li>
             <li>
-              <a href={`mailto:${company.email}`}>{company.email}</a>
+              <Link href={`mailto:${company.email}`}>{company.email}</Link>
             </li>
             <li className={styles.muted}>{company.address}</li>
             <li className={styles.muted}>{company.hours}</li>

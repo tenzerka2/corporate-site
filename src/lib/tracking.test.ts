@@ -29,3 +29,27 @@ describe("отслеживание", () => {
     expect(a.eta > a.created).toBe(true);
   });
 });
+
+it("новая заявка утром находится и сохраняет маршрут и тип перевозки", () => {
+  const created = new Date(2026, 9, 7, 7, 5);
+  const shipment = trackShipment("ОН-261007-4821", new Date(2026, 9, 7, 7, 6), {
+    created: created.toISOString(), from: "kazan", to: "novosibirsk", mode: "truck",
+  })!;
+  expect(shipment.from).toBe("kazan");
+  expect(shipment.to).toBe("novosibirsk");
+  expect(shipment.created).toEqual(created);
+  expect(shipment.events.filter((event) => event.done).map((event) => event.status)).toEqual(["Заявка принята"]);
+});
+
+it("не принимает подменённую дату создания из ссылки", () => {
+  for (const created of ["invalid", new Date(2026, 9, 6).toISOString(), new Date(2026, 9, 8).toISOString()]) {
+    expect(trackShipment("ОН-261007-4821", new Date(2026, 9, 7, 15), { created })).toBeNull();
+  }
+});
+
+
+it("ссылка на заявку сохраняется при смене часового пояса", () => {
+  const context = { created: "2026-10-07T23:30:00.000Z", from: "moscow", to: "kazan" };
+  const result = trackShipment("ОН-261007-4821", new Date("2026-10-07T23:31:00.000Z"), context);
+  expect(result?.created.toISOString()).toBe(context.created);
+});

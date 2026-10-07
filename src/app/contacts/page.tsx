@@ -37,12 +37,12 @@ export default function ContactsPage() {
               <li key={item.title}>
                 <h3>{item.title}</h3>
                 <p className="muted">{item.text}</p>
-                <a className={styles.phone} href={tel(item.phone)}>
+                <Link className={styles.phone} href={tel(item.phone)}>
                   {item.phone}
-                </a>
-                <a className="link" href={`mailto:${item.email}`}>
+                </Link>
+                <Link className="link" href={`mailto:${item.email}`}>
                   {item.email}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -88,7 +88,7 @@ export default function ContactsPage() {
                     </th>
                     <td>{item.address}</td>
                     <td>
-                      <a href={tel(item.phone)}>{item.phone}</a>
+                      <Link href={tel(item.phone)}>{item.phone}</Link>
                     </td>
                   </tr>
                 ))}

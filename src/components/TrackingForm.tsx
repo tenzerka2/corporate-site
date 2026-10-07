@@ -3,18 +3,18 @@ import { useId, useState, type FormEvent } from "react";
 import { city } from "@/content/cities";
 import { trackingPage as copy } from "@/content/pages";
 import { formatKm } from "@/lib/tariff";
-import { formatDate, trackShipment, type Shipment } from "@/lib/tracking";
+import { formatDate, trackShipment, type Shipment, type TrackingContext } from "@/lib/tracking";
 import { Icon } from "./Icon";
 import styles from "./TrackingForm.module.css";
 
-export function TrackingForm() {
+export function TrackingForm({ initialNumber = "", context = {} }: { initialNumber?: string; context?: TrackingContext }) {
   const id = useId();
-  const [value, setValue] = useState("");
-  const [result, setResult] = useState<Shipment | null | undefined>(undefined);
+  const [value, setValue] = useState(initialNumber);
+  const [result, setResult] = useState<Shipment | null | undefined>(() => initialNumber ? trackShipment(initialNumber, new Date(), context) : undefined);
 
   function submit(event: FormEvent) {
     event.preventDefault();
-    setResult(trackShipment(value));
+    setResult(trackShipment(value, new Date(), value === initialNumber ? context : {}));
   }
 
   return (

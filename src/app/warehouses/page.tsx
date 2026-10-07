@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Icon } from "@/components/Icon";
 import { CheckList } from "@/components/ui/CheckList";
@@ -52,7 +53,7 @@ export default function WarehousesPage() {
                   </li>
                   <li>
                     <Icon name="phone" size={18} />
-                    <a href={`tel:${item.phone.replace(/\D/g, "")}`}>{item.phone}</a>
+                    <Link href={`tel:${item.phone.replace(/\D/g, "")}`}>{item.phone}</Link>
                   </li>
                 </ul>
                 <ul className={`plain-list ${styles.tags}`}>

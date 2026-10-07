@@ -32,9 +32,9 @@ const initial: CalcState = {
 const numeric = (value: string) => value.replace(/[^\d.,\s]/g, "");
 
 /** On the home page the block has its own heading; on /calculator the page hero introduces it. */
-export function Calculator({ heading = true }: { heading?: boolean }) {
+export function Calculator({ heading = true, initialMode = "groupage" }: { heading?: boolean; initialMode?: Mode }) {
   const id = useId();
-  const [state, setState] = useState<CalcState>(initial);
+  const [state, setState] = useState<CalcState>({ ...initial, mode: initialMode });
   const [moreOpen, setMoreOpen] = useState(false);
   const orderButton = useRef<HTMLButtonElement>(null);
   const [orderOpen, setOrderOpen] = useState(false);
@@ -211,7 +211,7 @@ export function Calculator({ heading = true }: { heading?: boolean }) {
                   {formatRub(q.total)}
                 </>
               ) : (
-                copy.none
+                copy.noResult
               )}
             </p>
             {q && (
@@ -255,6 +255,7 @@ export function Calculator({ heading = true }: { heading?: boolean }) {
           setOrderOpen(false);
           orderButton.current?.focus();
         }}
+        route={{ from: state.from, to: state.to, mode: state.mode }}
         summary={`${city(state.from).name} → ${city(state.to).name}, ${state.weight} кг, ${state.volume} м³${q ? `, ${copy.from_} ${formatRub(q.total)}` : ""}`}
       />
     </section>

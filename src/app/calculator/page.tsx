@@ -9,11 +9,12 @@ import { calculatorPage as copy } from "@/content/pages";
 
 export const metadata: Metadata = { title: copy.title, description: copy.lead };
 
-export default function CalculatorPage() {
+export default async function CalculatorPage({ searchParams }: { searchParams: Promise<{ mode?: string }> }) {
+  const mode = (await searchParams).mode === "truck" ? "truck" : "groupage";
   return (
     <>
       <Hero crumbs={[{ label: copy.title }]} title={copy.h1} lead={copy.lead} />
-      <Calculator heading={false} />
+      <Calculator heading={false} initialMode={mode} />
       <section className="section" aria-labelledby="how-title">
         <div className="container">
           <div className="head-left">

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { company } from "@/content/site";
 import { Icon } from "../Icon";
 import { OrderButton } from "../OrderButton";
@@ -22,10 +23,10 @@ export function ContactCard({
           <div className={styles.main}>
             <p>{text}</p>
             <div className={styles.actions}>
-              <a className="button" href={company.phoneHref}>
+              <Link className="button" href={company.phoneHref}>
                 <Icon name="phone" />
                 {company.phone}
-              </a>
+              </Link>
               <OrderButton label="Оставить заявку" summary={summary} className="button button-secondary" />
             </div>
             <p className={styles.hours}>{company.hours}, ответ в течение 15 минут</p>

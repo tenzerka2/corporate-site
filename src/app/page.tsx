@@ -35,10 +35,10 @@ export default function Home() {
           </div>
           <Steps items={steps.items} />
           <div className={styles.centerAction}>
-            <a className="button" href="#calculator">
+            <Link className="button" href="#calculator">
               <Icon name="calc" />
               {steps.action}
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -147,14 +147,14 @@ export default function Home() {
               <p>{contacts.text}</p>
             </div>
             <div className={styles.ctaActions}>
-              <a className={`button ${styles.ctaPrimary}`} href={company.phoneHref}>
+              <Link className={`button ${styles.ctaPrimary}`} href={company.phoneHref}>
                 <Icon name="phone" />
                 {company.phone}
-              </a>
-              <a className={`button ${styles.ctaSecondary}`} href={`mailto:${company.email}`}>
+              </Link>
+              <Link className={`button ${styles.ctaSecondary}`} href={`mailto:${company.email}`}>
                 <Icon name="mail" />
                 {company.email}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

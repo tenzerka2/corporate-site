@@ -34,5 +34,5 @@ export function validateOrder(fields: OrderFields): OrderErrors {
 /** ОН-261006-4821: date and four digits. */
 export function orderNumber(date = new Date(), random = Math.random()) {
   const p = (n: number) => String(n).padStart(2, "0");
-  return `ОН-${String(date.getFullYear()).slice(2)}${p(date.getMonth() + 1)}${p(date.getDate())}-${1000 + Math.floor(random * 9000)}`;
+  return `ОН-${String(date.getUTCFullYear()).slice(2)}${p(date.getUTCMonth() + 1)}${p(date.getUTCDate())}-${1000 + Math.floor(random * 9000)}`;
 }

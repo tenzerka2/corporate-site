@@ -6,11 +6,13 @@ import { trackingPage as copy } from "@/content/pages";
 
 export const metadata: Metadata = { title: copy.title, description: copy.lead };
 
-export default function TrackingPage() {
+export default async function TrackingPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const params = await searchParams;
+  const query = Object.fromEntries(Object.entries(params).filter((pair): pair is [string, string] => typeof pair[1] === "string"));
   return (
     <>
       <Hero crumbs={[{ label: copy.title }]} title={copy.h1} lead={copy.lead} />
-      <TrackingForm />
+      <TrackingForm initialNumber={query.number || ""} context={query} />
       <ContactCard text="Груз задерживается или нужно изменить адрес доставки? Позвоните в поддержку, решим в течение дня." />
     </>
   );

@@ -1,7 +1,13 @@
 import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-const widths = [360, 390, 768, 1024, 1440, 1920];
+const prefix = process.env.ONEGA_BASE_PATH || "";
+test.beforeEach(async ({ page }) => {
+  const goto = page.goto.bind(page);
+  page.goto = (url, options) => goto(url.startsWith("/") ? `${prefix}${url}` : url, options);
+});
+
+const widths = [360, 390, 768, 1024, 1440, 1920, 2560];
 
 const pages = [
   "/",
@@ -38,8 +44,9 @@ test("главная: структура и карточка цифр внахл
 });
 
 test("все страницы: один h1, без горизонтального скролла, доступность", async ({ page }) => {
+  test.setTimeout(180_000);
   for (const path of pages) {
-    for (const width of [360, 768, 1440]) {
+    for (const width of [390, 1024, 1440, 2560]) {
       await page.setViewportSize({ width, height: 900 });
       const response = await page.goto(path);
       expect(response?.status(), path).toBe(200);
@@ -59,8 +66,9 @@ test("все ссылки ведут на существующие страни�
     await page.goto(path);
     const hrefs = await page.locator("a[href]").evaluateAll((els) => els.map((e) => e.getAttribute("href")!));
     for (const href of hrefs) {
-      if (/^(tel|mailto):/.test(href)) continue;
-      const [route, hash] = href.split("#");
+      if (/^(tel|mailto):/.test(href) || href === "https://shvetsov.studio/cases/onega") continue;
+      const [routeAndQuery, hash] = href.replace(prefix, "").split("#");
+      const route = routeAndQuery.split("?")[0];
       const target = route || path;
       expect(known.has(target), `${path} -> ${href}`).toBe(true);
       if (hash) {
@@ -131,7 +139,7 @@ test("заявка: проверка полей, Escape, клик вне, воз
   await expect(dialog.getByLabel("Телефон")).toHaveValue("+7 (900) 123-45-67");
   await dialog.getByText("Даю согласие").click();
   await dialog.getByRole("button", { name: "Отправить заявку" }).click();
-  await expect(page.getByRole("dialog", { name: "Заявка принята" })).toContainText(/ОН-\d{6}-\d{4}/);
+  await expect(page.getByRole("dialog", { name: "Демонстрационная заявка оформлена" })).toContainText(/ОН-\d{6}-\d{4}/);
 });
 
 test("выпадающее меню: открытие, переход, Escape", async ({ page }) => {
@@ -187,4 +195,46 @@ test("мобильное меню: Escape закрывает и возвраща
   await page.keyboard.press("Escape");
   await expect(page.locator("#site-menu")).toBeHidden();
   await expect(burger).toBeFocused();
+});
+
+test("отдельная машина: услуга, расчёт, заявка и её маршрут в отслеживании", async ({ page }) => {
+  await page.goto("/services/truck");
+  await page.getByRole("link", {name:"Рассчитать стоимость",exact:true}).first().click();
+  await expect(page).toHaveURL(/calculator\?mode=truck$/);
+  const calc=page.locator("#calculator");
+  await expect(calc.getByRole("radio",{name:"Отдельная машина"})).toBeChecked();
+  await calc.getByLabel("Откуда",{exact:true}).selectOption("kazan");
+  await calc.getByLabel("Куда",{exact:true}).selectOption("novosibirsk");
+  await calc.getByRole("button",{name:"Оформить заявку"}).click();
+  const dialog=page.getByRole("dialog");
+  await dialog.getByLabel("Имя").fill("Демо");
+  await dialog.getByLabel("Телефон").fill("89001234567");
+  await dialog.getByRole("checkbox").check();
+  await dialog.getByRole("button",{name:"Отправить заявку"}).click();
+  const content=await dialog.getByRole("status").innerText();
+  const number=content.match(/ОН-\d{6}-\d{4}/)![0];
+  await dialog.getByRole("link",{name:"Где мой груз"}).click();
+  await expect(page.getByLabel("Номер заявки")).toHaveValue(number);
+  await expect(page.getByRole("heading",{level:2,name:"Казань → Новосибирск"})).toBeVisible();
+  expect(page.url()).not.toContain("9001234567");
+  await page.screenshot({path:"screenshots/release/order-to-tracking.png",fullPage:true});
+  await page.reload();
+  await expect(page.getByRole("heading",{level:2,name:"Казань → Новосибирск"})).toBeVisible();
+});
+
+test("десять открытий заявки: фокус, отсутствие лишней прокрутки и узлов", async ({page}) => {
+  await page.setViewportSize({width:390,height:700});
+  await page.goto("/calculator");
+  const open=page.getByRole("button",{name:"Оформить заявку"});
+  await open.scrollIntoViewIfNeeded();
+  const measure=()=>page.evaluate(()=>({height:document.body.scrollHeight,nodes:document.body.childElementCount}));
+  const before=await measure();
+  for(let i=0;i<10;i++) {
+    await open.click();
+    await expect(page.getByRole("dialog")).toBeVisible();
+    if(i===0)await page.screenshot({path:"screenshots/release/dialog-390-700.png"});
+    await page.keyboard.press("Escape");
+    await expect(open).toBeFocused();
+  }
+  expect(await measure()).toEqual(before);
 });

@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useId, useRef, useState, type KeyboardEvent } from "react";
 import type { OfferTab } from "@/content/services";
 import { Icon } from "../Icon";
@@ -79,10 +80,10 @@ export function Tabs({ tabs, label, action }: { tabs: OfferTab[]; label: string;
             ))}
           </ul>
           {action && (
-            <a className="button" href={action.href}>
+            <Link className="button" href={action.href}>
               <Icon name="calc" />
               {action.label}
-            </a>
+            </Link>
           )}
         </div>
       ))}

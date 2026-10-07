@@ -37,7 +37,7 @@ export default async function ServicePage({ params }: Props) {
         title={service.h1}
         lead={service.lead}
         points={service.points}
-        actions={[{ label: "Рассчитать стоимость", href: "/calculator", icon: "calc" }]}
+        actions={[{ label: "Рассчитать стоимость", href: service.slug === "truck" ? "/calculator?mode=truck" : "/calculator", icon: "calc" }]}
         extraAction={<OrderButton label="Оставить заявку" summary={service.title} className="button button-secondary" />}
         photo={{ image: service.heroImage, alt: service.heroAlt }}
         stats={service.stats}
@@ -58,7 +58,7 @@ export default async function ServicePage({ params }: Props) {
             <h2 id="offer-title">{service.offer.title}</h2>
             <p>{service.offer.text}</p>
           </div>
-          <Tabs tabs={service.offer.tabs} label={service.offer.title} action={{ label: "Рассчитать стоимость", href: "/calculator" }} />
+          <Tabs tabs={service.offer.tabs} label={service.offer.title} action={{ label: "Рассчитать стоимость", href: service.slug === "truck" ? "/calculator?mode=truck" : "/calculator" }} />
         </div>
       </section>
 

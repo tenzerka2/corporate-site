@@ -1,6 +1,9 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { order as copy, company } from "@/content/site";
+import type { CityId } from "@/content/cities";
+import type { Mode } from "@/lib/tariff";
 import { formatPhone, orderNumber, validateOrder, type OrderErrors } from "@/lib/order";
 import styles from "./OrderDialog.module.css";
 
@@ -9,17 +12,19 @@ export function OrderDialog({
   open,
   onClose,
   summary,
+  route,
 }: {
   open: boolean;
   onClose: () => void;
   summary?: string;
+  route?: { from: CityId; to: CityId; mode: Mode };
 }) {
   const id = useId();
   const ref = useRef<HTMLDialogElement>(null);
   const form = useRef<HTMLFormElement>(null);
   const [fields, setFields] = useState({ name: "", phone: "", company: "", comment: "", consent: false });
   const [errors, setErrors] = useState<OrderErrors>({});
-  const [done, setDone] = useState<string | null>(null);
+  const [done, setDone] = useState<{ number: string; created: string } | null>(null);
 
   useEffect(() => {
     const dialog = ref.current;
@@ -37,12 +42,15 @@ export function OrderDialog({
       form.current?.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
       return;
     }
-    setDone(orderNumber());
+    const now = new Date();
+    setDone({ number: orderNumber(now), created: now.toISOString() });
   }
 
   function close() {
+    ref.current?.close();
     onClose();
     if (done) {
+      setErrors({});
       setDone(null);
       setFields({ name: "", phone: "", company: "", comment: "", consent: false });
     }
@@ -70,19 +78,20 @@ export function OrderDialog({
         </div>
         {done ? (
           <div role="status" className={styles.done}>
-            <p>{copy.doneText(done)}</p>
+            <p>{copy.doneText(done.number)}</p>
             <p className="muted">{company.demoNote}</p>
             <div className={styles.doneActions}>
               <button type="button" className="button" onClick={close}>
                 {copy.ok}
               </button>
-              <a className="button button-secondary" href="/tracking">
+              <Link className="button button-secondary" href={`/tracking?${new URLSearchParams({ number: done.number, created: done.created, ...route }).toString()}`}>
                 {copy.track}
-              </a>
+              </Link>
             </div>
           </div>
         ) : (
           <form ref={form} className={styles.form} onSubmit={submit} noValidate>
+            <p className={styles.wide}>{company.demoNote}</p>
             {summary && <p className={styles.summary}>{summary}</p>}
             <div>
               <label className="label" htmlFor={`${id}-name`}>
@@ -163,9 +172,9 @@ export function OrderDialog({
                 />
                 <span>{copy.consent}</span>
               </label>
-              <a className={`link ${styles.policy}`} href="/privacy" target="_blank">
+              <Link className={`link ${styles.policy}`} href="/privacy" target="_blank">
                 {copy.policy}
-              </a>
+              </Link>
               {errors.consent && (
                 <span id={`${id}-consent-error`} className="error">
                   {copy.errors.consent}

@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { publicAsset } from "@/lib/paths";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { menu, type NavLink } from "@/content/navigation";
@@ -68,7 +69,7 @@ export function Header() {
         </button>
         <Link href="/" className={styles.logo} aria-label="Онега, на главную" onClick={closeAll}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.svg" alt="" width="132" height="32" />
+          <img src={publicAsset("/logo.svg")} alt="" width="132" height="32" />
         </Link>
         <nav className={styles.nav} aria-label="Основное меню">
           <ul className="plain-list">
@@ -130,10 +131,10 @@ export function Header() {
             <Icon name="search" size={22} />
             <span>Отследить</span>
           </Link>
-          <a className={styles.iconLink} href={company.phoneHref}>
+          <Link className={styles.iconLink} href={company.phoneHref}>
             <Icon name="phone" size={22} />
             <span>{company.phone}</span>
-          </a>
+          </Link>
         </div>
       </div>
       <div ref={mobile} id="site-menu" className={styles.panel} hidden={!panel}>
@@ -157,10 +158,10 @@ export function Header() {
           <Link {...linkProps({ label: "Отследить груз", href: "/tracking" })} className={styles.panelTop}>
             Отследить груз
           </Link>
-          <a href={company.phoneHref} className={styles.panelPhone}>
+          <Link href={company.phoneHref} className={styles.panelPhone}>
             <Icon name="phone" />
             {company.phone}
-          </a>
+          </Link>
         </nav>
       </div>
     </header>

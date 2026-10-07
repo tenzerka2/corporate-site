@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image, { type StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 import { Icon, type IconName } from "../Icon";
@@ -57,10 +58,10 @@ export function Hero({
           {(actions || extraAction) && (
             <div className={styles.actions}>
               {actions?.map((action) => (
-                <a key={action.href} className={`button ${action.secondary ? "button-secondary" : ""}`} href={action.href}>
+                <Link key={action.href} className={`button ${action.secondary ? "button-secondary" : ""}`} href={action.href}>
                   {action.icon && <Icon name={action.icon} size={22} />}
                   {action.label}
-                </a>
+                </Link>
               ))}
               {extraAction}
             </div>
