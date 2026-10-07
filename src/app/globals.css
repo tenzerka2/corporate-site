@@ -1,5 +1,4 @@
-/* Onega design system: product-style corporate. White page, light grey rounded
-   blocks, blue actions, soft shadow only on floating cards. One typeface, Inter. */
+/* Corporate editorial system: shared container, solid surfaces, square imagery. */
 :root {
   --bg: #ffffff;
   --surface: #ffffff;
@@ -15,21 +14,22 @@
   --orange: #f26b1d;
   --error: #b42318;
 
-  --container: 1140px;
+  --container: 1280px;
+  --hero-gap: 40px;
   --gutter: 32px;
   --gap: 32px;
-  --radius: 8px;
-  --radius-card: 16px;
-  --radius-block: 32px;
+  --radius: 2px;
+  --radius-card: 0px;
+  --radius-block: 0px;
   --shadow: 0 12px 32px -8px rgba(16, 24, 40, 0.14), 0 4px 8px -4px rgba(16, 24, 40, 0.06);
-  --header: 78px;
+  --header: 88px;
 }
 @media (max-width: 767px) {
   :root {
     --gutter: 16px;
     --gap: 16px;
     --header: 60px;
-    --radius-block: 20px;
+    --radius-block: 0px;
   }
 }
 
@@ -68,7 +68,7 @@ h3 {
   letter-spacing: -0.02em;
 }
 h1 {
-  font-size: 44px;
+  font-size: 48px;
   line-height: 1.2;
 }
 h2 {
@@ -268,20 +268,20 @@ textarea.input {
   }
 }
 
-/* Page rhythm: white sections and light grey rounded blocks. */
+/* Full-width sections share the same content alignment. */
 .section {
   padding-top: 112px;
 }
 .block {
-  margin: 112px 16px 0;
+  margin: 112px 0 0;
   padding-block: 80px;
   border-radius: var(--radius-block);
   background: var(--soft);
 }
 .head-center {
   max-width: 720px;
-  margin: 0 auto 48px;
-  text-align: center;
+  margin: 0 0 48px;
+  text-align: left;
 }
 .head-left {
   max-width: 760px;
@@ -299,7 +299,7 @@ textarea.input {
   list-style: none;
 }
 .prose {
-  max-width: 760px;
+  max-width: 66ch;
 }
 .prose h2 {
   margin: 48px 0 12px;
@@ -313,7 +313,7 @@ textarea.input {
     padding-top: 72px;
   }
   .block {
-    margin: 72px 8px 0;
+    margin: 72px 0 0;
     padding-block: 56px;
   }
   .head-center,

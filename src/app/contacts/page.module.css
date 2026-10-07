@@ -9,7 +9,7 @@
   justify-items: start;
   gap: 8px;
   padding: 28px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: var(--radius-card);
 }
 .phone {
@@ -39,7 +39,7 @@
 }
 .tableWrap {
   overflow-x: auto;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: var(--radius-card);
 }
 .table {

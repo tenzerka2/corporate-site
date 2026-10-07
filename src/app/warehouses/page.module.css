@@ -8,7 +8,7 @@
   align-content: start;
   gap: 16px;
   padding: 32px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: var(--radius-card);
   scroll-margin-top: calc(var(--header) + 24px);
 }

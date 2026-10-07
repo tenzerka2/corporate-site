@@ -27,40 +27,6 @@ export default function Home() {
         stats={stats}
       />
 
-      <section id="how" className="section" aria-labelledby="how-title">
-        <div className="container">
-          <div className="head-center">
-            <h2 id="how-title">{steps.title}</h2>
-            <p>{steps.text}</p>
-          </div>
-          <Steps items={steps.items} />
-          <div className={styles.centerAction}>
-            <Link className="button" href="#calculator">
-              <Icon name="calc" />
-              {steps.action}
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section id="why" className="block" aria-labelledby="why-title">
-        <div className={`container ${styles.why}`}>
-          <div className={styles.whyPhoto}>
-            <Image src={why.image} alt={why.alt} sizes="(min-width: 1024px) 520px, 100vw" placeholder="blur" />
-          </div>
-          <div>
-            <h2 id="why-title">{why.title}</h2>
-            <div className={styles.whyList}>
-              <CheckList items={why.items} columns={2} />
-            </div>
-            <Link className="button" href="/about">
-              {why.action}
-              <Icon name="arrow" size={18} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
       <section id="services" className="section" aria-labelledby="services-title">
         <div className="container">
           <div className="head-center">
@@ -81,7 +47,7 @@ export default function Home() {
                       <li key={tag}>{tag}</li>
                     ))}
                   </ul>
-                  <Link className="button button-secondary" href={`/services/${item.slug}`}>
+                  <Link className="link" href={`/services/${item.slug}`}>
                     Подробнее
                     <span className="sr-only">: {item.title}</span>
                     <Icon name="arrow" size={18} />
@@ -90,6 +56,42 @@ export default function Home() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section id="how" className="section" aria-labelledby="how-title">
+        <div className="container">
+          <div className="head-center">
+            <h2 id="how-title">{steps.title}</h2>
+            <p>{steps.text}</p>
+          </div>
+          <Steps items={steps.items} />
+          <div className={styles.centerAction}>
+            <Link className="button" href="#calculator">
+              <Icon name="calc" />
+              {steps.action}
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section id="why" className="block" aria-labelledby="why-title">
+        <div className="container">
+          <div className="head-left"><h2 id="why-title">{why.title}</h2></div>
+          <div className={styles.why}>
+            <div className={styles.whyPhoto}>
+              <Image src={why.image} alt={why.alt} sizes="(min-width: 1024px) 520px, 100vw" placeholder="blur" />
+            </div>
+            <div>
+              <div className={styles.whyList}>
+                <CheckList items={why.items} columns={2} />
+              </div>
+              <Link className="button" href="/about">
+                {why.action}
+                <Icon name="arrow" size={18} />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -139,7 +141,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contacts" className="section" aria-labelledby="contacts-title">
+      <section id="contacts" className={styles.contactSection} aria-labelledby="contacts-title">
         <div className="container">
           <div className={styles.cta}>
             <div>

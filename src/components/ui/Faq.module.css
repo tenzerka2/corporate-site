@@ -2,10 +2,10 @@
   display: grid;
   gap: 12px;
   max-width: 880px;
-  margin-inline: auto;
+
 }
 .item {
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: var(--radius-card);
   background: var(--surface);
 }
@@ -14,7 +14,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  padding: 20px 24px;
+  padding: 20px 0;
   font-size: 18px;
   font-weight: 600;
   list-style: none;
@@ -35,14 +35,14 @@
   border-radius: var(--radius-card);
 }
 .item p {
-  padding: 0 24px 22px;
+  padding: 0 0 22px;
 }
 @media (max-width: 767px) {
   .item summary {
-    padding: 16px 18px;
+    padding: 16px 0;
     font-size: 16px;
   }
   .item p {
-    padding: 0 18px 18px;
+    padding: 0 0 18px;
   }
 }

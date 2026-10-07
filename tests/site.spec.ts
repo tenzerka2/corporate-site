@@ -25,7 +25,7 @@ const pages = [
   "/privacy",
 ];
 
-test("главная: структура и карточка цифр внахлёст", async ({ page }) => {
+test("главная: структура, общая левая граница и отдельная фотография", async ({ page }) => {
   for (const width of widths) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
@@ -34,12 +34,17 @@ test("главная: структура и карточка цифр внахл
     await expect(page.locator("section:first-of-type input, section:first-of-type select")).toHaveCount(0);
     await expect(page.locator("#how ol > li")).toHaveCount(3);
     await expect(page.locator("#services h3")).toHaveCount(4);
-    const overlap = await page.evaluate(() => {
-      const box = document.querySelector("section:first-of-type > div")!.getBoundingClientRect();
-      const card = document.querySelector("section:first-of-type dl")!.getBoundingClientRect();
-      return card.top < box.bottom && card.bottom > box.bottom;
+    const layout = await page.evaluate(() => {
+      const title = document.querySelector("h1")!.getBoundingClientRect();
+      const logo = document.querySelector("header a img")!.getBoundingClientRect();
+      const services = document.querySelector("#services h2")!.getBoundingClientRect();
+      const photo = document.querySelector("main section:first-of-type img")!.getBoundingClientRect();
+      return { title: title.x, logo: logo.x, services: services.x, photoTop: photo.top, photoLeft: photo.left, titleRight: title.right, titleBottom: title.bottom };
     });
-    expect(overlap, `stats @ ${width}`).toBe(true);
+    expect(layout.title, `gutter @ ${width}`).toBeGreaterThan(0);
+    expect(Math.abs(layout.title - layout.services)).toBeLessThan(1);
+    expect(Math.abs(layout.title - layout.logo)).toBeLessThan(1);
+    expect(width >= 1024 ? layout.photoLeft >= layout.titleRight : layout.photoTop > layout.titleBottom).toBe(true);
   }
 });
 

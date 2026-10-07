@@ -19,15 +19,25 @@ try {
   }
  }
  await page.goto(`${base}/cases`);
- await page.getByRole('link',{name:'Читать кейс Онега Логистик'}).click();
- await expect(page).toHaveURL(/\/cases\/onega$/);
- await expect(page.getByRole('link',{name:'Открыть демо Онега Логистик'})).toHaveAttribute('href','/work/onega');
+ const workCard=page.locator('.case').filter({has:page.locator('h2',{hasText:'Онега Логистик'})});
+ await expect(workCard).toHaveCount(1);
+ for(const link of await workCard.locator('a').all()) await expect(link).toHaveAttribute('href','/work/onega');
+ if(base.startsWith('https://shvetsov.studio')) {
+   await workCard.locator('.case__frame').click();
+   await expect(page).toHaveURL(/\/work\/onega$/);
+   await expect(page.locator('h1')).toContainText('Доставка грузов');
+ }
  await page.goto(base);
  const card=page.locator('.case').filter({has:page.locator('.case__name',{hasText:'Онега Логистик'})});
  await expect(card).toHaveCount(1);
  await card.scrollIntoViewIfNeeded();
  await page.screenshot({path:'screenshots/release/studio-home-card.png'});
- await expect(card.locator('.case__bar')).toHaveAttribute('href','/cases/onega');
+ await expect(card.locator('.case__bar')).toHaveAttribute('href','/work/onega');
+ if(base.startsWith('https://shvetsov.studio')) {
+   await card.locator('.case__bar').click();
+   await expect(page).toHaveURL(/\/work\/onega$/);
+   await expect(page.locator('h1')).toContainText('Доставка грузов');
+ }
  expect(errors).toEqual([]);
  console.log('PASS: studio case, portfolio and home card; 4 widths; images and navigation');
 } finally {await browser.close()}

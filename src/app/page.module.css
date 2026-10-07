@@ -1,6 +1,6 @@
 .centerAction {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 40px;
 }
 
@@ -25,20 +25,19 @@
 /* Services: photo and text, sides alternate. */
 .services {
   display: grid;
-  gap: 32px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 56px 32px;
 }
 .service {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 64px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
 }
-.service:nth-child(even) .servicePhoto {
-  order: 2;
-}
+
 .servicePhoto img {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: var(--radius-card);
 }
@@ -53,12 +52,11 @@
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 8px 24px;
 }
 .tags li {
-  padding: 4px 12px;
-  border-radius: 999px;
-  background: var(--soft);
+  padding: 0;
+  color: var(--muted);
   font-size: 14px;
   font-weight: 500;
 }
@@ -77,8 +75,7 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 24px;
-  padding: 32px;
-  border: 1px solid var(--line);
+  padding: 0;
   border-radius: var(--radius-card);
 }
 .reviews blockquote {
@@ -97,19 +94,15 @@
 .warehouses {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 40px 32px;
 }
 .warehouses li {
   position: relative;
   display: grid;
   gap: 4px;
-  padding: 24px 28px;
-  border: 1px solid transparent;
+  padding: 0;
   border-radius: var(--radius-card);
-  background: var(--surface);
-}
-.warehouses li:hover {
-  border-color: var(--field);
+  background: transparent;
 }
 .cardLink::after {
   content: "";
@@ -123,13 +116,14 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Closing call to action on deep navy. */
+/* Closing contact section follows the shared container. */
+.contactSection { margin-top: 112px; background: var(--deep); }
 .cta {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 48px;
   align-items: center;
-  padding: 56px 64px;
+  padding: 56px 0;
   border-radius: var(--radius-block);
   background: var(--deep);
   color: #fff;
@@ -168,8 +162,7 @@
 @media (max-width: 1023px) {
   .reviews {
     grid-template-columns: minmax(0, 1fr);
-    max-width: 640px;
-    margin-inline: auto;
+
   }
   .why,
   .service {
@@ -180,7 +173,7 @@
     order: 0;
   }
   .services {
-    gap: 64px;
+    gap: 48px 32px;
   }
   .warehouses {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -191,6 +184,7 @@
   }
 }
 @media (max-width: 767px) {
+  .services { grid-template-columns: minmax(0, 1fr); }
   .why :global(.button),
   .serviceBody :global(.button) {
     width: 100%;
@@ -199,16 +193,16 @@
     font-size: 22px;
   }
   .reviews li {
-    padding: 24px 20px;
+    padding: 0;
   }
   .warehouses {
     grid-template-columns: minmax(0, 1fr);
   }
   .warehouses li {
-    padding: 20px;
+    padding: 0;
   }
   .cta {
-    padding: 36px 20px;
+    padding: 36px 0;
   }
   .ctaActions :global(.button) {
     width: 100%;

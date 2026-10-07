@@ -56,6 +56,10 @@ export function Header() {
   return (
     <header className={styles.header}>
       <div ref={bar} className={`container ${styles.bar}`}>
+        <Link href="/" className={styles.logo} aria-label="Онега, на главную" onClick={closeAll}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={publicAsset("/logo.svg")} alt="" width="132" height="32" />
+        </Link>
         <button
           ref={burger}
           type="button"
@@ -67,10 +71,6 @@ export function Header() {
         >
           <Icon name="menu" size={24} />
         </button>
-        <Link href="/" className={styles.logo} aria-label="Онега, на главную" onClick={closeAll}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={publicAsset("/logo.svg")} alt="" width="132" height="32" />
-        </Link>
         <nav className={styles.nav} aria-label="Основное меню">
           <ul className="plain-list">
             {menu.map((item, index) =>

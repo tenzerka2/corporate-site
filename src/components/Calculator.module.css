@@ -1,5 +1,5 @@
 .section {
-  margin: 112px 16px 0;
+  margin: 112px 0 0;
   padding-block: 80px;
   border-radius: var(--radius-block);
   background: var(--soft);
@@ -11,8 +11,8 @@
   display: grid;
   gap: 12px;
   max-width: 720px;
-  margin: 0 auto 40px;
-  text-align: center;
+  margin: 0 0 40px;
+  text-align: left;
   font-size: 17px;
 }
 .route {
@@ -38,10 +38,9 @@
   grid-template-rows: auto auto auto 1fr;
   gap: 28px 40px;
   align-items: start;
-  padding: 40px;
+  padding: 0;
   border-radius: var(--radius-card);
-  background: var(--surface);
-  box-shadow: var(--shadow);
+  background: transparent;
 }
 .cities {
   grid-area: c;
@@ -137,9 +136,9 @@
   display: grid;
   gap: 16px;
   padding: 24px;
-  border-radius: 12px;
+  border-radius: var(--radius-card);
   background: var(--soft-2);
-  border: 1px solid var(--line);
+  border: 0;
 }
 .resultLabel {
   font-size: 15px;
@@ -192,14 +191,11 @@
 }
 @media (max-width: 767px) {
   .section {
-    margin: 72px 8px 0;
+    margin: 72px 0 0;
     padding-block: 56px;
   }
   .route {
     font-size: 22px;
-  }
-  .head p {
-    display: none;
   }
   .head {
     margin-bottom: 24px;
@@ -208,7 +204,7 @@
   .grid {
     grid-template-areas: "h" "c" "w" "r" "t" "m";
     gap: 16px;
-    padding: 20px 16px;
+    padding: 20px 0;
   }
   .cities {
     grid-template-columns: minmax(0, 1fr) 48px;
@@ -226,8 +222,8 @@
     gap: 12px;
   }
   .result {
-    padding: 20px 16px;
-    margin-inline: -4px;
+    padding: 20px 0;
+    margin-inline: 0;
     gap: 12px;
   }
   .total {
